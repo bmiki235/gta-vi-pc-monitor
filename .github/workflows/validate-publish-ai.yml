@@ -94,3 +94,127 @@ jobs:
               subprocess.run(['git', 'fetch', '--no-tags', '--depth=1', 'origin', '+refs/heads/claude/*:refs/remotes/origin/claude/*'], check=True)
               refs = git('for-each-ref', '--format=%(refname)', 'refs/remotes/origin/claude/').decode().splitlines()
               print('Megtalált Claude-branchek:', len(refs))
+              candidates = []
+              now = datetime.now(timezone.utc)
+              for ref in refs:
+                  name = ref.removeprefix('refs/remotes/origin/')
+                  try:
+                      raw = read_candidate(ref)
+                      data = json.loads(raw)
+                      checked = timestamp(data['checked_at'])
+                      if checked > now + timedelta(minutes=2):
+                          print('Kihagyva (jövőbeli időbélyeg):', name)
+                      elif checked <= previous:
+                          print('Kihagyva (nem újabb):', name)
+                      else:
+                          candidates.append((checked, ref, raw))
+                  except (subprocess.CalledProcessError, ValueError, TypeError, KeyError, AttributeError, OverflowError) as exc:
+                      print('Kihagyva (nem feldolgozható):', name, type(exc).__name__)
+              if not candidates:
+                  print('Nincs újabb, feldolgozható elemzés. A publikált fájl változatlan.')
+                  write_result(False)
+              else:
+                  checked, ref, raw = max(candidates, key=lambda row: (row[0], row[1]))
+                  print('Kiválasztott branch:', ref.removeprefix('refs/remotes/origin/'))
+                  print('Kiválasztott commit:', git('rev-parse', ref).decode().strip())
+                  print('Ellenőrzés időpontja:', checked.isoformat())
+                  write_result(True, raw)
+      - name: A branchkeresés eredményének ellenőrzése
+        shell: bash
+        env:
+          FOUND: ${{ steps.candidate.outputs.found }}
+        run: |
+          set -euo pipefail
+          case "$FOUND" in
+            true) test -s "$RUNNER_TEMP/ai_candidate.json"; echo 'Jelölt megtalálva; következik a validálás.' ;;
+            false) echo 'Nincs új elemzés; nincs publikálás.' ;;
+            *) echo 'HIBA: a branchkeresés nem adott eredményt.'; exit 1 ;;
+          esac
+      - name: Sémavalidálás és alapvető tartalmi ellenőrzések
+        if: steps.candidate.outputs.found == 'true'
+        shell: python
+        run: |
+          import json, os
+          from pathlib import Path
+          from datetime import datetime, timezone, timedelta
+          from jsonschema import Draft202012Validator, FormatChecker
+
+          def read(path):
+              def unique(pairs):
+                  obj = {}
+                  for key, value in pairs:
+                      if key in obj:
+                          raise ValueError(f'Ismétlődő JSON-kulcs: {key}')
+                      obj[key] = value
+                  return obj
+              def invalid_constant(value):
+                  raise ValueError(f'Érvénytelen JSON-szám: {value}')
+              return json.loads(Path(path).read_text(encoding='utf-8'), object_pairs_hook=unique, parse_constant=invalid_constant)
+
+          def timestamp(value):
+              return datetime.fromisoformat(value.replace('Z', '+00:00'))
+
+          path = Path(os.environ['RUNNER_TEMP']) / 'ai_candidate.json'
+          if path.stat().st_size > 2_000_000:
+              raise SystemExit('Túl nagy elemzési fájl.')
+          schema = read('ai_analysis.schema.json')
+          data = read(path)
+          Draft202012Validator.check_schema(schema)
+          Draft202012Validator(schema, format_checker=FormatChecker()).validate(data)
+          errors = []
+          if data['schema_version'] != '1.1':
+              errors.append('Nem támogatott sémaverzió.')
+          now = datetime.now(timezone.utc)
+          for field in ('checked_at', 'analyzed_at'):
+              if timestamp(data[field]) > now + timedelta(minutes=2):
+                  errors.append(f'Jövőbeli időbélyeg: {field}')
+          dash = data['dashboard_data']
+          if dash['analysis_status'] == 'failed':
+              errors.append('Sikertelen elemzés nem publikálható.')
+          if not any(x['status'] in ('ok', 'partial') for x in dash['source_checks']):
+              errors.append('Nincs elérhető vagy részben elérhető forrás.')
+          if not dash['project_metrics'] and not dash['external_estimates'] and dash['official_verification'] != 'confirmed':
+              errors.append('Nincs érdemi strukturált adat.')
+          for m in dash['project_metrics']:
+              lo, hi, avg = m['fps_min'], m['fps_max'], m['fps_average']
+              if lo is not None and hi is not None and lo > hi:
+                  errors.append(f"Fordított FPS-tartomány: {m['project']}")
+              if avg is not None and ((lo is not None and avg < lo) or (hi is not None and avg > hi)):
+                  errors.append(f"Az átlag kívül esik az FPS-tartományon: {m['project']}")
+          ids = [event['id'] for event in data['breakthrough_events']]
+          if len(ids) != len(set(ids)):
+              errors.append('Ismétlődő eseményazonosító.')
+          previous = Path('ai_analysis.json')
+          if previous.exists():
+              old = read(previous)
+              if timestamp(data['checked_at']) <= timestamp(old['checked_at']):
+                  errors.append('Az elemzés nem frissebb a publikált változatnál.')
+              previous_ids = {event['id'] for event in old['breakthrough_events']}
+              for event in data['breakthrough_events']:
+                  if event['id'] in previous_ids and event['teljes_kepernyo_javaslat']:
+                      errors.append('Ismétlődő eseményhez nem kérhető új riasztás: ' + event['id'])
+          elif any(event['teljes_kepernyo_javaslat'] for event in data['breakthrough_events']):
+              errors.append('Első publikáláskor történelmi esemény nem indíthat riasztást.')
+          if errors:
+              raise SystemExit('\n'.join(errors))
+          print('PASS: JSON-séma és alapvető tartalmi ellenőrzések.')
+          print('Elemzés állapota:', dash['analysis_status'])
+          print('Mérések:', len(dash['project_metrics']))
+          print('Forrásellenőrzések:', len(dash['source_checks']))
+          print('A forrásállítások hitelességét ez a vizsgálat nem igazolja.')
+      - name: Ellenőrzött adatfájl publikálása
+        if: steps.candidate.outputs.found == 'true' && (inputs.publish == true || github.event_name == 'schedule')
+        shell: bash
+        run: |
+          set -euo pipefail
+          cp "$RUNNER_TEMP/ai_candidate.json" ai_analysis.json
+          git add -- ai_analysis.json
+          if git diff --cached --quiet; then
+            echo 'Nincs publikálandó változás.'
+            exit 0
+          fi
+          test "$(git diff --cached --name-only)" = 'ai_analysis.json'
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git commit -m 'Ellenőrzött AI-elemzés publikálása'
+          git push origin HEAD:refs/heads/main
