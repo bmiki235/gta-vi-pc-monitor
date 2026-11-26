@@ -45,25 +45,16 @@ jobs:
         run: python -m pip install 'jsonschema[format]==4.23.0'
       - name: Új elemzés keresése és kizárólag az adatfájl lekérése
         id: candidate
-        shell: bash
+        shell: python
         run: |
-          set -euo pipefail
-          if [[ -n "$CANDIDATE_BRANCH" ]]; then
-            case "$CANDIDATE_BRANCH" in
-              claude/*) ;;
-              *) echo 'Csak claude/ kezdetű branch engedélyezett.'; exit 1 ;;
-            esac
-            git check-ref-format "refs/heads/$CANDIDATE_BRANCH"
-            git fetch --no-tags --depth=1 origin "refs/heads/$CANDIDATE_BRANCH"
-            git show FETCH_HEAD:ai_analysis.json > "$RUNNER_TEMP/ai_candidate.json"
-            echo 'found=true' >> "$GITHUB_OUTPUT"
-            exit 0
-          fi
-          git fetch --no-tags --depth=1 origin '+refs/heads/claude/*:refs/remotes/origin/claude/*'
-          python - <<'PYTHON'
           import json, os, subprocess
           from datetime import datetime, timezone, timedelta
           from pathlib import Path
+
+
+          def git(*args):
+              return subprocess.check_output(['git', *args])
+
 
           def timestamp(value):
               result = datetime.fromisoformat(value.replace('Z', '+00:00'))
@@ -71,26 +62,35 @@ jobs:
                   raise ValueError('Hiányzó időzóna')
               return result
 
+
+          def read_candidate(ref):
+              obj = ref + ':ai_analysis.json'
+              if int(git('cat-file', '-s', obj)) > 2_000_000:
+                  raise ValueError('Túl nagy elemzési fájl')
+              return git('show', obj)
+
+
+          def write_result(found, raw=None):
+              if found:
+                  Path(os.environ['RUNNER_TEMP'], 'ai_candidate.json').write_bytes(raw)
+              with open(os.environ['GITHUB_OUTPUT'], 'a', encoding='utf-8') as output:
+                  output.write('found=' + ('true' if found else 'false') + '\n')
+
+
           baseline = Path('ai_analysis.json')
           previous = timestamp(json.loads(baseline.read_text(encoding='utf-8'))['checked_at']) if baseline.exists() else datetime.min.replace(tzinfo=timezone.utc)
-          refs = subprocess.check_output(['git', 'for-each-ref', '--format=%(refname)', 'refs/remotes/origin/claude/'], text=True).splitlines()
-          candidates = []
-          for ref in refs:
-              obj = ref + ':ai_analysis.json'
-              try:
-                  size = int(subprocess.check_output(['git','cat-file','-s',obj], stderr=subprocess.DEVNULL))
-                  if size > 2_000_000:
-                      continue
-                  raw = subprocess.check_output(['git','show',obj], stderr=subprocess.DEVNULL)
-                  data = json.loads(raw)
-                  checked = timestamp(data['checked_at'])
-                  if previous < checked <= datetime.now(timezone.utc) + timedelta(minutes=2):
-                      candidates.append((checked, ref, raw))
-              except (subprocess.CalledProcessError, ValueError, TypeError, KeyError, AttributeError, OverflowError):
-                  continue
-          with open(os.environ['GITHUB_OUTPUT'], 'a', encoding='utf-8') as output:
-              if not candidates:
-                  print('Nincs újabb, feldolgozható elemzés. A publikált fájl változatlan.')
-                  output.write('found=false\n')
-              else:
-                  checked, ref, raw = max(candidates, key=lambda row: (row[0], row[1]))
+          print('Publikált elemzés időpontja:', previous.isoformat(), flush=True)
+          branch = os.environ.get('CANDIDATE_BRANCH', '').strip()
+          if branch:
+              if not branch.startswith('claude/'):
+                  raise SystemExit('Csak claude/ kezdetű branch engedélyezett.')
+              subprocess.run(['git', 'check-ref-format', 'refs/heads/' + branch], check=True)
+              subprocess.run(['git', 'fetch', '--no-tags', '--depth=1', 'origin', 'refs/heads/' + branch], check=True)
+              raw = read_candidate('FETCH_HEAD')
+              print('Kiválasztott branch:', branch)
+              print('Kiválasztott commit:', git('rev-parse', 'FETCH_HEAD').decode().strip())
+              write_result(True, raw)
+          else:
+              subprocess.run(['git', 'fetch', '--no-tags', '--depth=1', 'origin', '+refs/heads/claude/*:refs/remotes/origin/claude/*'], check=True)
+              refs = git('for-each-ref', '--format=%(refname)', 'refs/remotes/origin/claude/').decode().splitlines()
+              print('Megtalált Claude-branchek:', len(refs))
