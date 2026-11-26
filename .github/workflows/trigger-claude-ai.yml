@@ -1,23 +1,82 @@
 name: Claude AI-elemzés indítása
 
 on:
+  schedule:
+    - cron: '7,22,37,52 * * * *'
   workflow_dispatch:
+    inputs:
+      reset_pending:
+        description: 'Csak ha ellenőrizted: az előző Claude-futtatás már nem aktív. Függő állapot felülírása és új indítás.'
+        type: boolean
+        default: false
+        required: true
 
-permissions: {}
+permissions:
+  contents: write
 
 concurrency:
-  group: gta-vi-claude-trigger
+  group: gta-ai-monitor-main
   cancel-in-progress: false
 
 jobs:
   trigger:
-    if: github.ref == 'refs/heads/main'
+    if: github.ref == 'refs/heads/main' && (github.event_name == 'workflow_dispatch' || vars.AI_AUTOMATION_ENABLED == 'true')
     runs-on: ubuntu-latest
-    timeout-minutes: 3
+    timeout-minutes: 5
     steps:
+      - name: Main betöltése
+        uses: actions/checkout@v4
+        with:
+          ref: main
+          fetch-depth: 1
+      - name: Futtatásvédelem és azonosító rögzítése
+        id: guard
+        shell: python
+        env:
+          RESET_PENDING: ${{ inputs.reset_pending }}
+        run: |
+          import json, os, re, subprocess, uuid
+          from datetime import datetime, timezone
+          from pathlib import Path
+
+          def git(*args):
+              subprocess.run(['git', *args], check=True)
+
+          def output(fire, run_id=''):
+              with open(os.environ['GITHUB_OUTPUT'], 'a') as f:
+                  f.write(f'fire={str(fire).lower()}\nrun_id={run_id}\n')
+
+          state = Path('.monitor/trigger-state.json')
+          analysis = json.loads(Path('ai_analysis.json').read_text(encoding='utf-8'))
+          reset = os.environ.get('GITHUB_EVENT_NAME') == 'workflow_dispatch' and os.environ.get('RESET_PENDING') == 'true'
+          if state.exists():
+              last = json.loads(state.read_text(encoding='utf-8'))
+              run_id = last['run_id']
+              if not re.fullmatch(r'[0-9a-f]{32}', run_id):
+                  raise SystemExit('Hibás futtatásazonosító; kézi ellenőrzés szükséges.')
+              marker = 'monitor_run_id=' + run_id
+              acknowledged = marker in analysis['analysis_limitations']
+              if not acknowledged and not reset:
+                  print('Az előző indításnak nincs validált, publikált eredménye. Új Claude-futtatás nem indul.')
+                  output(False)
+                  raise SystemExit(0)
+              if not acknowledged and reset:
+                  print('Kézi felülírás: a kezelő ellenőrizte a Claude futtatási állapotát.')
+          run_id = uuid.uuid4().hex
+          state.parent.mkdir(exist_ok=True)
+          state.write_text(json.dumps({'run_id': run_id, 'requested_at': datetime.now(timezone.utc).isoformat()}, indent=2)+'\n', encoding='utf-8')
+          git('add', '--', str(state))
+          git('config', 'user.name', 'github-actions[bot]')
+          git('config', 'user.email', '41898282+github-actions[bot]@users.noreply.github.com')
+          git('commit', '-m', 'AI-futtatás azonosítójának rögzítése')
+          git('push', 'origin', 'HEAD:refs/heads/main')
+          output(True, run_id)
+          print('Új indítás engedélyezve; a futtatásazonosító rögzítve.')
       - name: Claude feladat indítása
+        if: steps.guard.outputs.fire == 'true'
         shell: bash
         env:
+          MONITOR_RUN_ID: ${{ steps.guard.outputs.run_id }}
           CLAUDE_FIRE_URL: ${{ secrets.CLAUDE_FIRE_URL }}
           CLAUDE_TRIGGER_TOKEN: ${{ secrets.CLAUDE_TRIGGER_TOKEN }}
         run: |
@@ -30,6 +89,8 @@ jobs:
             echo '::error::A Fire URL nem a dokumentált Anthropic végpont.'
             exit 1
           fi
+          [[ "$MONITOR_RUN_ID" =~ ^[0-9a-f]{32}$ ]] || exit 1
+          payload=$(jq -cn --arg text "monitor_run_id=$MONITOR_RUN_ID" '{text:$text}')
           response=$(mktemp)
           trap 'rm -f "$response"' EXIT
           status=$(curl --silent --show-error --connect-timeout 15 --max-time 60 \
@@ -39,7 +100,7 @@ jobs:
             --header 'anthropic-beta: experimental-cc-routine-2026-04-01' \
             --header 'anthropic-version: 2023-06-01' \
             --header 'Content-Type: application/json' \
-            --data '{}')
+            --data "$payload")
           if [[ ! "$status" =~ ^2[0-9][0-9]$ ]]; then
             echo "::error::Claude indítás sikertelen: HTTP $status. Nem történik automatikus újrapróbálás."
             exit 1

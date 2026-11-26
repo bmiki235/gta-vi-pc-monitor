@@ -1,9 +1,8 @@
 name: AI-elemzés ellenőrzése és publikálása
 
 on:
-  # Az automatikus futtatás csak a kézi tesztek után engedélyezhető.
-  # schedule:
-  #   - cron: '*/5 * * * *'
+  schedule:
+    - cron: '4,9,14,19,24,29,34,39,44,49,54,59 * * * *'
   workflow_dispatch:
     inputs:
       candidate_branch:
@@ -21,12 +20,12 @@ permissions:
   contents: write
 
 concurrency:
-  group: gta-ai-publication
+  group: gta-ai-monitor-main
   cancel-in-progress: false
 
 jobs:
   validate:
-    if: github.ref == 'refs/heads/main'
+    if: github.ref == 'refs/heads/main' && (github.event_name == 'workflow_dispatch' || vars.AI_AUTOMATION_ENABLED == 'true')
     runs-on: ubuntu-latest
     timeout-minutes: 10
     env:
@@ -47,7 +46,7 @@ jobs:
         id: candidate
         shell: python
         run: |
-          import json, os, subprocess
+          import json, os, re, subprocess
           from datetime import datetime, timezone, timedelta
           from pathlib import Path
 
@@ -80,6 +79,19 @@ jobs:
           baseline = Path('ai_analysis.json')
           previous = timestamp(json.loads(baseline.read_text(encoding='utf-8'))['checked_at']) if baseline.exists() else datetime.min.replace(tzinfo=timezone.utc)
           print('Publikált elemzés időpontja:', previous.isoformat(), flush=True)
+          state = Path('.monitor/trigger-state.json')
+          marker = None
+          requested = None
+          if state.exists():
+              pending = json.loads(state.read_text(encoding='utf-8'))
+              if not re.fullmatch(r'[0-9a-f]{32}', pending['run_id']):
+                  raise SystemExit('Hibás futtatásazonosító.')
+              marker = 'monitor_run_id=' + pending['run_id']
+              requested = timestamp(pending['requested_at'])
+
+          def matches_run(data):
+              return marker is None or (marker in data['analysis_limitations'] and timestamp(data['checked_at']) >= requested)
+
           branch = os.environ.get('CANDIDATE_BRANCH', '').strip()
           if branch:
               if not branch.startswith('claude/'):
@@ -87,6 +99,8 @@ jobs:
               subprocess.run(['git', 'check-ref-format', 'refs/heads/' + branch], check=True)
               subprocess.run(['git', 'fetch', '--no-tags', '--depth=1', 'origin', 'refs/heads/' + branch], check=True)
               raw = read_candidate('FETCH_HEAD')
+              if not matches_run(json.loads(raw)):
+                  raise SystemExit('A jelölt nem az aktuális indításhoz tartozik.')
               print('Kiválasztott branch:', branch)
               print('Kiválasztott commit:', git('rev-parse', 'FETCH_HEAD').decode().strip())
               write_result(True, raw)
@@ -102,7 +116,9 @@ jobs:
                       raw = read_candidate(ref)
                       data = json.loads(raw)
                       checked = timestamp(data['checked_at'])
-                      if checked > now + timedelta(minutes=2):
+                      if not matches_run(data):
+                          print('Kihagyva (másik futtatás):', name)
+                      elif checked > now + timedelta(minutes=2):
                           print('Kihagyva (jövőbeli időbélyeg):', name)
                       elif checked <= previous:
                           print('Kihagyva (nem újabb):', name)
