@@ -40,7 +40,7 @@ $('refresh').onclick=()=>{refresh();refreshAI()};$('full').onclick=full;addEvent
 const AI_RAW='https://raw.githubusercontent.com/bmiki235/gta-vi-pc-monitor/main/ai_analysis.json';
 const AI_LOCAL=['http:','https:','file:'].includes(location.protocol)?new URL('ai_analysis.json',location.href).href:AI_RAW;
 const AI_CACHE='gta-vi-monitor-v2-ai', HIST_CACHE='gta-vi-monitor-v2-history', EVENT_CACHE='gta-vi-monitor-v2-events';
-const VIEW_MS=35000, STALE_AI=45*60000;
+const VIEW_MS=35000, STALE_AI=90*60000;
 const views=['raceView','aiView','metricsView','detailView','historyView'];
 const viewNames=['01 · Fejlesztési verseny','02 · AI-elemzés','03 · FPS és stabilitás','04 · Források és részletek','05 · Előzmények'];
 let viewIndex=0, auto=true, viewStart=Date.now(), ai=null, aiMode='none', aiBusy=false, aiNext=0, history=[], seen=[], eventQueue=[], alertUntil=0, activeEvent=null, aiError='', aiSource='';
@@ -85,7 +85,7 @@ function renderAI(){renderOverview();renderMetrics();renderDetails();renderHisto
 function updateAIStatus(){const n=$('aiBadge');const future=ai&&Date.parse(ai.checked_at)>Date.now()+300000;const stale=!ai||future||Date.now()-Date.parse(ai.checked_at)>STALE_AI;const partial=ai&&ai.dashboard_data.analysis_status!=='ok';const fresh=aiMode==='live'&&!stale&&!partial;n.className='pill '+(fresh?'live':'stale');n.textContent=!ai?(aiBusy?'AI · LEKÉRÉS':'AI · NINCS ADAT'):aiMode==='error'?'AI · LEKÉRÉSI HIBA':stale?'AI · RÉGI ADAT':aiMode==='cache'?'AI · MENTETT ADAT':partial?'AI · '+(ai.dashboard_data.analysis_status==='failed'?'SIKERTELEN':'RÉSZLEGES'):'AI · FRISS';n.title=(ai?aiMeta():'Nincs érvényes AI-fájl')+' · '+(aiBusy?'Lekérés folyamatban':aiError||aiSource||'')}
 function eventId(e){return typeof e?.id==='string'&&e.id.length>0?e.id:null}
 function freshEvent(e,previous,current){if(!previous||!e||!e.teljes_kepernyo_javaslat||!eventId(e)||typeof e.idopont!=='string'||!validDate(e.idopont)||!current.data_changed)return false; // date-only events cannot be safely ordered within a day
- if(!e.idopont.includes('T'))return false;const t=Date.parse(e.idopont);return t>Date.parse(previous.checked_at)&&t<=Date.parse(current.checked_at)+300000&&t<=Date.now()+300000&&Date.now()-t<45*60000}
+ if(!e.idopont.includes('T'))return false;const t=Date.parse(e.idopont);return t>Date.parse(previous.checked_at)&&t<=Date.parse(current.checked_at)+300000&&t<=Date.now()+300000&&Date.now()-t<STALE_AI}
 function processEvents(d,previous){const events=list(d.breakthrough_events);const known=new Set(seen);const oldIds=new Set(list(previous?.breakthrough_events).map(eventId));for(const e of events){const id=eventId(e);if(!id)continue;if(!known.has(id)&&!oldIds.has(id)&&freshEvent(e,previous,d)&&d.dashboard_data.analysis_status!=='failed'){eventQueue.push(e)}known.add(id)}seen=[...known].slice(-1000);writeStore(EVENT_CACHE,seen);if(!activeEvent)showNextAlert()}
 function showNextAlert(){if(activeEvent||!eventQueue.length)return;activeEvent=eventQueue.shift();const e=activeEvent;$('alertType').textContent='ÚJ FEJLEMÉNY · '+str(e.tipus,'Esemény');$('alertTitle').textContent=str(e.cim);$('alertBody').textContent=str(e.leiras);$('alertMeta').textContent=str(e.projekt)+' · '+str(e.hitelesseg)+' · '+str(e.jelentoseg);$('alertLinks').replaceChildren(links(e.source_urls));$('alertOverlay').hidden=false;alertUntil=Date.now()+18000;viewStart=Date.now()}
 function closeAlert(){$('alertOverlay').hidden=true;activeEvent=null;alertUntil=0;viewStart=Date.now();showNextAlert()}

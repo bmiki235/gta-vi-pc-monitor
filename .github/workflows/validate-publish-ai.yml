@@ -1,6 +1,10 @@
 name: AI-elemzés ellenőrzése és publikálása
 
 on:
+  pull_request_target:
+    types: [opened, reopened, synchronize]
+    branches: [main]
+    paths: [ai_analysis.json]
   schedule:
     - cron: '2,7,12,17,22,27,32,37,42,47,52,57 * * * *'
   workflow_dispatch:
@@ -16,16 +20,26 @@ on:
         default: false
         type: boolean
 
-permissions:
-  contents: write
-
 concurrency:
   group: gta-ai-monitor-main
   cancel-in-progress: false
 
 jobs:
   validate:
-    if: github.ref == 'refs/heads/main' && (github.event_name == 'workflow_dispatch' || vars.AI_AUTOMATION_ENABLED == 'true')
+    if: >-
+      github.ref == 'refs/heads/main' && (
+        github.event_name == 'workflow_dispatch' ||
+        (github.event_name == 'schedule' && vars.AI_AUTOMATION_ENABLED == 'true') ||
+        (github.event_name == 'pull_request_target' &&
+          github.event.pull_request.head.repo.id == github.event.repository.id &&
+          startsWith(github.head_ref, 'claude/') &&
+          (github.event.pull_request.user.login == github.repository_owner ||
+           github.event.pull_request.user.login == 'claude' ||
+           github.event.pull_request.user.login == 'claude[bot]'))
+      )
+    permissions:
+      contents: write
+      pull-requests: write
     runs-on: ubuntu-latest
     timeout-minutes: 10
     env:
@@ -79,6 +93,23 @@ jobs:
           baseline = Path('ai_analysis.json')
           previous = timestamp(json.loads(baseline.read_text(encoding='utf-8'))['checked_at']) if baseline.exists() else datetime.min.replace(tzinfo=timezone.utc)
           print('Publikált elemzés időpontja:', previous.isoformat(), flush=True)
+
+          if os.environ['GITHUB_EVENT_NAME'] == 'pull_request_target':
+              event = json.loads(Path(os.environ['GITHUB_EVENT_PATH']).read_text(encoding='utf-8'))
+              pr = event['pull_request']
+              sha = pr['head']['sha']
+              if not re.fullmatch(r'[0-9a-f]{40}', sha):
+                  raise SystemExit('Hibás PR commitazonosító.')
+              ref = f"refs/pull/{int(event['number'])}/head"
+              subprocess.run(['git', 'fetch', '--no-tags', '--depth=1', 'origin', ref], check=True)
+              if git('rev-parse', 'FETCH_HEAD').decode().strip() != sha:
+                  print('A PR időközben frissült; az új esemény kezeli a jelöltet.')
+                  write_result(False)
+                  raise SystemExit(0)
+              print('Kiválasztott PR-commit:', sha)
+              write_result(True, read_candidate(sha))
+              raise SystemExit(0)
+
           state = Path('.monitor/trigger-state.json')
           marker = None
           requested = None
@@ -135,7 +166,7 @@ jobs:
                   print('Kiválasztott commit:', git('rev-parse', ref).decode().strip())
                   print('Ellenőrzés időpontja:', checked.isoformat())
                   write_result(True, raw)
-      - name: A branchkeresés eredményének ellenőrzése
+      - name: A jelöltkeresés eredményének ellenőrzése
         shell: bash
         env:
           FOUND: ${{ steps.candidate.outputs.found }}
@@ -144,7 +175,7 @@ jobs:
           case "$FOUND" in
             true) test -s "$RUNNER_TEMP/ai_candidate.json"; echo 'Jelölt megtalálva; következik a validálás.' ;;
             false) echo 'Nincs új elemzés; nincs publikálás.' ;;
-            *) echo 'HIBA: a branchkeresés nem adott eredményt.'; exit 1 ;;
+            *) echo 'HIBA: a jelöltkeresés nem adott eredményt.'; exit 1 ;;
           esac
       - name: Sémavalidálás és alapvető tartalmi ellenőrzések
         if: steps.candidate.outputs.found == 'true'
@@ -219,7 +250,7 @@ jobs:
           print('Forrásellenőrzések:', len(dash['source_checks']))
           print('A forrásállítások hitelességét ez a vizsgálat nem igazolja.')
       - name: Ellenőrzött adatfájl publikálása
-        if: steps.candidate.outputs.found == 'true' && (inputs.publish == true || github.event_name == 'schedule')
+        if: steps.candidate.outputs.found == 'true' && (inputs.publish == true || github.event_name == 'schedule' || github.event_name == 'pull_request_target')
         shell: bash
         run: |
           set -euo pipefail
@@ -234,3 +265,13 @@ jobs:
           git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
           git commit -m 'Ellenőrzött AI-elemzés publikálása'
           git push origin HEAD:refs/heads/main
+      - name: Feldolgozott elemzési PR lezárása
+        if: steps.candidate.outputs.found == 'true' && github.event_name == 'pull_request_target'
+        env:
+          GH_TOKEN: ${{ github.token }}
+          PR_NUMBER: ${{ github.event.number }}
+          PR_HEAD: ${{ github.event.pull_request.head.sha }}
+        run: |
+          if [[ "$(gh pr view "$PR_NUMBER" --json headRefOid --jq .headRefOid)" == "$PR_HEAD" ]]; then
+            gh pr close "$PR_NUMBER"
+          fi
