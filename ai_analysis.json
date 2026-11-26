@@ -1,16 +1,15 @@
 {
   "schema_version": "1.1",
-  "checked_at": "2026-11-26T20:54:42Z",
-  "analyzed_at": "2026-11-26T20:54:42Z",
-  "data_changed": true,
+  "checked_at": "2026-11-26T21:54:11Z",
+  "analyzed_at": "2026-11-26T21:54:11Z",
+  "data_changed": false,
   "model": "claude-sonnet-5-5",
   "overall_status": "Nem játszható; vezető projektek kb. 5-25 FPS, önbejelentett adatokkal",
   "executive_summary": "Egyetlen nem hivatalos GTA VI PC-port sem igazoltan játszható. A doesleonidaboot (20:51 UTC) új, 30 perces, kézzel játszott Vice-Tay Series S munkamenetet közöl 21,1 FPS mediánnal – ez a minimális cél (20 FPS, 30 perc) nyers értékét elérné, de önbejelentett és független reprodukció nélküli, így nem minősítjük játszhatónak. Hivatalos PC-bejelentés nincs; a Newswire nem olvasható, a státusz közvetlenül nem ellenőrzött.",
   "changes_since_last_run": [
-    "doesleonidaboot (2026-11-26 20:51 UTC): Vice-Tay 21,1 FPS medián 30 perces, kézzel játszott Series S munkamenetben (p10-p90: 19,1-23,2; 1% low 17,0); új adat, önbejelentett. A felület 19-23 FPS-t jelez RTX 4090-en.",
-    "doesleonidaboot: AnyXboxX 15-20 FPS (28 csúcs) és VIctory 7900XTX 6-25 FPS közölve; VIctory renderer-javítások 23-25 FPS-t jeleznek városi utcán (Series X, 1080p, RT ki) – önbejelentett.",
-    "UFD Media: a tracker nem változott érdemben (négy projekt 'részben játszható'); új, nem megerősített pletykák (2-3x gyorsabb kísérleti build eltávolított poszttal, RX 580 állítások, zárt 'Doomsday' build). Előrejelzés nincs.",
-    "gta6index (2026-11-26 11:30 UTC): változatlan. Rockstar Newswire nem olvasható tartalmat adott; Take-Two közleményeit nem ellenőriztem."
+    "Nincs új érdemi fejlemény az előző elemzés óta (a doesleonidaboot 21:51 UTC-s állapota megegyezik a már jelentett Vice-Tay 21,1 FPS-es, 30 perces önbejelentett adattal).",
+    "doesleonidaboot: új sorok a ranglistában (Belobug AMD 5-8 FPS, AMD; ScarlettPort 3-8 FPS) és egy Leonida Vulkan nyomvonal (6/8 készültségi lépés, világkép még nincs) – önbejelentett, a Leonida eredeti tárolója letiltva, ezért a nyomvonal állapota ellentmondásos.",
+    "UFD Media (2026-11-26 16:40 EST) és gta6index (2026-11-26 11:30 UTC): változatlan; előrejelzés továbbra sincs. Rockstar Newswire továbbra sem olvasható tartalom, a hivatalos státusz közvetlenül nem ellenőrzött."
   ],
   "development_trend": "Gyorsuló: a konzolos megjelenés (nov. 19) óta napok alatt a menüktől az irányítható, több tíz perces játékmenetig jutottak; a közölt FPS-értékek 20 körülire emelkedtek, de önbejelentettek. Jogi visszaesés (Leonida) is látszik.",
   "technical_blockers": [
@@ -247,7 +246,7 @@
     "https://www.rockstargames.com/newswire"
   ],
   "analysis_limitations": [
-    "Könnyített futás: a gta6index, UFD Media, doesleonidaboot és Newswire WebFetch-kivonatát olvastam; a többi forrás adata az előző elemzésből származik.",
+    "Könnyített futás: a doesleonidaboot, gta6index, UFD Media és Newswire WebFetch-kivonatát olvastam; a többi forrás adata az előző elemzésből származik.",
     "GitHub, Reddit, YouTube és Take-Two források közvetlenül nem lettek ellenőrizve; a hivatalos státusz nem megerősített.",
     "Az FPS-adatok önbejelentettek, eltérő hardver és beállítások mellett készültek, nem összehasonlíthatók.",
     "A jsonschema validátor nem volt elérhető; csak a JSON-szintaxis, a kötelező mezők és a tiltott extra mezők ellenőrzése történt.",
@@ -501,7 +500,7 @@
       {
         "url": "https://doesleonidaboot.com/",
         "status": "ok",
-        "checked_at": "2026-11-26T20:54:42Z",
+        "checked_at": "2026-11-26T21:54:11Z",
         "source_date": "2026-11-26",
         "detail": "Oldal szerint 2026-11-26 20:51 UTC: nem játszható; Vice-Tay 30 perces munkamenet 21,1 FPS medián (önbejelentett)."
       },
@@ -522,21 +521,21 @@
       {
         "url": "https://gta6index.wiki/pc/port-race/",
         "status": "ok",
-        "checked_at": "2026-11-26T20:54:42Z",
+        "checked_at": "2026-11-26T21:54:11Z",
         "source_date": "2026-11-26",
         "detail": "Oldal szerint 2026-11-26 11:30 UTC: nem játszható; Vice-Tay 70 perces futás."
       },
       {
         "url": "https://tech.ufdmedia.com/trackers/gta-vi-pc-port/",
         "status": "ok",
-        "checked_at": "2026-11-26T20:54:42Z",
+        "checked_at": "2026-11-26T21:54:11Z",
         "source_date": "2026-11-26",
         "detail": "Oldal szerint 2026-11-26 13:35 EST: négy projekt 'részben játszható'; előrejelzés nincs; új nem megerősített pletykák."
       },
       {
         "url": "https://www.rockstargames.com/newswire",
         "status": "no_data",
-        "checked_at": "2026-11-26T20:54:42Z",
+        "checked_at": "2026-11-26T21:54:11Z",
         "source_date": null,
         "detail": "A Newswire oldalon nem volt olvasható tartalom; a hivatalos státuszt nem sikerült közvetlenül ellenőrizni."
       }
