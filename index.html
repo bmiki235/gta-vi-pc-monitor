@@ -25,7 +25,10 @@
   height: 76px;
   padding: 0 15px;
   border-block: 1px solid #49564c;
+  clip-path: polygon(16px 0, 100% 0, 100% calc(100% - 20px), calc(100% - 20px) 100%, 0 100%, 0 16px);
   background:
+    linear-gradient(135deg, transparent 11.2px, #627466 11.5px 12.3px, transparent 12.6px) left top / 17px 17px no-repeat,
+    linear-gradient(315deg, transparent 14px, #627466 14.3px 15.1px, transparent 15.4px) right bottom / 21px 21px no-repeat,
     linear-gradient(90deg, #090e0d 14%, transparent 34%, #0a100f 59%),
     url('assets/avengers-doomsday-poster.webp') 46% center / 252px auto no-repeat,
     #090e0d;
@@ -48,17 +51,19 @@
   height: 100%;
   text-align: center;
 }
-.doomsday-date {
-  color: #c1d0c3;
-  font-size: 12px;
+.doomsday-tagline {
+  grid-column: 1 / -1;
+  margin: 0 0 4px;
+  color: #d7e3d3;
+  font-size: 14px;
+  line-height: 1;
   font-weight: 700;
-  letter-spacing: 1.25px;
+  letter-spacing: 2.8px;
   text-transform: uppercase;
 }
 .doomsday-timer {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  margin-top: 3px;
 }
 .doomsday-unit {
   position: relative;
@@ -103,8 +108,8 @@
   <img class="doomsday-logo" id="doomsdayTitle" src="assets/avengers-doomsday-logo.webp"
        width="560" height="226" alt="Marvel Studios Avengers: Doomsday">
   <div class="doomsday-clock">
-    <time class="doomsday-date" id="doomsdayPremiere" datetime="2026-12-16T00:00:00+01:00" title="A premiernap kezdete, budapesti idő szerint">Hazai premier · december 16.</time>
-    <div class="doomsday-timer" id="doomsdayTimer" role="timer" aria-label="A premiernapig hátralévő idő">
+    <div class="doomsday-timer" id="doomsdayTimer" role="timer" aria-labelledby="doomsdayTagline">
+      <p class="doomsday-tagline" id="doomsdayTagline">Doom közeledik</p>
       <div class="doomsday-unit"><b>—</b><span>nap</span></div>
       <div class="doomsday-unit"><b>—</b><span>óra</span></div>
       <div class="doomsday-unit"><b>—</b><span>perc</span></div>
@@ -181,7 +186,8 @@ function segments(node,n){node.replaceChildren(...Array.from({length:7},(_,i)=>e
 function rank(){const node=$('ranking');node.replaceChildren();const pages=Math.ceil(data.projects.length/7);page%=Math.max(1,pages);$('pageinfo').textContent=`${page+1}/${pages} · 15 mp/lap`;for(const p of data.projects.slice(page*7,page*7+7)){const r=el('div','rankrow'+(p.halted?' halted':''));r.append(el('span','rank',p.rank));let a=el(p.url?'a':'span','project',p.name+(p.halted?' · áll':'') );if(p.url){a.href=p.url;a.target='_blank';a.rel='noopener noreferrer'}a.title=p.name;r.append(a);const meter=el('div','progress');segments(meter,p.stage);r.append(meter,el('span','score',p.stage+'/7'));node.append(r)}}
 function render(){renderReadiness();const max=Math.max(...data.projects.map(p=>p.stage));$('total').textContent=data.projects.length;$('advanced').textContent=data.projects.filter(p=>p.stage>=5).length;$('ingame').textContent=data.projects.filter(p=>p.stage>=6).length;$('status').textContent=max>=7?'JÁTSZHATÓ*':max>=6?'JÁTÉKBAN*':'NEM JÁTSZHATÓ';$('status').classList.toggle('ok',max>=7);$('leader').textContent=data.leader+'  ·  '+max+'/7';$('stagecaption').textContent=STAGES[max-1]+' · a forrás szerinti mérföldkő';segments($('leadprogress'),max);$('ladder').replaceChildren(...STAGES.map((s,i)=>{const n=i+1;const row=el('div','step '+(n===max?'current':n<max?'past':'future'));row.append(el('div','n',String(n).padStart(2,'0')),el('div','st',s));return row}));$('checked').textContent='Forrás: '+dt(data.checked);$('target').textContent=validDate(data.target)?fmt(data.target,{year:'numeric',month:'long',day:'numeric',weekday:'short',hour:'2-digit',minute:'2-digit'})+' · becslés':'Nincs dátumbecslés';page=0;rank();$('chances').replaceChildren();for(const c of data.chances.slice(0,4)){const p=percentage(c.value), row=el('div','chance'), top=el('div','chancetop');top.append(el('span','',translateLabel(c.name)),el('strong','',p===null?c.value:(/nearly|about|roughly/i.test(c.value)?'≈':'')+Math.round(p)+'%'));row.append(top);if(p!==null){const bar=el('div','bar'),fill=el('i');fill.style.width=p+'%';bar.append(fill);row.append(bar)}$('chances').append(row)}if(!data.chances.length)$('chances').append(el('p','note','A forrás nem közöl valószínűségeket.'));$('milestones').replaceChildren();for(const m of data.milestones.slice(0,3)){const row=el('div','mile');row.append(el('b','',translateLabel(m.name)),el('span','',translateValue(m.value)));$('milestones').append(row)}if(!data.milestones.length)$('milestones').append(el('p','note','Nincs közzétett mérföldkő-becslés.'));$('news').replaceChildren();for(const n of data.news){const item=el('article','newsitem');item.append(el('time','',dt(n.time)),el('h3','',n.title),el('p','',n.body));$('news').append(item)}if(!data.news.length)$('news').append(el('p','note','Nincs elérhető hír.'));tick()}
 
-const doomsdayPremiere = Date.parse($('doomsdayPremiere').dateTime);
+// Start of the Hungarian premiere day in Budapest.
+const doomsdayPremiere = Date.parse('2026-12-16T00:00:00+01:00');
 const doomsdayTimer = $('doomsdayTimer');
 const doomsdayReleased = $('doomsdayReleased');
 const doomsdayDigits = doomsdayTimer.querySelectorAll('b');
