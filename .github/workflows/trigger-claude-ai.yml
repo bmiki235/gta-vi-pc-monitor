@@ -1,0 +1,52 @@
+name: Claude AI-elemzés indítása
+
+on:
+  workflow_dispatch:
+
+permissions: {}
+
+concurrency:
+  group: gta-vi-claude-trigger
+  cancel-in-progress: false
+
+jobs:
+  trigger:
+    if: github.ref == 'refs/heads/main'
+    runs-on: ubuntu-latest
+    timeout-minutes: 3
+    steps:
+      - name: Claude feladat indítása
+        shell: bash
+        env:
+          CLAUDE_FIRE_URL: ${{ secrets.CLAUDE_FIRE_URL }}
+          CLAUDE_TRIGGER_TOKEN: ${{ secrets.CLAUDE_TRIGGER_TOKEN }}
+        run: |
+          set -euo pipefail
+          if [[ -z "$CLAUDE_FIRE_URL" || -z "$CLAUDE_TRIGGER_TOKEN" ]]; then
+            echo '::error::Hiányzik a Fire URL vagy a trigger token.'
+            exit 1
+          fi
+          if [[ ! "$CLAUDE_FIRE_URL" =~ ^https://api\.anthropic\.com/v1/claude_code/routines/trig_[A-Za-z0-9]+/fire$ ]]; then
+            echo '::error::A Fire URL nem a dokumentált Anthropic végpont.'
+            exit 1
+          fi
+          response=$(mktemp)
+          trap 'rm -f "$response"' EXIT
+          status=$(curl --silent --show-error --connect-timeout 15 --max-time 60 \
+            --output "$response" --write-out '%{http_code}' \
+            --request POST "$CLAUDE_FIRE_URL" \
+            --header "Authorization: Bearer $CLAUDE_TRIGGER_TOKEN" \
+            --header 'anthropic-beta: experimental-cc-routine-2026-04-01' \
+            --header 'anthropic-version: 2023-06-01' \
+            --header 'Content-Type: application/json' \
+            --data '{}')
+          if [[ ! "$status" =~ ^2[0-9][0-9]$ ]]; then
+            echo "::error::Claude indítás sikertelen: HTTP $status. Nem történik automatikus újrapróbálás."
+            exit 1
+          fi
+          if ! jq -e '.type == "routine_fire" and (.claude_code_session_id | type == "string" and length > 0)' "$response" >/dev/null; then
+            echo '::error::Váratlan API-válasz. A Claude előzményeiben ellenőrizd, indult-e futtatás.'
+            exit 1
+          fi
+          echo "Claude indítás elfogadva (HTTP $status)."
+          echo 'Az elemzés befejezését és az adatfájl mentését külön kell ellenőrizni.'
