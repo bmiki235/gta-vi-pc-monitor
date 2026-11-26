@@ -14,7 +14,95 @@
 .readiness-project{color:#f9e9ff;font-weight:750;font-size:17px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
 .readiness-goal{color:#d8bde9;font-size:15px}
 @media(forced-colors:active){.readiness-value{background:none;color:CanvasText;filter:none}.readiness-meter{appearance:auto}}
-</style></head><body><main id="screen"><header><div class="brand"><div class="logo">VI</div><div><div class="eyebrow">Nem hivatalos Xbox → PC · fejlesztési figyelő</div><div class="name">GTA VI / ÚT A PC-IG</div></div></div><div class="headright"><span id="aiBadge" class="pill stale">AI · INDULÁS</span><div><div class="time" id="clock">--:--:--</div><div class="tiny muted" id="today">Budapest</div></div><div class="pill stale" id="connection">INDULÁS</div><button id="refresh" title="Adatfrissítés most">↻</button><button id="full" title="Teljes képernyő (F)">⛶</button></div></header>
+/* Doomsday premiere clock in the shared TV header. */
+#screen > header { gap: 10px; }
+.doomsday {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 13px;
+  width: 650px;
+  flex: 0 1 auto;
+  height: 74px;
+  padding: 0 15px 0 17px;
+  border: 1px solid #638b62;
+  border-left: 4px solid #b7f38a;
+  border-radius: 5px 13px 5px 5px;
+  background:
+    linear-gradient(115deg, transparent 24%, #b9f68b16 24.2%, transparent 24.6% 30%, #b9f68b0e 30.2%, transparent 30.6%),
+    radial-gradient(ellipse at 15% 0%, #3b5c2d, transparent 65%),
+    linear-gradient(105deg, #172c1e, #101c16 57%, #0a1911);
+  box-shadow: inset 0 1px #dffac838, inset 0 -2px #0007, 0 0 20px #83e36024;
+  color: #e9ffde;
+  white-space: nowrap;
+}
+.doomsday-title {
+  margin: 0;
+  font: 900 italic 25px/1 'Arial Black', Arial, sans-serif;
+  letter-spacing: -.7px;
+  text-transform: uppercase;
+}
+.doomsday-title span {
+  color: #c6fca4;
+  text-shadow: 0 0 14px #9df58370;
+}
+.doomsday-date {
+  display: block;
+  margin-top: 5px;
+  color: #c0d9b6;
+  font-size: 14px;
+  font-weight: 700;
+  letter-spacing: .65px;
+}
+.doomsday-timer {
+  display: grid;
+  grid-template-columns: repeat(4, 68px);
+  text-align: center;
+}
+.doomsday-unit + .doomsday-unit {
+  border-left: 1px solid #436148;
+}
+.doomsday-unit b {
+  display: block;
+  color: #e0ffc9;
+  font-size: 36px;
+  font-weight: 900;
+  line-height: .97;
+  font-variant-numeric: tabular-nums;
+  text-shadow: 0 0 12px #a2f3724d;
+}
+.doomsday-unit span {
+  display: block;
+  margin-top: 4px;
+  color: #bad4b1;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: .9px;
+  text-transform: uppercase;
+}
+.doomsday-released {
+  width: 272px;
+  text-align: center;
+  color: #e0ffc9;
+  font-size: 27px;
+  font-weight: 900;
+  text-transform: uppercase;
+}
+</style></head><body><main id="screen"><header><div class="brand"><div class="logo">VI</div><div><div class="eyebrow">Nem hivatalos Xbox → PC · fejlesztési figyelő</div><div class="name">GTA VI / ÚT A PC-IG</div></div></div>
+<aside class="doomsday" aria-labelledby="doomsdayTitle">
+  <div>
+    <h2 class="doomsday-title" id="doomsdayTitle">Avengers: <span>Doomsday</span></h2>
+    <time class="doomsday-date" id="doomsdayPremiere" datetime="2026-12-16T00:00:00+01:00">Hazai premiernap · 2026. december 16.</time>
+  </div>
+  <div class="doomsday-timer" id="doomsdayTimer" role="timer" aria-label="A premiernapig hátralévő idő">
+    <div class="doomsday-unit"><b>—</b><span>nap</span></div>
+    <div class="doomsday-unit"><b>—</b><span>óra</span></div>
+    <div class="doomsday-unit"><b>—</b><span>perc</span></div>
+    <div class="doomsday-unit"><b>—</b><span>mp</span></div>
+  </div>
+  <div class="doomsday-released" id="doomsdayReleased" hidden>A premier napja eljött</div>
+</aside>
+<div class="headright"><span id="aiBadge" class="pill stale">AI · INDULÁS</span><div><div class="time" id="clock">--:--:--</div><div class="tiny muted" id="today">Budapest</div></div><div class="pill stale" id="connection">INDULÁS</div><button id="refresh" title="Adatfrissítés most">↻</button><button id="full" title="Teljes képernyő (F)">⛶</button></div></header>
 <div id="raceView" class="view raceView"><section class="hero"><div id="readiness" class="panel readiness" aria-labelledby="readinessLabel">
   <div class="label" id="readinessLabel">Út a hibátlan PC-s játékig</div>
   <div id="readinessValue" class="readiness-value">—</div>
@@ -81,7 +169,31 @@ function percentage(t){let m=t.match(/(\d+(?:\.\d+)?)\s*%/);if(m)return Math.min
 function segments(node,n){node.replaceChildren(...Array.from({length:7},(_,i)=>el('div','seg '+(i<n?(n===7?'done':'on'):''))))}
 function rank(){const node=$('ranking');node.replaceChildren();const pages=Math.ceil(data.projects.length/7);page%=Math.max(1,pages);$('pageinfo').textContent=`${page+1}/${pages} · 15 mp/lap`;for(const p of data.projects.slice(page*7,page*7+7)){const r=el('div','rankrow'+(p.halted?' halted':''));r.append(el('span','rank',p.rank));let a=el(p.url?'a':'span','project',p.name+(p.halted?' · áll':'') );if(p.url){a.href=p.url;a.target='_blank';a.rel='noopener noreferrer'}a.title=p.name;r.append(a);const meter=el('div','progress');segments(meter,p.stage);r.append(meter,el('span','score',p.stage+'/7'));node.append(r)}}
 function render(){renderReadiness();const max=Math.max(...data.projects.map(p=>p.stage));$('total').textContent=data.projects.length;$('advanced').textContent=data.projects.filter(p=>p.stage>=5).length;$('ingame').textContent=data.projects.filter(p=>p.stage>=6).length;$('status').textContent=max>=7?'JÁTSZHATÓ*':max>=6?'JÁTÉKBAN*':'NEM JÁTSZHATÓ';$('status').classList.toggle('ok',max>=7);$('leader').textContent=data.leader+'  ·  '+max+'/7';$('stagecaption').textContent=STAGES[max-1]+' · a forrás szerinti mérföldkő';segments($('leadprogress'),max);$('ladder').replaceChildren(...STAGES.map((s,i)=>{const n=i+1;const row=el('div','step '+(n===max?'current':n<max?'past':'future'));row.append(el('div','n',String(n).padStart(2,'0')),el('div','st',s));return row}));$('checked').textContent='Forrás: '+dt(data.checked);$('target').textContent=validDate(data.target)?fmt(data.target,{year:'numeric',month:'long',day:'numeric',weekday:'short',hour:'2-digit',minute:'2-digit'})+' · becslés':'Nincs dátumbecslés';page=0;rank();$('chances').replaceChildren();for(const c of data.chances.slice(0,4)){const p=percentage(c.value), row=el('div','chance'), top=el('div','chancetop');top.append(el('span','',translateLabel(c.name)),el('strong','',p===null?c.value:(/nearly|about|roughly/i.test(c.value)?'≈':'')+Math.round(p)+'%'));row.append(top);if(p!==null){const bar=el('div','bar'),fill=el('i');fill.style.width=p+'%';bar.append(fill);row.append(bar)}$('chances').append(row)}if(!data.chances.length)$('chances').append(el('p','note','A forrás nem közöl valószínűségeket.'));$('milestones').replaceChildren();for(const m of data.milestones.slice(0,3)){const row=el('div','mile');row.append(el('b','',translateLabel(m.name)),el('span','',translateValue(m.value)));$('milestones').append(row)}if(!data.milestones.length)$('milestones').append(el('p','note','Nincs közzétett mérföldkő-becslés.'));$('news').replaceChildren();for(const n of data.news){const item=el('article','newsitem');item.append(el('time','',dt(n.time)),el('h3','',n.title),el('p','',n.body));$('news').append(item)}if(!data.news.length)$('news').append(el('p','note','Nincs elérhető hír.'));tick()}
-function tick(){let now=Date.now();$('clock').textContent=fmt(now,{hour:'2-digit',minute:'2-digit',second:'2-digit'});$('today').textContent=fmt(now,{year:'numeric',month:'long',day:'numeric',weekday:'long'});const left=Date.parse(data.target)-now;const count=$('count');if(!validDate(data.target))count.textContent='—';else if(Math.max(...data.projects.map(p=>p.stage))>=7)count.textContent='ELÉRVE*';else if(left<=0)count.textContent='LEJÁRT';else{const total=Math.floor(left/60000);const parts=[[Math.floor(total/1440),'nap'],[Math.floor(total%1440/60),'óra'],[total%60,'perc']];count.replaceChildren();for(const [n,label] of parts){count.append(el('span','',String(n).padStart(2,'0')),el('small','',label))}}let old=now-Date.parse(data.checked)>45*60000;let future=Date.parse(data.checked)>now+5*60000;const live=mode==='live'&&!old&&!future;$('readiness').classList.toggle('outdated',!live);$('readinessStale').hidden=live||$('readinessMeter').hidden;$('forecastLabel').textContent=live?'Becsült idő a játszható verzióig':'Korábbi becslés · nem friss';count.style.opacity=live?'1':'.74';$('connection').className='pill '+(live?'live':'stale');$('connection').textContent=live?'● ÉLŐ ADAT':mode==='live'?'RÉGI FORRÁS':mode==='snapshot'?'PILLANATKÉP':'MENTETT ADAT';$('notice').textContent=busy?'Lekérés folyamatban':future?'A forrás ideje előrébb jár':mode==='error'?'Lekérés sikertelen – utolsó ismert állapot':mode==='snapshot'?'Beépített pillanatkép (nem élő)':mode==='cache'?'Helyi gyorsítótár (nem élő)':old?'A forrás 45 percnél régebbi':'* Forrásállítás · friss hírek eredeti nyelven';$('next').textContent=busy?'Frissítés…':'Új lekérés: '+Math.max(0,Math.ceil((nextAt-now)/1000))+' mp'}
+
+const doomsdayPremiere = Date.parse($('doomsdayPremiere').dateTime);
+const doomsdayTimer = $('doomsdayTimer');
+const doomsdayReleased = $('doomsdayReleased');
+const doomsdayDigits = doomsdayTimer.querySelectorAll('b');
+
+function tickDoomsday(now) {
+  const remaining = Math.ceil((doomsdayPremiere - now) / 1000);
+  const released = remaining <= 0;
+  doomsdayTimer.hidden = released;
+  doomsdayReleased.hidden = !released;
+  if (released) return;
+
+  const parts = [
+    Math.floor(remaining / 86400),
+    Math.floor(remaining / 3600) % 24,
+    Math.floor(remaining / 60) % 60,
+    remaining % 60,
+  ];
+  doomsdayDigits.forEach((digit, index) => {
+    const value = String(parts[index]).padStart(2, '0');
+    if (digit.textContent !== value) digit.textContent = value;
+  });
+}
+function tick(){let now=Date.now();tickDoomsday(now);$('clock').textContent=fmt(now,{hour:'2-digit',minute:'2-digit',second:'2-digit'});$('today').textContent=fmt(now,{year:'numeric',month:'long',day:'numeric',weekday:'long'});const left=Date.parse(data.target)-now;const count=$('count');if(!validDate(data.target))count.textContent='—';else if(Math.max(...data.projects.map(p=>p.stage))>=7)count.textContent='ELÉRVE*';else if(left<=0)count.textContent='LEJÁRT';else{const total=Math.floor(left/60000);const parts=[[Math.floor(total/1440),'nap'],[Math.floor(total%1440/60),'óra'],[total%60,'perc']];count.replaceChildren();for(const [n,label] of parts){count.append(el('span','',String(n).padStart(2,'0')),el('small','',label))}}let old=now-Date.parse(data.checked)>45*60000;let future=Date.parse(data.checked)>now+5*60000;const live=mode==='live'&&!old&&!future;$('readiness').classList.toggle('outdated',!live);$('readinessStale').hidden=live||$('readinessMeter').hidden;$('forecastLabel').textContent=live?'Becsült idő a játszható verzióig':'Korábbi becslés · nem friss';count.style.opacity=live?'1':'.74';$('connection').className='pill '+(live?'live':'stale');$('connection').textContent=live?'● ÉLŐ ADAT':mode==='live'?'RÉGI FORRÁS':mode==='snapshot'?'PILLANATKÉP':'MENTETT ADAT';$('notice').textContent=busy?'Lekérés folyamatban':future?'A forrás ideje előrébb jár':mode==='error'?'Lekérés sikertelen – utolsó ismert állapot':mode==='snapshot'?'Beépített pillanatkép (nem élő)':mode==='cache'?'Helyi gyorsítótár (nem élő)':old?'A forrás 45 percnél régebbi':'* Forrásállítás · friss hírek eredeti nyelven';$('next').textContent=busy?'Frissítés…':'Új lekérés: '+Math.max(0,Math.ceil((nextAt-now)/1000))+' mp'}
 async function refresh(){if(busy)return;busy=true;tick();let success=false;for(const url of [URL_RAW,URL_PAGE]){try{const ctrl=new AbortController();const timeout=setTimeout(()=>ctrl.abort(),10000);let res;try{res=await fetch(url+'?tv='+Date.now(),{cache:'no-store',signal:ctrl.signal,credentials:'omit',referrerPolicy:'no-referrer'});if(!res.ok)throw Error('HTTP '+res.status);const fresh=parse(await res.text());if(Date.parse(fresh.checked)>Date.now()+300000)throw Error('Jövőbeli forrásidő');if(Date.parse(fresh.checked)<Date.parse(data.checked))throw Error('Régebbi forrás');data=fresh;mode='live';try{localStorage.setItem(CACHE,JSON.stringify(fresh))}catch{}success=true;render();break}finally{clearTimeout(timeout)}}catch(e){console.warn('Forráslekérés:',e.message)}}if(!success)mode='error';busy=false;nextAt=Date.now()+PERIOD;tick()}
 function fit(){const scale=Math.min(innerWidth/1920,innerHeight/1080);$('screen').style.transform=`translate(-50%,-50%) scale(${scale})`}
 function full(){if(document.fullscreenElement){document.exitFullscreen?.();return}const f=document.documentElement.requestFullscreen||document.documentElement.webkitRequestFullscreen;if(f){try{const r=f.call(document.documentElement);r?.catch(()=>alert('A böngésző nem engedélyezte a teljes képernyőt. Használd az F11 billentyűt.'))}catch{alert('Használd a böngésző teljes képernyős módját.')}}else alert('Használd a böngésző teljes képernyős módját.')}
