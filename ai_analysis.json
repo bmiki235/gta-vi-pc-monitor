@@ -1,0 +1,107 @@
+{
+  "schema_version": "1.0",
+  "checked_at": "2026-11-26T12:00:00Z",
+  "analyzed_at": "2026-11-26T12:00:00Z",
+  "data_changed": false,
+  "model": "claude-sonnet-5-5",
+  "overall_status": "Nincs ellenőrizhető adat: az összes tracker elérhetetlen.",
+  "executive_summary": "Az első futtatás: mind a 7 megfigyelt tracker hálózatilag elérhetetlen volt, ezért fejlesztési állapotról megbízható értékelés nem készíthető. Hivatalos PC-bejelentést nem találtunk.",
+  "changes_since_last_run": [
+    "Nincs előző elemzés; nincs összehasonlítási alap.",
+    "Nem azonosítható ellenőrzött fejlemény."
+  ],
+  "development_trend": {
+    "irany": "ismeretlen",
+    "indoklas": "Nincs elérhető tracker- vagy GitHub-adat."
+  },
+  "technical_blockers": [],
+  "technical_analysis": "Ellenőrzött technikai adat hiányában nem értékelhető.",
+  "project_analysis": [],
+  "performance_records": [],
+  "stability_records": [],
+  "next_expected_milestone": {
+    "leiras": "Nem meghatározható.",
+    "indoklas": "Nincs elég ellenőrzött információ."
+  },
+  "external_forecasts": [],
+  "forecasts": {
+    "megbizhato_elorejelzes_keszitheto": false,
+    "indoklas": "A trackerek nem voltak elérhetők, így nincs ellenőrzött alap optimista, legvalószínűbb vagy pesszimista forgatókönyvhöz.",
+    "bizonytalansag": "nagyon magas"
+  },
+  "forecast_changes": [],
+  "breakthrough_events": [],
+  "official_pc_status": {
+    "allapot": "Nincs megerősített hivatalos PC-bejelentés",
+    "hitelesseg": "Nem ellenőrzött közösségi állítás (másodlagos hírforrások)",
+    "megjegyzes": "Webes keresés szerint a Rockstar és a Take-Two hivatalos anyagai csak PS5-öt és Xbox Series X|S-t említik; a 2027 eleji PC-ről szóló híresztelések névtelen forrásokra épülnek, megerősítés nincs. Az elsődleges Rockstar/Take-Two közleményeket nem sikerült közvetlenül ellenőrizni.",
+    "forrasok": [
+      "https://www.gosugamers.net/entertainment/news/79347-gta-vi-reportedly-set-for-pc-release-in-q1-2027",
+      "https://www.dexerto.com/gta/gta-6-releasing-on-pc-much-earlier-than-expected-report-3418569/"
+    ]
+  },
+  "cloud_gaming_status": {
+    "allapot": "Nem ellenőrizhető",
+    "megjegyzes": "Erre vonatkozó adat nem állt rendelkezésre."
+  },
+  "source_health": [
+    {
+      "forras": "https://vuyp.github.io/gta6-pc-race/",
+      "allapot": "elérhetetlen",
+      "ok": "A gazdagép nem oldható fel a munkamenet engedélyezett hálózati tartományain kívül."
+    },
+    {
+      "forras": "https://portwatch-vi.xyz/",
+      "allapot": "elérhetetlen",
+      "ok": "A gazdagép nem oldható fel a munkamenet engedélyezett hálózati tartományain kívül."
+    },
+    {
+      "forras": "https://doesleonidaboot.com/",
+      "allapot": "elérhetetlen",
+      "ok": "A gazdagép nem oldható fel a munkamenet engedélyezett hálózati tartományain kívül."
+    },
+    {
+      "forras": "https://gta6recomp.com/",
+      "allapot": "elérhetetlen",
+      "ok": "A gazdagép nem oldható fel a munkamenet engedélyezett hálózati tartományain kívül."
+    },
+    {
+      "forras": "https://sixonpc.com/",
+      "allapot": "elérhetetlen",
+      "ok": "A gazdagép nem oldható fel a munkamenet engedélyezett hálózati tartományain kívül."
+    },
+    {
+      "forras": "https://gta6index.wiki/pc/port-race/",
+      "allapot": "elérhetetlen",
+      "ok": "A gazdagép nem oldható fel a munkamenet engedélyezett hálózati tartományain kívül."
+    },
+    {
+      "forras": "https://tech.ufdmedia.com/trackers/gta-vi-pc-port/",
+      "allapot": "elérhetetlen",
+      "ok": "A gazdagép nem oldható fel a munkamenet engedélyezett hálózati tartományain kívül."
+    },
+    {
+      "forras": "WebSearch (másodlagos)",
+      "allapot": "elérhető",
+      "ok": "Csak közvetett, részben elavult híradások."
+    }
+  ],
+  "sources": [
+    "https://vuyp.github.io/gta6-pc-race/",
+    "https://portwatch-vi.xyz/",
+    "https://doesleonidaboot.com/",
+    "https://gta6recomp.com/",
+    "https://sixonpc.com/",
+    "https://gta6index.wiki/pc/port-race/",
+    "https://tech.ufdmedia.com/trackers/gta-vi-pc-port/"
+  ],
+  "confidence": {
+    "szint": "nagyon alacsony",
+    "indoklas": "Elsődleges források nem voltak elérhetők."
+  },
+  "analysis_limitations": [
+    "A tracker-domaineket engedélyezni kell a munkamenet hálózati beállításaiban.",
+    "GitHub-, Reddit-, YouTube- és Rockstar Newswire-ellenőrzés nem történt meg.",
+    "Előző ai_analysis.json nem létezett."
+  ]
+}
