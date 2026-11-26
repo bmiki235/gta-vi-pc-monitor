@@ -1,7 +1,7 @@
 {
   "schema_version": "1.1",
-  "checked_at": "2026-11-26T12:53:08Z",
-  "analyzed_at": "2026-11-26T12:53:08Z",
+  "checked_at": "2026-11-26T14:32:52Z",
+  "analyzed_at": "2026-11-26T14:32:52Z",
   "data_changed": false,
   "model": "claude-sonnet-5-5",
   "overall_status": "Nem játszható; vezető projektek 5-20 FPS között, önbejelentett adatokkal",
@@ -215,7 +215,8 @@
     "A jsonschema validátor nem volt elérhető; csak a JSON-szintaxis és a kötelező mezők lettek ellenőrizve. Ez a futás könnyített, négy forrás (gta6index, UFD Media, doesleonidaboot, Newswire) összefoglalóját olvasta; a gta6index adata nov. 25-ös.",
     "Ez a futás könnyített volt: három forrást (doesleonidaboot, UFD Media, Newswire) olvastam WebFetch-összefoglalóval; a többi forrás adata az előző elemzésből származik.",
     "Ez a futás könnyített volt: WebFetch-összefoglalók (portwatch, gta6recomp, doesleonidaboot, UFD, gta6index, Newswire); jsonschema validátor nem volt elérhető, csak szintaxis és kötelező mezők lettek ellenőrizve.",
-    "monitor_run_id=4f6ba5e633c545f49e5222ced4fefe8d"
+    "Ez a futás könnyített volt: nyers HTML-szöveg alapján a gta6index (utolsó frissítés: 2026-11-25 08:30 UTC), UFD Media, doesleonidaboot, portwatch és gta6recomp oldalak ellenőrizve; érdemi változás nem látszott. A Rockstar Newswire dinamikus, tartalma nem olvasható; a hivatalos státusz közvetlenül nem ellenőrzött.",
+    "monitor_run_id=3679afb312a84259841d9fce53872749"
   ],
   "dashboard_data": {
     "analysis_status": "partial",
