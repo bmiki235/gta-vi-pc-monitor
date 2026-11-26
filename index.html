@@ -17,90 +17,101 @@
 /* Doomsday premiere clock in the shared TV header. */
 #screen > header { gap: 10px; }
 .doomsday {
-  display: flex;
+  display: grid;
+  grid-template-columns: 220px minmax(266px, 1fr);
   align-items: center;
-  justify-content: space-between;
-  gap: 13px;
   width: 650px;
-  flex: 0 1 auto;
-  height: 74px;
-  padding: 0 15px 0 17px;
-  border: 1px solid #638b62;
-  border-left: 4px solid #b7f38a;
-  border-radius: 5px 13px 5px 5px;
+  min-width: 508px;
+  height: 76px;
+  padding: 0 15px;
+  border-block: 1px solid #49564c;
   background:
-    linear-gradient(115deg, transparent 24%, #b9f68b16 24.2%, transparent 24.6% 30%, #b9f68b0e 30.2%, transparent 30.6%),
-    radial-gradient(ellipse at 15% 0%, #3b5c2d, transparent 65%),
-    linear-gradient(105deg, #172c1e, #101c16 57%, #0a1911);
-  box-shadow: inset 0 1px #dffac838, inset 0 -2px #0007, 0 0 20px #83e36024;
-  color: #e9ffde;
+    linear-gradient(90deg, #090e0d 14%, transparent 34%, #0a100f 59%),
+    url('assets/avengers-doomsday-poster.webp') 46% center / 252px auto no-repeat,
+    #090e0d;
+  color: #f4f5f0;
   white-space: nowrap;
 }
-.doomsday-title {
+.doomsday-logo {
+  display: block;
+  width: 180px;
+  height: auto;
   margin: 0;
-  font: 900 italic 25px/1 'Arial Black', Arial, sans-serif;
-  letter-spacing: -.7px;
-  text-transform: uppercase;
+  font-size: 21px;
+  font-weight: 800;
 }
-.doomsday-title span {
-  color: #c6fca4;
-  text-shadow: 0 0 14px #9df58370;
+.doomsday-clock {
+  display: grid;
+  align-content: center;
+  justify-self: end;
+  width: 266px;
+  height: 100%;
+  text-align: center;
 }
 .doomsday-date {
-  display: block;
-  margin-top: 5px;
-  color: #c0d9b6;
-  font-size: 14px;
+  color: #c1d0c3;
+  font-size: 12px;
   font-weight: 700;
-  letter-spacing: .65px;
+  letter-spacing: 1.25px;
+  text-transform: uppercase;
 }
 .doomsday-timer {
   display: grid;
-  grid-template-columns: repeat(4, 68px);
-  text-align: center;
+  grid-template-columns: repeat(4, 1fr);
+  margin-top: 3px;
 }
-.doomsday-unit + .doomsday-unit {
-  border-left: 1px solid #436148;
+.doomsday-unit {
+  position: relative;
+}
+.doomsday-unit + .doomsday-unit::before {
+  content: '';
+  position: absolute;
+  left: -1px;
+  top: 11px;
+  width: 3px;
+  height: 3px;
+  background: #8a9a8d;
+  box-shadow: 0 8px #8a9a8d;
 }
 .doomsday-unit b {
   display: block;
-  color: #e0ffc9;
-  font-size: 36px;
-  font-weight: 900;
-  line-height: .97;
+  color: #f4f5f0;
+  font-size: 32px;
+  font-weight: 700;
+  line-height: 1;
+  letter-spacing: .5px;
   font-variant-numeric: tabular-nums;
-  text-shadow: 0 0 12px #a2f3724d;
 }
 .doomsday-unit span {
   display: block;
-  margin-top: 4px;
-  color: #bad4b1;
-  font-size: 12px;
+  margin-top: 2px;
+  color: #c1d0c3;
+  font-size: 11px;
   font-weight: 700;
-  letter-spacing: .9px;
+  letter-spacing: 1.25px;
   text-transform: uppercase;
 }
 .doomsday-released {
-  width: 272px;
-  text-align: center;
-  color: #e0ffc9;
-  font-size: 27px;
-  font-weight: 900;
-  text-transform: uppercase;
+  margin-top: 5px;
+  font-size: 22px;
+  font-weight: 700;
 }
 </style></head><body><main id="screen"><header><div class="brand"><div class="logo">VI</div><div><div class="eyebrow">Nem hivatalos Xbox → PC · fejlesztési figyelő</div><div class="name">GTA VI / ÚT A PC-IG</div></div></div>
+<!-- Official title artwork and Doctor Doom poster from Disney Movies:
+     https://movies.disney.com/avengers-doomsday -->
 <aside class="doomsday" aria-labelledby="doomsdayTitle">
-  <div>
-    <h2 class="doomsday-title" id="doomsdayTitle">Avengers: <span>Doomsday</span></h2>
-    <time class="doomsday-date" id="doomsdayPremiere" datetime="2026-12-16T00:00:00+01:00">Hazai premiernap · 2026. december 16.</time>
+  <img class="doomsday-logo" id="doomsdayTitle" src="assets/avengers-doomsday-logo.webp"
+       width="560" height="226" alt="Marvel Studios Avengers: Doomsday">
+  <div class="doomsday-clock">
+    <time class="doomsday-date" id="doomsdayPremiere" datetime="2026-12-16T00:00:00+01:00" title="A premiernap kezdete, budapesti idő szerint">Hazai premier · december 16.</time>
+    <div class="doomsday-timer" id="doomsdayTimer" role="timer" aria-label="A premiernapig hátralévő idő">
+      <div class="doomsday-unit"><b>—</b><span>nap</span></div>
+      <div class="doomsday-unit"><b>—</b><span>óra</span></div>
+      <div class="doomsday-unit"><b>—</b><span>perc</span></div>
+      <div class="doomsday-unit"><b>—</b><span>mp</span></div>
+    </div>
+    <div class="doomsday-released" id="doomsdayReleased" hidden>A premier napja eljött</div>
   </div>
-  <div class="doomsday-timer" id="doomsdayTimer" role="timer" aria-label="A premiernapig hátralévő idő">
-    <div class="doomsday-unit"><b>—</b><span>nap</span></div>
-    <div class="doomsday-unit"><b>—</b><span>óra</span></div>
-    <div class="doomsday-unit"><b>—</b><span>perc</span></div>
-    <div class="doomsday-unit"><b>—</b><span>mp</span></div>
-  </div>
-  <div class="doomsday-released" id="doomsdayReleased" hidden>A premier napja eljött</div>
 </aside>
 <div class="headright"><span id="aiBadge" class="pill stale">AI · INDULÁS</span><div><div class="time" id="clock">--:--:--</div><div class="tiny muted" id="today">Budapest</div></div><div class="pill stale" id="connection">INDULÁS</div><button id="refresh" title="Adatfrissítés most">↻</button><button id="full" title="Teljes képernyő (F)">⛶</button></div></header>
 <div id="raceView" class="view raceView"><section class="hero"><div id="readiness" class="panel readiness" aria-labelledby="readinessLabel">
