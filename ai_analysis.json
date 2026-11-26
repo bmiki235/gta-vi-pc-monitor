@@ -1,16 +1,16 @@
 {
   "schema_version": "1.1",
-  "checked_at": "2026-11-26T18:53:47Z",
-  "analyzed_at": "2026-11-26T18:53:47Z",
-  "data_changed": false,
+  "checked_at": "2026-11-26T19:54:44Z",
+  "analyzed_at": "2026-11-26T19:54:44Z",
+  "data_changed": true,
   "model": "claude-sonnet-5-5",
-  "overall_status": "Nem játszható; vezető projektek kb. 5-17 FPS, önbejelentett adatokkal",
-  "executive_summary": "Egyetlen nem hivatalos GTA VI PC-port sem játszható. A vezetők irányíthatók, de 2-25 FPS-t jelentenek, ellenőrizetlenül. Új: a Vice-Tay 70 perces futást és működő hajós szakaszt jelent. A Leonida DMCA-letiltás érvényes. Hivatalos PC-bejelentés nincs; a Newswire nem olvasható, így a státusz közvetlenül nem ellenőrzött.",
+  "overall_status": "Nem játszható; vezető projektek kb. 5-24 FPS, önbejelentett adatokkal",
+  "executive_summary": "Egyetlen nem hivatalos GTA VI PC-port sem játszható. Négy projekt 'részben játszható' szintű (UFD Media), de az FPS jellemzően 2-17, önbejelentett. A doesleonidaboot Vice-Tay-re 18-24 FPS-t közöl RTX 4090-en, ez ellenőrizetlen. Hivatalos PC-bejelentés nincs; a Newswire nem olvasható, így a státusz közvetlenül nem ellenőrzött.",
   "changes_since_last_run": [
-    "Nincs érdemi új fejlemény az előző elemzés óta.",
-    "doesleonidaboot (forrásdátum: 2026-11-26 18:51 UTC): továbbra sem játszható; menük kb. 30 FPS, nyílt világ/korai küldetések 5-25 FPS (saját adatok, ellenőrizetlenül); a Leonida DMCA-letiltás (nov. 24) változatlanul érvényes.",
-    "gta6index (forrásdátum: 2026-11-26 11:30 UTC) és UFD Media (2026-11-26 13:35 EST): változatlanok; mindkettő szerint nincs játszható projekt és nincs előrejelzés.",
-    "Rockstar Newswire és Take-Two közlemények ebben a futásban nem lettek közvetlenül ellenőrizve; hivatalos PC-bejelentésről a trackerek nem számolnak be."
+    "UFD Media (2026-11-26 13:35 EST): négy projekt (VItoriaBr, ScarlettPort, AnyXboxX, KLBF Lab) 'részben játszható' szinten; új szereplő a Flamingo (9-14 FPS, irányítható). KLBF Lab 77 perces ülésen szabad barangolásig jutott (önbejelentett).",
+    "doesleonidaboot (forrásdátum: 2026-11-26 19:51 UTC): Vice-Tay 18-24 FPS RTX 4090-en, 8 perces Series S teszten 21,5 FPS medián; ez ellentmond a gta6index 12,9 FPS mediánjának (eltérő teszt, ellenőrizetlen).",
+    "gta6index (2026-11-26 11:30 UTC): változatlan; nincs játszható projekt, nincs előrejelzés. Leonida DMCA-letiltás érvényes.",
+    "Rockstar Newswire nem olvasható tartalmat adott; Take-Two közleményeket nem ellenőriztem. Új eseményriasztás nem indokolt."
   ],
   "development_trend": "Gyorsuló: a konzolos megjelenés (nov. 19) óta napok alatt jutottak el a projektek a menüktől az irányítható játékmenetig. Ugyanakkor jogi visszaesés is látszik.",
   "technical_blockers": [
@@ -26,7 +26,8 @@
       "A gta6index szerint nincs 'végig játszható' vagy publikus kiadás.",
       "A leggyorsabb jelentett szám (20-22 FPS) félméretű világ, beltér, kisebb konzolprofil mellett készült.",
       "A trackerek adatai szinte kizárólag a projektek saját állításai.",
-      "A gta6index szerint a Vice-Tay 70 perces futása 12,9 FPS mediánt ért el, de a memóriahasználat 52,3 GB-ig nőtt és az FPS kb. 8-ra esett (önbejelentett)."
+      "A gta6index szerint a Vice-Tay 70 perces futása 12,9 FPS mediánt ért el, de a memóriahasználat 52,3 GB-ig nőtt és az FPS kb. 8-ra esett (önbejelentett).",
+      "A doesleonidaboot szerint a Vice-Tay 8 perces Series S benchmarkja 21,5 FPS mediánt ért el (önbejelentett, rövid futás); a 70 perces futásban a medián 12,9 FPS volt (gta6index)."
     ],
     "own_conclusions": [
       "A projektek közötti kód- és technikaáramlás gyorsítja a fejlődést, de az FPS-ugrások nem reprodukált adatok.",
@@ -60,6 +61,11 @@
       "projekt": "Project Leonida",
       "allapot": "Letiltva (DMCA), korábban nem vagy alig indult",
       "hitelesseg": "Dokumentált fejlesztői eredmény"
+    },
+    {
+      "projekt": "KLBF Lab / ScarlettPort / Flamingo",
+      "allapot": "KLBF Lab: prológus és első küldetés, szabad barangolás 77 percben, 12-17 FPS (FSR); ScarlettPort kb. 4-5 FPS; Flamingo 9-14 FPS, hiányzó geometria",
+      "hitelesseg": "Nem ellenőrzött közösségi állítás"
     }
   ],
   "performance_records": [
@@ -80,6 +86,12 @@
       "ertek": "25 FPS",
       "tipus": "Harmadik fél által közvetített",
       "hitelesseg": "Ellentmondásos"
+    },
+    {
+      "rekord": "Vice-Tay rövid Series S benchmark (doesleonidaboot)",
+      "ertek": "21,5 FPS medián, 8 perc",
+      "tipus": "Rövid benchmark, önbejelentett; nem hosszú stabil futás",
+      "hitelesseg": "Nem ellenőrzött közösségi állítás"
     }
   ],
   "stability_records": [
@@ -207,17 +219,11 @@
     "https://www.rockstargames.com/newswire"
   ],
   "analysis_limitations": [
-    "A javítás előtti elemzés validálása nem a teljes séma szerint történt; a független ellenőrzés 0 hibát jelzett.",
-    "A WebFetch kivonatolt összefoglalókat adott, a HTML nyers tartalmát nem vizsgáltam.",
-    "A UFD Media oldal szövegének csak az első 100 000 karaktere lett olvasva.",
-    "GitHub, Reddit, YouTube és Take-Two források közvetlenül nem lettek ellenőrizve.",
-    "Az FPS-adatok nem összehasonlíthatók, eltérő hardver és beállítások mellett készültek.",
-    "Időbélyegek: a forrásellenőrzések pontos időpontja nem rekonstruálható; a checked_at és analyzed_at a javításkor rendszerórából (date -u) lekért időpont, a forrásonkénti checked_at ezért null.",
-    "Az UFD Media oldalon szereplő 2025-ös évszám bizonytalan dátum, nem minősítettem elírásnak.",
-    "A jsonschema validátor nem volt elérhető; csak a JSON-szintaxis és a kötelező mezők lettek ellenőrizve. Ez a futás könnyített, négy forrás (gta6index, UFD Media, doesleonidaboot, Newswire) összefoglalóját olvasta; a gta6index adata nov. 25-ös.",
-    "Ez a futás könnyített volt: négy forrás (gta6index, UFD Media, doesleonidaboot, Newswire) WebFetch-összefoglalóját olvastam; a többi forrás adata az előző elemzésből származik. A jsonschema validátor nem volt elérhető; csak szintaxis és kötelező mezők lettek ellenőrizve.",
-    "Ez a futás önálló, könnyített ellenőrzés volt: négy forrás (doesleonidaboot, gta6index, UFD Media, Newswire) kivonatolt összefoglalóját olvastam; a Newswire nem volt olvasható.",
-    "Ez a futás könnyített, önálló ellenőrzés volt: három tracker (doesleonidaboot, gta6index, UFD Media) WebFetch-kivonatát olvastam; a többi forrás adata az előző elemzésből származik. Az idő- és FPS-adatok pontatlanok lehetnek. A jsonschema validátor nem volt elérhető; csak szintaxis és kötelező mezők lettek ellenőrizve."
+    "Könnyített futás: a gta6index, UFD Media, doesleonidaboot és Newswire WebFetch-kivonatát olvastam; a többi forrás adata az előző elemzésből származik.",
+    "GitHub, Reddit, YouTube és Take-Two források közvetlenül nem lettek ellenőrizve; a hivatalos státusz nem megerősített.",
+    "Az FPS-adatok önbejelentettek, eltérő hardver és beállítások mellett készültek, nem összehasonlíthatók.",
+    "A jsonschema validátor nem volt elérhető (vagy csak szintaxis és kötelező mezők ellenőrzése történt).",
+    "Forrásdátumok és mérések pontatlanok lehetnek; a doesleonidaboot és a trackerek eltérő számokat közölnek ugyanarra a projektre."
   ],
   "dashboard_data": {
     "analysis_status": "partial",
@@ -398,6 +404,22 @@
           "https://gta6index.wiki/pc/port-race/"
         ],
         "observed_at": null
+      },
+      {
+        "project": "Vice-Tay",
+        "fps_min": 18,
+        "fps_max": 24,
+        "fps_average": null,
+        "duration_minutes": null,
+        "measurement_context": "gameplay",
+        "frame_generation": null,
+        "test_conditions": "doesleonidaboot szerint: RTX 4090; külön, rövid Series S benchmark 21,5 FPS medián 8 percen át; önbejelentett",
+        "end_reason": null,
+        "evidence_level": "önbejelentett",
+        "source_urls": [
+          "https://doesleonidaboot.com/"
+        ],
+        "observed_at": null
       }
     ],
     "external_estimates": [],
@@ -419,9 +441,9 @@
       {
         "url": "https://doesleonidaboot.com/",
         "status": "ok",
-        "checked_at": "2026-11-26T17:53:27Z",
+        "checked_at": "2026-11-26T19:54:44Z",
         "source_date": "2026-11-26",
-        "detail": "Oldal szerint 2026-11-26 17:51 UTC: nem játszható; menük 30 FPS; nyílt világ 5-25 FPS (saját adat, ellenőrizetlen)."
+        "detail": "Oldal szerint 2026-11-26 19:51 UTC: nem játszható; menük kb. 30 FPS; Vice-Tay 18-24 FPS RTX 4090-en (önbejelentett)."
       },
       {
         "url": "https://gta6recomp.com/",
@@ -440,21 +462,21 @@
       {
         "url": "https://gta6index.wiki/pc/port-race/",
         "status": "ok",
-        "checked_at": "2026-11-26T17:53:27Z",
+        "checked_at": "2026-11-26T19:54:44Z",
         "source_date": "2026-11-26",
         "detail": "Oldal szerint 2026-11-26 11:30 UTC: nem játszható; Vice-Tay 70 perces futás."
       },
       {
         "url": "https://tech.ufdmedia.com/trackers/gta-vi-pc-port/",
         "status": "ok",
-        "checked_at": "2026-11-26T17:53:27Z",
+        "checked_at": "2026-11-26T19:54:44Z",
         "source_date": "2026-11-26",
-        "detail": "Oldal szerint 2026-11-26 10:30 EST: 25 projekt; előrejelzés nincs."
+        "detail": "Oldal szerint 2026-11-26 13:35 EST: négy projekt 'részben játszható'; előrejelzés nincs."
       },
       {
         "url": "https://www.rockstargames.com/newswire",
         "status": "no_data",
-        "checked_at": "2026-11-26T17:53:27Z",
+        "checked_at": "2026-11-26T19:54:44Z",
         "source_date": null,
         "detail": "A Newswire oldalon nem volt olvasható tartalom; a hivatalos státuszt nem sikerült közvetlenül ellenőrizni."
       }
