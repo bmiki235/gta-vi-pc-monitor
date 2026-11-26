@@ -1,16 +1,16 @@
 {
   "schema_version": "1.1",
-  "checked_at": "2026-11-26T10:39:36Z",
-  "analyzed_at": "2026-11-26T10:39:36Z",
-  "data_changed": true,
+  "checked_at": "2026-11-26T11:08:32Z",
+  "analyzed_at": "2026-11-26T11:08:32Z",
+  "data_changed": false,
   "model": "claude-sonnet-5-5",
   "overall_status": "Nem játszható; vezető projektek 5-20 FPS között, önbejelentett adatokkal",
   "executive_summary": "Egyetlen nem hivatalos GTA VI PC-port sem játszható. A vezetők irányíthatók, de 2-22 FPS-t jelentenek, ellenőrizetlenül. A Leonida projektet Take-Two DMCA kérelem miatt letiltották. Hivatalos PC-bejelentés nincs. Hivatalos PC-státusz: nem ellenőrzött (Newswire nem olvasható, Take-Two nem vizsgált).",
   "changes_since_last_run": [
-    "UFD Media már nem közöl valószínűségi előrejelzést (korábbi 50%/80% becslések eltűntek); az oldal csak a GTA V és RDR2 késési precedensét említi.",
-    "UFD Media szerint 4 projekt áll a 'részben játszható' szinten (VItoriaBr, ScarlettPort, AnyXboxX, KLBF Lab); a 2-3x gyorsabb buildekről szóló nov. 26-i állítást visszavonták.",
-    "doesleonidaboot.com (10:36 UTC): nem játszható; Belobug AMD 81%; a Leonida DMCA-letiltás megerősítve.",
-    "Hivatalos PC-bejelentés továbbra sincs; a Rockstar Newswire továbbra sem olvasható."
+    "Nincs új érdemi fejlemény az előző elemzés óta; a korábbi következtetések érvényesek.",
+    "doesleonidaboot.com (11:06 UTC): nem játszható; a menük 30 FPS-sel futnak, a nyílt világ és a korai küldetések 5-22 FPS-sel; a Leonida DMCA-letiltás továbbra is érvényes.",
+    "UFD Media (04:20 EST): továbbra is 4 projekt 'részben játszható', valószínűségi előrejelzés nincs.",
+    "A Rockstar Newswire továbbra sem olvasható; hivatalos PC-bejelentés nincs."
   ],
   "development_trend": "Gyorsuló: a konzolos megjelenés (nov. 19) óta napok alatt jutottak el a projektek a menüktől az irányítható játékmenetig. Ugyanakkor jogi visszaesés is látszik.",
   "technical_blockers": [
@@ -212,7 +212,9 @@
     "Az FPS-adatok nem összehasonlíthatók, eltérő hardver és beállítások mellett készültek.",
     "Időbélyegek: a forrásellenőrzések pontos időpontja nem rekonstruálható; a checked_at és analyzed_at a javításkor rendszerórából (date -u) lekért időpont, a forrásonkénti checked_at ezért null.",
     "Az UFD Media oldalon szereplő 2025-ös évszám bizonytalan dátum, nem minősítettem elírásnak.",
-    "A jsonschema validátor nem volt elérhető; csak a JSON-szintaxis és a kötelező mezők lettek ellenőrizve. Ez a futás könnyített, négy forrás (gta6index, UFD Media, doesleonidaboot, Newswire) összefoglalóját olvasta; a gta6index adata nov. 25-ös."
+    "A jsonschema validátor nem volt elérhető; csak a JSON-szintaxis és a kötelező mezők lettek ellenőrizve. Ez a futás könnyített, négy forrás (gta6index, UFD Media, doesleonidaboot, Newswire) összefoglalóját olvasta; a gta6index adata nov. 25-ös.",
+    "Ez a futás könnyített volt: három forrást (doesleonidaboot, UFD Media, Newswire) olvastam WebFetch-összefoglalóval; a többi forrás adata az előző elemzésből származik.",
+    "monitor_run_id=f5c9d4ad001c47a3aa1710cf5cb4c649"
   ],
   "dashboard_data": {
     "analysis_status": "partial",
@@ -398,9 +400,9 @@
       {
         "url": "https://doesleonidaboot.com/",
         "status": "ok",
-        "checked_at": "2026-11-26T10:39:36Z",
+        "checked_at": "2026-11-26T11:08:32Z",
         "source_date": "2026-11-26",
-        "detail": "Oldal szerinti állapot 2026-11-26 10:36 UTC: nem játszható; Belobug AMD 81%."
+        "detail": "Oldal szerinti állapot 2026-11-26 11:06 UTC: nem játszható; menük 30 FPS, nyílt világ 5-22 FPS."
       },
       {
         "url": "https://gta6recomp.com/",
@@ -426,14 +428,14 @@
       {
         "url": "https://tech.ufdmedia.com/trackers/gta-vi-pc-port/",
         "status": "ok",
-        "checked_at": "2026-11-26T10:39:36Z",
+        "checked_at": "2026-11-26T11:08:32Z",
         "source_date": "2026-11-26",
         "detail": "Állapot 2026-11-26 04:20 EST (az oldal szerint): 25 projekt, 4 'részben játszható'; valószínűségi becslés nincs."
       },
       {
         "url": "https://www.rockstargames.com/newswire",
         "status": "no_data",
-        "checked_at": "2026-11-26T10:39:36Z",
+        "checked_at": "2026-11-26T11:08:32Z",
         "source_date": null,
         "detail": "A Newswire oldalon nem volt olvasható tartalom; a hivatalos státuszt nem sikerült közvetlenül ellenőrizni."
       }
