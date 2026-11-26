@@ -1,0 +1,617 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "GTA VI PC Monitor – AI-adatkapcsolat 1.1",
+  "description": "A szöveges mezők magyarul, a gépi mezők stabil formátumban. Ismeretlen mérési érték: null. A séma nem ellenőrzi az állítások igazságát.",
+  "type": "object",
+  "properties": {
+    "model": {
+      "type": "string",
+      "minLength": 1
+    },
+    "overall_status": {
+      "type": "string",
+      "minLength": 1
+    },
+    "executive_summary": {
+      "type": "string",
+      "minLength": 1
+    },
+    "development_trend": {
+      "type": "string",
+      "minLength": 1
+    },
+    "next_expected_milestone": {
+      "type": "string",
+      "minLength": 1
+    },
+    "forecast_changes": {
+      "type": "string",
+      "minLength": 1
+    },
+    "official_pc_status": {
+      "type": "string",
+      "minLength": 1
+    },
+    "cloud_gaming_status": {
+      "type": "string",
+      "minLength": 1
+    },
+    "confidence": {
+      "type": "string",
+      "minLength": 1
+    },
+    "schema_version": {
+      "const": "1.1"
+    },
+    "checked_at": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "analyzed_at": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "data_changed": {
+      "type": "boolean"
+    },
+    "changes_since_last_run": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1
+      }
+    },
+    "technical_blockers": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1
+      }
+    },
+    "technical_analysis": {
+      "type": "object",
+      "properties": {
+        "facts": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          }
+        },
+        "own_conclusions": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          }
+        }
+      },
+      "required": [
+        "facts",
+        "own_conclusions"
+      ],
+      "additionalProperties": false
+    },
+    "project_analysis": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "projekt": {
+            "type": "string",
+            "minLength": 1
+          },
+          "allapot": {
+            "type": "string",
+            "minLength": 1
+          },
+          "hitelesseg": {
+            "type": "string",
+            "minLength": 1
+          }
+        },
+        "required": [
+          "projekt",
+          "allapot",
+          "hitelesseg"
+        ],
+        "additionalProperties": false
+      }
+    },
+    "performance_records": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "rekord": {
+            "type": "string",
+            "minLength": 1
+          },
+          "ertek": {
+            "type": "string",
+            "minLength": 1
+          },
+          "tipus": {
+            "type": "string",
+            "minLength": 1
+          },
+          "hitelesseg": {
+            "type": "string",
+            "minLength": 1
+          }
+        },
+        "required": [
+          "rekord",
+          "ertek",
+          "tipus",
+          "hitelesseg"
+        ],
+        "additionalProperties": false
+      }
+    },
+    "stability_records": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "rekord": {
+            "type": "string",
+            "minLength": 1
+          },
+          "ertek": {
+            "type": "string",
+            "minLength": 1
+          },
+          "hitelesseg": {
+            "type": "string",
+            "minLength": 1
+          }
+        },
+        "required": [
+          "rekord",
+          "ertek",
+          "hitelesseg"
+        ],
+        "additionalProperties": false
+      }
+    },
+    "external_forecasts": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "forras": {
+            "type": "string",
+            "minLength": 1
+          },
+          "jelzes": {
+            "type": "string",
+            "minLength": 1
+          },
+          "megjegyzes": {
+            "type": "string",
+            "minLength": 1
+          },
+          "url": {
+            "type": "string",
+            "pattern": "^https://[^\\s]+$"
+          }
+        },
+        "required": [
+          "forras",
+          "jelzes",
+          "megjegyzes",
+          "url"
+        ],
+        "additionalProperties": false
+      }
+    },
+    "forecasts": {
+      "type": "object",
+      "required": [
+        "reliable_forecast_possible",
+        "indoklas"
+      ],
+      "properties": {
+        "reliable_forecast_possible": {
+          "type": "boolean"
+        },
+        "indoklas": {
+          "type": "string",
+          "minLength": 1
+        }
+      },
+      "additionalProperties": true
+    },
+    "breakthrough_events": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "minLength": 1
+          },
+          "idopont": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "anyOf": [
+              {
+                "type": "null"
+              },
+              {
+                "format": "date"
+              },
+              {
+                "format": "date-time"
+              }
+            ]
+          },
+          "tipus": {
+            "type": "string",
+            "minLength": 1
+          },
+          "cim": {
+            "type": "string",
+            "minLength": 1
+          },
+          "leiras": {
+            "type": "string",
+            "minLength": 1
+          },
+          "projekt": {
+            "type": "string",
+            "minLength": 1
+          },
+          "jelentoseg": {
+            "type": "string",
+            "minLength": 1
+          },
+          "hitelesseg": {
+            "type": "string",
+            "minLength": 1
+          },
+          "eredeti_forras": {
+            "type": "string",
+            "minLength": 1
+          },
+          "teljes_kepernyo_javaslat": {
+            "type": "boolean"
+          },
+          "source_urls": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "pattern": "^https://[^\\s]+$"
+            },
+            "minItems": 1
+          }
+        },
+        "required": [
+          "id",
+          "idopont",
+          "tipus",
+          "cim",
+          "leiras",
+          "projekt",
+          "jelentoseg",
+          "hitelesseg",
+          "eredeti_forras",
+          "teljes_kepernyo_javaslat",
+          "source_urls"
+        ],
+        "additionalProperties": false
+      }
+    },
+    "source_health": {
+      "type": "object",
+      "additionalProperties": {
+        "type": "string",
+        "minLength": 1
+      }
+    },
+    "sources": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "pattern": "^https://[^\\s]+$"
+      }
+    },
+    "analysis_limitations": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1
+      }
+    },
+    "dashboard_data": {
+      "type": "object",
+      "properties": {
+        "analysis_status": {
+          "enum": [
+            "ok",
+            "partial",
+            "failed"
+          ]
+        },
+        "project_metrics": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "project": {
+                "type": "string",
+                "minLength": 1
+              },
+              "fps_min": {
+                "type": [
+                  "number",
+                  "null"
+                ],
+                "minimum": 0
+              },
+              "fps_max": {
+                "type": [
+                  "number",
+                  "null"
+                ],
+                "minimum": 0
+              },
+              "fps_average": {
+                "type": [
+                  "number",
+                  "null"
+                ],
+                "minimum": 0
+              },
+              "duration_minutes": {
+                "type": [
+                  "number",
+                  "null"
+                ],
+                "minimum": 0
+              },
+              "measurement_context": {
+                "enum": [
+                  "gameplay",
+                  "menu",
+                  "video",
+                  "unknown"
+                ]
+              },
+              "frame_generation": {
+                "type": [
+                  "boolean",
+                  "null"
+                ]
+              },
+              "test_conditions": {
+                "type": "string",
+                "minLength": 1
+              },
+              "end_reason": {
+                "type": [
+                  "string",
+                  "null"
+                ]
+              },
+              "evidence_level": {
+                "type": "string",
+                "enum": [
+                  "hivatalos",
+                  "függetlenül reprodukált",
+                  "dokumentált fejlesztői",
+                  "önbejelentett",
+                  "ellentmondásos",
+                  "cáfolt",
+                  "ismeretlen"
+                ]
+              },
+              "source_urls": {
+                "type": "array",
+                "items": {
+                  "type": "string",
+                  "pattern": "^https://[^\\s]+$"
+                },
+                "minItems": 1
+              },
+              "observed_at": {
+                "type": [
+                  "string",
+                  "null"
+                ],
+                "format": "date-time"
+              }
+            },
+            "required": [
+              "project",
+              "fps_min",
+              "fps_max",
+              "fps_average",
+              "duration_minutes",
+              "measurement_context",
+              "frame_generation",
+              "test_conditions",
+              "end_reason",
+              "evidence_level",
+              "source_urls",
+              "observed_at"
+            ],
+            "additionalProperties": false
+          }
+        },
+        "external_estimates": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "provider": {
+                "type": "string",
+                "minLength": 1
+              },
+              "target": {
+                "type": "string",
+                "minLength": 1
+              },
+              "date_from": {
+                "type": [
+                  "string",
+                  "null"
+                ],
+                "format": "date"
+              },
+              "date_to": {
+                "type": [
+                  "string",
+                  "null"
+                ],
+                "format": "date"
+              },
+              "estimate_text": {
+                "type": "string",
+                "minLength": 1
+              },
+              "probability_percent": {
+                "type": [
+                  "number",
+                  "null"
+                ],
+                "minimum": 0,
+                "maximum": 100
+              },
+              "probability_deadline": {
+                "type": [
+                  "string",
+                  "null"
+                ],
+                "format": "date"
+              },
+              "source_url": {
+                "type": "string",
+                "pattern": "^https://[^\\s]+$"
+              },
+              "uncertainty": {
+                "type": "string",
+                "minLength": 1
+              }
+            },
+            "required": [
+              "provider",
+              "target",
+              "date_from",
+              "date_to",
+              "estimate_text",
+              "probability_percent",
+              "probability_deadline",
+              "source_url",
+              "uncertainty"
+            ],
+            "additionalProperties": false
+          }
+        },
+        "source_checks": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "url": {
+                "type": "string",
+                "pattern": "^https://[^\\s]+$"
+              },
+              "status": {
+                "enum": [
+                  "ok",
+                  "partial",
+                  "no_data",
+                  "unreachable",
+                  "not_checked"
+                ]
+              },
+              "checked_at": {
+                "type": [
+                  "string",
+                  "null"
+                ],
+                "format": "date-time"
+              },
+              "source_date": {
+                "type": [
+                  "string",
+                  "null"
+                ],
+                "format": "date"
+              },
+              "detail": {
+                "type": "string",
+                "minLength": 1
+              }
+            },
+            "required": [
+              "url",
+              "status",
+              "checked_at",
+              "source_date",
+              "detail"
+            ],
+            "additionalProperties": false
+          }
+        },
+        "official_verification": {
+          "enum": [
+            "confirmed",
+            "checked_no_announcement",
+            "not_checked",
+            "inconclusive"
+          ]
+        },
+        "official_source_urls": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "pattern": "^https://[^\\s]+$"
+          }
+        }
+      },
+      "required": [
+        "analysis_status",
+        "project_metrics",
+        "external_estimates",
+        "source_checks",
+        "official_verification",
+        "official_source_urls"
+      ],
+      "additionalProperties": false
+    }
+  },
+  "required": [
+    "model",
+    "overall_status",
+    "executive_summary",
+    "development_trend",
+    "next_expected_milestone",
+    "forecast_changes",
+    "official_pc_status",
+    "cloud_gaming_status",
+    "confidence",
+    "schema_version",
+    "checked_at",
+    "analyzed_at",
+    "data_changed",
+    "changes_since_last_run",
+    "technical_blockers",
+    "technical_analysis",
+    "project_analysis",
+    "performance_records",
+    "stability_records",
+    "external_forecasts",
+    "forecasts",
+    "breakthrough_events",
+    "source_health",
+    "sources",
+    "analysis_limitations",
+    "dashboard_data"
+  ],
+  "additionalProperties": false
+}
