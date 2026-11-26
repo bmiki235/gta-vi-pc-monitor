@@ -91,7 +91,46 @@ function showNextAlert(){if(activeEvent||!eventQueue.length)return;activeEvent=e
 function closeAlert(){$('alertOverlay').hidden=true;activeEvent=null;alertUntil=0;viewStart=Date.now();showNextAlert()}
 $('closeAlert').onclick=closeAlert;
 async function getJSON(url){const controller=new AbortController();const timeout=setTimeout(()=>controller.abort(),12000);try{const u=new URL(url);u.searchParams.set('tv',String(Date.now()));const r=await fetch(u.href,{signal:controller.signal,cache:'no-store',credentials:'omit',referrerPolicy:'no-referrer'});if(!r.ok)throw Error('HTTP '+r.status);const text=await r.text();if(text.length>2000000)throw Error('Túl nagy adatfájl');const d=JSON.parse(text);if(!aiValid(d))throw Error('Érvénytelen vagy jövőbeli AI-adat');return d}finally{clearTimeout(timeout)}}
-async function refreshAI(){if(aiBusy)return;aiBusy=true;updateAIStatus();let accepted=false;let errors=[];const urls=[AI_RAW];if(['https:','http:'].includes(location.protocol)&&AI_LOCAL!==AI_RAW)urls.push(AI_LOCAL);for(const url of urls){try{const d=await getJSON(url);if(ai&&Date.parse(d.checked_at)<Date.parse(ai.checked_at))throw Error('Régebbi AI-adat');const previous=ai;const newer=!ai||Date.parse(d.checked_at)>Date.parse(ai.checked_at);ai=d;aiMode='live';aiSource=url===AI_RAW?'GitHub main':'GitHub Pages / helyi adat';aiError='';accepted=true;writeStore(AI_CACHE,d);if(newer){processEvents(d,previous);captureHistory(d);renderAI()}else if(!history.some(x=>x.at===d.checked_at)){captureHistory(d);renderHistory()}break}catch(e){errors.push(e.message)}}if(!accepted){aiMode='error';aiError=errors.join(' / ')}aiBusy=false;aiNext=Date.now()+PERIOD;updateAIStatus()}
+async function refreshAI(){
+  if(aiBusy)return;
+  aiBusy=true;
+  updateAIStatus();
+  const urls=[AI_RAW];
+  if(['https:','http:'].includes(location.protocol)&&AI_LOCAL!==AI_RAW)urls.push(AI_LOCAL);
+  const previous=ai;
+  const errors=[];
+  let best=null;
+  for(const url of urls){
+    try{
+      const data=await getJSON(url);
+      const checked=Date.parse(data.checked_at);
+      if(previous&&checked<Date.parse(previous.checked_at))throw Error('Régebbi AI-adat');
+      if(!best||checked>best.checked)best={data,checked,url};
+      if(Date.now()-checked<=STALE_AI)break;
+    }catch(e){errors.push(e.message)}
+  }
+  if(best){
+    ai=best.data;
+    aiMode='live';
+    aiSource=best.url===AI_RAW?'GitHub main':'GitHub Pages / helyi adat';
+    aiError='';
+    writeStore(AI_CACHE,ai);
+    if(!previous||best.checked>Date.parse(previous.checked_at)){
+      processEvents(ai,previous);
+      captureHistory(ai);
+      renderAI();
+    }else if(!history.some(x=>x.at===ai.checked_at)){
+      captureHistory(ai);
+      renderHistory();
+    }
+  }else{
+    aiMode='error';
+    aiError=errors.join(' / ');
+  }
+  aiBusy=false;
+  aiNext=Date.now()+PERIOD;
+  updateAIStatus();
+}
 function selectView(n,manual=false){viewIndex=(n+views.length)%views.length;views.forEach((id,i)=>$(id).hidden=i!==viewIndex);$('tabs').querySelectorAll('[data-view]').forEach((x,i)=>{x.classList.toggle('active',i===viewIndex);x.setAttribute('aria-pressed',String(i===viewIndex))});viewStart=Date.now();lastManualScroll=Date.now();if(viewIndex===0)rank();if(manual)$(views[viewIndex]).querySelectorAll('.scroll').forEach(x=>x.scrollTop=0)}
 function setAuto(v){auto=v;$('autoBtn').textContent=auto?'⏸ Automatikus lapozás':'▶ Lapozás szünetel';$('autoBtn').setAttribute('aria-pressed',String(auto));viewStart=Date.now()}
 function initV2(){const tabs=$('tabs');viewNames.forEach((name,i)=>{const b=el('button','',name);b.dataset.view=i;b.onclick=()=>{selectView(i,true)};tabs.append(b)});const a=el('button','','');a.id='autoBtn';a.onclick=()=>setAuto(!auto);tabs.append(a);setAuto(true);selectView(0);const cached=readStore(AI_CACHE,null);history=list(readStore(HIST_CACHE,[])).filter(h=>h&&validDate(h.at)&&Date.parse(h.at)<=Date.now()+300000).slice(-192);seen=list(readStore(EVENT_CACHE,[])).filter(x=>typeof x==='string').slice(-1000);if(aiValid(cached)){ai=cached;aiMode='cache';for(const e of list(ai.breakthrough_events)){const id=eventId(e);if(id&&!seen.includes(id))seen.push(id)}}renderAI();refreshAI();document.addEventListener('wheel',()=>{lastManualScroll=Date.now()},{passive:true});document.addEventListener('keydown',e=>{if(e.key==='Escape'&&activeEvent){closeAlert();return}if(/^[1-5]$/.test(e.key)){selectView(Number(e.key)-1,true);return}if(e.code==='Space'&&e.target.tagName!=='BUTTON'){e.preventDefault();setAuto(!auto)}if(viewIndex!==0&&(e.key==='ArrowRight'||e.key==='ArrowLeft'))selectView(viewIndex+(e.key==='ArrowRight'?1:-1),true)});setInterval(()=>{const now=Date.now();if(!aiBusy&&now>=aiNext)refreshAI();updateAIStatus();if(activeEvent){$('alertCountdown').textContent='Visszatérés: '+Math.max(0,Math.ceil((alertUntil-now)/1000))+' mp';if(now>=alertUntil)closeAlert();return}if(auto&&now-viewStart>=VIEW_MS){if(viewIndex===2&&ai){const pages=Math.max(1,Math.ceil(list(ai.dashboard_data.project_metrics).length/pageSize));if(metricsPage+1<pages){metricsPage++;renderMetrics();viewStart=now;return}metricsPage=0;renderMetrics()}selectView(viewIndex+1)}const btn=$('tabs').querySelector('.active');if(btn)btn.style.setProperty('--tabprogress',auto?Math.min(100,(now-viewStart)/VIEW_MS*100)+'%':'0%')},1000);setInterval(()=>{if(auto&&!activeEvent&&Date.now()-lastManualScroll>9000){$(views[viewIndex]).querySelectorAll('.scroll').forEach(x=>{if(x.scrollHeight>x.clientHeight+10){const max=x.scrollHeight-x.clientHeight;x.scrollTop=x.scrollTop>=max-5?0:Math.min(max,x.scrollTop+Math.max(120,x.clientHeight*.65))}})}},7000)}
