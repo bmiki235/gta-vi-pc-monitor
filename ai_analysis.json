@@ -1,17 +1,16 @@
 {
   "schema_version": "1.1",
-  "checked_at": "2026-11-26T17:53:27Z",
-  "analyzed_at": "2026-11-26T17:53:27Z",
+  "checked_at": "2026-11-26T18:53:47Z",
+  "analyzed_at": "2026-11-26T18:53:47Z",
   "data_changed": false,
   "model": "claude-sonnet-5-5",
   "overall_status": "Nem játszható; vezető projektek kb. 5-17 FPS, önbejelentett adatokkal",
   "executive_summary": "Egyetlen nem hivatalos GTA VI PC-port sem játszható. A vezetők irányíthatók, de 2-25 FPS-t jelentenek, ellenőrizetlenül. Új: a Vice-Tay 70 perces futást és működő hajós szakaszt jelent. A Leonida DMCA-letiltás érvényes. Hivatalos PC-bejelentés nincs; a Newswire nem olvasható, így a státusz közvetlenül nem ellenőrzött.",
   "changes_since_last_run": [
     "Nincs érdemi új fejlemény az előző elemzés óta.",
-    "gta6index (forrásdátum: 2026-11-26 11:30 UTC): változatlan; nem játszható, előrejelzés nincs.",
-    "UFD Media (2026-11-26 10:30 EST): változatlan; 25 projekt, előrejelzés nincs.",
-    "doesleonidaboot (2026-11-26 17:51 UTC): továbbra sem játszható; menük 30 FPS, nyílt világ/korai küldetések 5-25 FPS (a felső érték 22-ről 25-re nőtt) (saját adatok, ellenőrizetlenül).",
-    "Rockstar Newswire továbbra sem olvasható; hivatalos státusz közvetlenül nem ellenőrizhető."
+    "doesleonidaboot (forrásdátum: 2026-11-26 18:51 UTC): továbbra sem játszható; menük kb. 30 FPS, nyílt világ/korai küldetések 5-25 FPS (saját adatok, ellenőrizetlenül); a Leonida DMCA-letiltás (nov. 24) változatlanul érvényes.",
+    "gta6index (forrásdátum: 2026-11-26 11:30 UTC) és UFD Media (2026-11-26 13:35 EST): változatlanok; mindkettő szerint nincs játszható projekt és nincs előrejelzés.",
+    "Rockstar Newswire és Take-Two közlemények ebben a futásban nem lettek közvetlenül ellenőrizve; hivatalos PC-bejelentésről a trackerek nem számolnak be."
   ],
   "development_trend": "Gyorsuló: a konzolos megjelenés (nov. 19) óta napok alatt jutottak el a projektek a menüktől az irányítható játékmenetig. Ugyanakkor jogi visszaesés is látszik.",
   "technical_blockers": [
@@ -217,7 +216,8 @@
     "Az UFD Media oldalon szereplő 2025-ös évszám bizonytalan dátum, nem minősítettem elírásnak.",
     "A jsonschema validátor nem volt elérhető; csak a JSON-szintaxis és a kötelező mezők lettek ellenőrizve. Ez a futás könnyített, négy forrás (gta6index, UFD Media, doesleonidaboot, Newswire) összefoglalóját olvasta; a gta6index adata nov. 25-ös.",
     "Ez a futás könnyített volt: négy forrás (gta6index, UFD Media, doesleonidaboot, Newswire) WebFetch-összefoglalóját olvastam; a többi forrás adata az előző elemzésből származik. A jsonschema validátor nem volt elérhető; csak szintaxis és kötelező mezők lettek ellenőrizve.",
-    "Ez a futás önálló, könnyített ellenőrzés volt: négy forrás (doesleonidaboot, gta6index, UFD Media, Newswire) kivonatolt összefoglalóját olvastam; a Newswire nem volt olvasható."
+    "Ez a futás önálló, könnyített ellenőrzés volt: négy forrás (doesleonidaboot, gta6index, UFD Media, Newswire) kivonatolt összefoglalóját olvastam; a Newswire nem volt olvasható.",
+    "Ez a futás könnyített, önálló ellenőrzés volt: három tracker (doesleonidaboot, gta6index, UFD Media) WebFetch-kivonatát olvastam; a többi forrás adata az előző elemzésből származik. Az idő- és FPS-adatok pontatlanok lehetnek. A jsonschema validátor nem volt elérhető; csak szintaxis és kötelező mezők lettek ellenőrizve."
   ],
   "dashboard_data": {
     "analysis_status": "partial",
