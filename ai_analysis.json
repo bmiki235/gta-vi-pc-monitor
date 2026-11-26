@@ -1,16 +1,16 @@
 {
   "schema_version": "1.1",
-  "checked_at": "2026-11-26T10:20:37Z",
-  "analyzed_at": "2026-11-26T10:20:37Z",
+  "checked_at": "2026-11-26T10:39:36Z",
+  "analyzed_at": "2026-11-26T10:39:36Z",
   "data_changed": true,
   "model": "claude-sonnet-5-5",
   "overall_status": "Nem játszható; vezető projektek 5-20 FPS között, önbejelentett adatokkal",
   "executive_summary": "Egyetlen nem hivatalos GTA VI PC-port sem játszható. A vezetők irányíthatók, de 2-22 FPS-t jelentenek, ellenőrizetlenül. A Leonida projektet Take-Two DMCA kérelem miatt letiltották. Hivatalos PC-bejelentés nincs. Hivatalos PC-státusz: nem ellenőrzött (Newswire nem olvasható, Take-Two nem vizsgált).",
   "changes_since_last_run": [
-    "Első futás: nincs korábbi elemzés.",
-    "Leonida tárolók letiltva (nov. 24).",
-    "VItoriaBr 'részben játszható' szintre lépett (nov. 26).",
-    "Több tároló elérhetetlenné vált nov. 25 óta."
+    "UFD Media már nem közöl valószínűségi előrejelzést (korábbi 50%/80% becslések eltűntek); az oldal csak a GTA V és RDR2 késési precedensét említi.",
+    "UFD Media szerint 4 projekt áll a 'részben játszható' szinten (VItoriaBr, ScarlettPort, AnyXboxX, KLBF Lab); a 2-3x gyorsabb buildekről szóló nov. 26-i állítást visszavonták.",
+    "doesleonidaboot.com (10:36 UTC): nem játszható; Belobug AMD 81%; a Leonida DMCA-letiltás megerősítve.",
+    "Hivatalos PC-bejelentés továbbra sincs; a Rockstar Newswire továbbra sem olvasható."
   ],
   "development_trend": "Gyorsuló: a konzolos megjelenés (nov. 19) óta napok alatt jutottak el a projektek a menüktől az irányítható játékmenetig. Ugyanakkor jogi visszaesés is látszik.",
   "technical_blockers": [
@@ -100,9 +100,9 @@
   "next_expected_milestone": "Első 20 FPS-es, 30 percig stabil, független ellenőrzéssel igazolt futás. Időpont megbízhatóan nem adható meg.",
   "external_forecasts": [
     {
-      "forras": "UFD Media tracker (AI-becslő)",
-      "jelzes": "Minimális játszhatóság kb. nov. 27. éjfélig; 80% nov. 30-ig",
-      "megjegyzes": "Egy nap alatt többször módosult; önbejelentett adatokon alapul.",
+      "forras": "UFD Media tracker",
+      "jelzes": "Jelenleg nincs előrejelzés; a korábbi AI-becslések (nov. 27 / nov. 30) eltűntek",
+      "megjegyzes": "Csak a GTA V (kb. 19 hónap) és RDR2 (kb. 1 év) precedenst említi.",
       "url": "https://tech.ufdmedia.com/trackers/gta-vi-pc-port/"
     },
     {
@@ -116,8 +116,23 @@
     "reliable_forecast_possible": false,
     "indoklas": "Az FPS- és stabilitási adatok önbejelentettek és ellentmondásosak, a trackerek előrejelzései gyakran változnak, így megbízható saját dátum vagy százalék nem adható. Minőségi megállapítás: a minimális játszhatóság (A) a legközelebbi cél, a B-E célokra nincs alap becslésre."
   },
-  "forecast_changes": "Első futás, nincs korábbi becslés a változás összehasonlításához.",
+  "forecast_changes": "Az UFD Media tracker eltávolította korábbi valószínűségi becsléseit (50% nov. 27-ig, 80% nov. 30-ig); jelenleg nem közöl előrejelzést. Lehetséges ok: a becslő túl gyakran revideált, az adatok önbejelentettek. Saját előrejelzés továbbra sem készíthető.",
   "breakthrough_events": [
+    {
+      "id": "evt-2026-11-26-ufd-forecast-withdrawn",
+      "idopont": "2026-11-26",
+      "tipus": "Jelentős előrejelzés-változás",
+      "cim": "Az UFD Media visszavonta valószínűségi becsléseit",
+      "leiras": "A tracker már nem közöl százalékos esélyt a minimális játszhatóságra; csak történelmi precedenst említ.",
+      "projekt": "Általános",
+      "jelentoseg": "A külső időzítési várakozások gyengülnek; megbízható határidő nem adható.",
+      "hitelesseg": "Dokumentált fejlesztői eredmény",
+      "eredeti_forras": "UFD Media tracker",
+      "teljes_kepernyo_javaslat": false,
+      "source_urls": [
+        "https://tech.ufdmedia.com/trackers/gta-vi-pc-port/"
+      ]
+    },
     {
       "id": "evt-2026-11-24-leonida-takedown",
       "idopont": "2026-11-24",
@@ -196,7 +211,8 @@
     "GitHub, Reddit, YouTube és Take-Two források közvetlenül nem lettek ellenőrizve.",
     "Az FPS-adatok nem összehasonlíthatók, eltérő hardver és beállítások mellett készültek.",
     "Időbélyegek: a forrásellenőrzések pontos időpontja nem rekonstruálható; a checked_at és analyzed_at a javításkor rendszerórából (date -u) lekért időpont, a forrásonkénti checked_at ezért null.",
-    "Az UFD Media oldalon szereplő 2025-ös évszám bizonytalan dátum, nem minősítettem elírásnak."
+    "Az UFD Media oldalon szereplő 2025-ös évszám bizonytalan dátum, nem minősítettem elírásnak.",
+    "A jsonschema validátor nem volt elérhető; csak a JSON-szintaxis és a kötelező mezők lettek ellenőrizve. Ez a futás könnyített, négy forrás (gta6index, UFD Media, doesleonidaboot, Newswire) összefoglalóját olvasta; a gta6index adata nov. 25-ös."
   ],
   "dashboard_data": {
     "analysis_status": "partial",
@@ -363,41 +379,7 @@
         "observed_at": null
       }
     ],
-    "external_estimates": [
-      {
-        "provider": "UFD Media tracker (AI-becslő)",
-        "target": "Minimális játszhatóság (20 FPS, 30 perc)",
-        "date_from": null,
-        "date_to": "2026-11-27",
-        "estimate_text": "Az oldal becslése szerint kb. fél nap múlva, 2026. nov. 27. éjfél körül; a becslés egy nap alatt többször módosult.",
-        "probability_percent": 50,
-        "probability_deadline": "2026-11-26",
-        "source_url": "https://tech.ufdmedia.com/trackers/gta-vi-pc-port/",
-        "uncertainty": "Magas: a becslő gyakran revideál, az adatok önbejelentettek."
-      },
-      {
-        "provider": "UFD Media tracker (AI-becslő)",
-        "target": "Minimális játszhatóság (20 FPS, 30 perc)",
-        "date_from": null,
-        "date_to": null,
-        "estimate_text": "Kb. 8/10 esély 2026. nov. 30-ig.",
-        "probability_percent": 80,
-        "probability_deadline": "2026-11-30",
-        "source_url": "https://tech.ufdmedia.com/trackers/gta-vi-pc-port/",
-        "uncertainty": "Magas; nem független bizonyítékon alapul."
-      },
-      {
-        "provider": "UFD Media tracker (AI-becslő)",
-        "target": "Minimális játszhatóság (20 FPS, 30 perc)",
-        "date_from": null,
-        "date_to": null,
-        "estimate_text": "Több mint 8/10 esély karácsonyig (alsó határként tárolva).",
-        "probability_percent": 80,
-        "probability_deadline": "2026-12-25",
-        "source_url": "https://tech.ufdmedia.com/trackers/gta-vi-pc-port/",
-        "uncertainty": "Magas; a pontos érték nem ismert, csak alsó határ."
-      }
-    ],
+    "external_estimates": [],
     "source_checks": [
       {
         "url": "https://vuyp.github.io/gta6-pc-race/",
@@ -416,9 +398,9 @@
       {
         "url": "https://doesleonidaboot.com/",
         "status": "ok",
-        "checked_at": null,
+        "checked_at": "2026-11-26T10:39:36Z",
         "source_date": "2026-11-26",
-        "detail": "Oldal szerinti állapot 2026-11-26 10:15 UTC: nem játszható; Belobug AMD 81%."
+        "detail": "Oldal szerinti állapot 2026-11-26 10:36 UTC: nem játszható; Belobug AMD 81%."
       },
       {
         "url": "https://gta6recomp.com/",
@@ -437,21 +419,21 @@
       {
         "url": "https://gta6index.wiki/pc/port-race/",
         "status": "ok",
-        "checked_at": null,
+        "checked_at": "2026-11-26T10:39:36Z",
         "source_date": "2026-11-25",
         "detail": "Állapot 2026-11-25 08:30 UTC: nem játszható; élmezőny 5/7 szinten."
       },
       {
         "url": "https://tech.ufdmedia.com/trackers/gta-vi-pc-port/",
         "status": "ok",
-        "checked_at": null,
+        "checked_at": "2026-11-26T10:39:36Z",
         "source_date": "2026-11-26",
-        "detail": "Állapot 2026-11-26 (az oldal szerint); az oldal szövegének első 100 000 karaktere olvasva (a teljes 239 584 karakter közül). Az oldalon szereplő 2025-ös évszám bizonytalan dátum: elírás is lehet, de nem ellenőrzött."
+        "detail": "Állapot 2026-11-26 04:20 EST (az oldal szerint): 25 projekt, 4 'részben játszható'; valószínűségi becslés nincs."
       },
       {
         "url": "https://www.rockstargames.com/newswire",
         "status": "no_data",
-        "checked_at": null,
+        "checked_at": "2026-11-26T10:39:36Z",
         "source_date": null,
         "detail": "A Newswire oldalon nem volt olvasható tartalom; a hivatalos státuszt nem sikerült közvetlenül ellenőrizni."
       }
