@@ -1,11 +1,11 @@
 {
   "schema_version": "1.1",
-  "checked_at": "2026-11-26T12:00:00Z",
-  "analyzed_at": "2026-11-26T12:00:00Z",
+  "checked_at": "2026-11-26T10:20:37Z",
+  "analyzed_at": "2026-11-26T10:20:37Z",
   "data_changed": true,
   "model": "claude-sonnet-5-5",
   "overall_status": "Nem játszható; vezető projektek 5-20 FPS között, önbejelentett adatokkal",
-  "executive_summary": "Egyetlen nem hivatalos GTA VI PC-port sem játszható. A vezetők irányíthatók, de 2-22 FPS-t jelentenek, ellenőrizetlenül. A Leonida projektet Take-Two DMCA kérelem miatt letiltották. Hivatalos PC-bejelentés nincs.",
+  "executive_summary": "Egyetlen nem hivatalos GTA VI PC-port sem játszható. A vezetők irányíthatók, de 2-22 FPS-t jelentenek, ellenőrizetlenül. A Leonida projektet Take-Two DMCA kérelem miatt letiltották. Hivatalos PC-bejelentés nincs. Hivatalos PC-státusz: nem ellenőrzött (Newswire nem olvasható, Take-Two nem vizsgált).",
   "changes_since_last_run": [
     "Első futás: nincs korábbi elemzés.",
     "Leonida tárolók letiltva (nov. 24).",
@@ -83,7 +83,7 @@
   "stability_records": [
     {
       "rekord": "Leghosszabb jelentett futás (VItoriaBr)",
-      "ertek": "2 óra 12 perc folyamat-üzemidő, 4-6 FPS",
+      "ertek": "2 óra 12 perc folyamat-üzemidő (egyetlen példa; az FPS-adat nem köthető ehhez a futáshoz)",
       "hitelesseg": "Nem ellenőrzött közösségi állítás"
     },
     {
@@ -128,7 +128,7 @@
       "jelentoseg": "Jogi nyomás jele a nyílt forrású portprojektekre; több tároló azóta elérhetetlen.",
       "hitelesseg": "Dokumentált fejlesztői eredmény",
       "eredeti_forras": "GitHub / Take-Two értesítés, tracker oldalak beszámolói alapján",
-      "teljes_kepernyo_javaslat": true,
+      "teljes_kepernyo_javaslat": false,
       "source_urls": [
         "https://doesleonidaboot.com/",
         "https://gta6index.wiki/pc/port-race/",
@@ -190,11 +190,13 @@
     "https://www.rockstargames.com/newswire"
   ],
   "analysis_limitations": [
-    "A teljes JSON-séma validátor nem volt elérhető; csak a JSON szintaxisát és a kötelező/tiltott mezőneveket ellenőriztem.",
+    "A javítás előtti elemzés validálása nem a teljes séma szerint történt; a független ellenőrzés 0 hibát jelzett.",
     "A WebFetch kivonatolt összefoglalókat adott, a HTML nyers tartalmát nem vizsgáltam.",
     "A UFD Media oldal szövegének csak az első 100 000 karaktere lett olvasva.",
     "GitHub, Reddit, YouTube és Take-Two források közvetlenül nem lettek ellenőrizve.",
-    "Az FPS-adatok nem összehasonlíthatók, eltérő hardver és beállítások mellett készültek."
+    "Az FPS-adatok nem összehasonlíthatók, eltérő hardver és beállítások mellett készültek.",
+    "Időbélyegek: a forrásellenőrzések pontos időpontja nem rekonstruálható; a checked_at és analyzed_at a javításkor rendszerórából (date -u) lekért időpont, a forrásonkénti checked_at ezért null.",
+    "Az UFD Media oldalon szereplő 2025-ös évszám bizonytalan dátum, nem minősítettem elírásnak."
   ],
   "dashboard_data": {
     "analysis_status": "partial",
@@ -299,19 +301,34 @@
       {
         "project": "victory-fork",
         "fps_min": 2.5,
+        "fps_max": 4,
+        "fps_average": null,
+        "duration_minutes": null,
+        "measurement_context": "gameplay",
+        "frame_generation": null,
+        "test_conditions": "gta6index szerint: RTX 4070, első jelenet/szoba; fekete árnyékok. Külön mérés.",
+        "end_reason": null,
+        "evidence_level": "önbejelentett",
+        "source_urls": [
+          "https://gta6index.wiki/pc/port-race/"
+        ],
+        "observed_at": "2026-11-25T07:30:00Z"
+      },
+      {
+        "project": "victory-fork",
+        "fps_min": 8,
         "fps_max": 9.5,
         "fps_average": null,
         "duration_minutes": 49,
         "measurement_context": "gameplay",
         "frame_generation": null,
-        "test_conditions": "RTX 4070; első jelenet / első hajós küldetés; fekete árnyékok",
-        "end_reason": "grafikus eszköz elvesztése",
+        "test_conditions": "UFD Media szerint: első hajós küldetés; 49 perc után grafikus eszköz elvesztése. Külön mérés, nem kapcsolható a gta6index adataihoz.",
+        "end_reason": "grafikus eszköz elvesztése 49 perc után",
         "evidence_level": "önbejelentett",
         "source_urls": [
-          "https://gta6index.wiki/pc/port-race/",
           "https://tech.ufdmedia.com/trackers/gta-vi-pc-port/"
         ],
-        "observed_at": "2026-11-25T07:30:00Z"
+        "observed_at": null
       },
       {
         "project": "AnyXboxX",
@@ -321,12 +338,27 @@
         "duration_minutes": 45,
         "measurement_context": "gameplay",
         "frame_generation": null,
-        "test_conditions": "32 GB RAM, 12 GB VRAM; a világ streamelésekor 1-6 FPS-re esik; források eltérnek (2 FPS vs 14-17 FPS)",
-        "end_reason": "grafikus eszköz hibája kb. 13 perc után (egyik forrás szerint)",
-        "evidence_level": "ellentmondásos",
+        "test_conditions": "UFD Media szerint: 14-17 FPS, a világ streamelésekor 1-6 FPS; 32 GB RAM, 12 GB VRAM; 45 perces futás másodkézből relayelve. Külön mérés, az összetartozás a 13 perces összeomlással nem állapítható meg.",
+        "end_reason": null,
+        "evidence_level": "önbejelentett",
         "source_urls": [
-          "https://gta6index.wiki/pc/port-race/",
           "https://tech.ufdmedia.com/trackers/gta-vi-pc-port/"
+        ],
+        "observed_at": null
+      },
+      {
+        "project": "AnyXboxX",
+        "fps_min": null,
+        "fps_max": null,
+        "fps_average": 2,
+        "duration_minutes": 13,
+        "measurement_context": "gameplay",
+        "frame_generation": null,
+        "test_conditions": "gta6index szerint: kb. 2 FPS, egy közreműködő jelentése naplózott mérés nélkül; kb. 13 perc után grafikus eszköz hibája. Külön mérés, nem kapcsolható a 45 perces futáshoz.",
+        "end_reason": "grafikus eszköz hibája kb. 13 perc után",
+        "evidence_level": "önbejelentett",
+        "source_urls": [
+          "https://gta6index.wiki/pc/port-race/"
         ],
         "observed_at": null
       }
@@ -370,58 +402,58 @@
       {
         "url": "https://vuyp.github.io/gta6-pc-race/",
         "status": "partial",
-        "checked_at": "2026-11-26T12:00:00Z",
+        "checked_at": null,
         "source_date": null,
         "detail": "Az oldal 'Not yet' állapotot mutat, a ranglista nem töltődött be."
       },
       {
         "url": "https://portwatch-vi.xyz/",
         "status": "partial",
-        "checked_at": "2026-11-26T12:00:00Z",
+        "checked_at": null,
         "source_date": null,
         "detail": "Az oldal a lekéréskor üres/placeholder adatokat adott; az adatfájl nem volt közvetlenül ellenőrizve."
       },
       {
         "url": "https://doesleonidaboot.com/",
         "status": "ok",
-        "checked_at": "2026-11-26T12:00:00Z",
+        "checked_at": null,
         "source_date": "2026-11-26",
         "detail": "Oldal szerinti állapot 2026-11-26 10:15 UTC: nem játszható; Belobug AMD 81%."
       },
       {
         "url": "https://gta6recomp.com/",
         "status": "ok",
-        "checked_at": "2026-11-26T12:00:00Z",
+        "checked_at": null,
         "source_date": null,
         "detail": "Nincs játszható build; Xbox Build 1.0.2.1 említve; nincs mérés vagy dátum."
       },
       {
         "url": "https://sixonpc.com/",
         "status": "no_data",
-        "checked_at": "2026-11-26T12:00:00Z",
+        "checked_at": null,
         "source_date": null,
         "detail": "Csak az oldal címe volt olvasható."
       },
       {
         "url": "https://gta6index.wiki/pc/port-race/",
         "status": "ok",
-        "checked_at": "2026-11-26T12:00:00Z",
+        "checked_at": null,
         "source_date": "2026-11-25",
         "detail": "Állapot 2026-11-25 08:30 UTC: nem játszható; élmezőny 5/7 szinten."
       },
       {
         "url": "https://tech.ufdmedia.com/trackers/gta-vi-pc-port/",
         "status": "ok",
-        "checked_at": "2026-11-26T12:00:00Z",
+        "checked_at": null,
         "source_date": "2026-11-26",
-        "detail": "Állapot 2026-11-26; az oldal szövegének első 100 000 karaktere olvasva (a teljes 239 584 karakter közül). Az oldalon szereplő 2025-ös évszám valószínűleg elírás."
+        "detail": "Állapot 2026-11-26 (az oldal szerint); az oldal szövegének első 100 000 karaktere olvasva (a teljes 239 584 karakter közül). Az oldalon szereplő 2025-ös évszám bizonytalan dátum: elírás is lehet, de nem ellenőrzött."
       },
       {
         "url": "https://www.rockstargames.com/newswire",
         "status": "no_data",
-        "checked_at": "2026-11-26T12:00:00Z",
+        "checked_at": null,
         "source_date": null,
-        "detail": "A Newswire oldalon nem volt olvasható tartalom, a hivatalos státusz nem ellenőrizhető közvetlenül."
+        "detail": "A Newswire oldalon nem volt olvasható tartalom; a hivatalos státuszt nem sikerült közvetlenül ellenőrizni."
       }
     ],
     "official_verification": "inconclusive",
