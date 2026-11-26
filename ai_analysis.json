@@ -1,0 +1,106 @@
+{
+  "schema_version": "1.0",
+  "checked_at": "2026-11-26T10:00:00Z",
+  "analyzed_at": "2026-11-26T10:00:00Z",
+  "data_changed": true,
+  "model": "claude-sonnet-5-5",
+  "overall_status": "Nem játszható még. A vezető projektek tényleges játékmenetben jellemzően 5–17 FPS-t jeleznek; a minimális játszhatósági küszöb (20 FPS, 30 perc) még nem teljesült megbízhatóan.",
+  "executive_summary": "Nincs játszható GTA VI PC-port. A legfejlettebb nem hivatalos projektek játékon belül futnak, de lassan (kb. 5–17 FPS), hibákkal. A Take-Two 2026-11-24-én jogi eltávolítást kezdeményezett a Leonida ellen. Hivatalos PC-bejelentés nincs.",
+  "changes_since_last_run": [
+    "Első futtatás: nincs korábbi ai_analysis.json, az állapot teljes felmérése készült.",
+    "A Leonida eredeti tárolóját 2026-11-24-én letiltották Take-Two eltávolítási kérelem után (több forrás is ezt jelzi).",
+    "A PortWatch szerint több projekt a játékban van; a legjobb tartós munkamenetek 37–49 perc, de 20 FPS alatt."
+  ],
+  "development_trend": "Gyorsuló, de még nem játszható szint: a trackerek szerint a projektek 2026-11-23–24 között jutottak el a felismerhető képig és az irányítható játékig. A jogi nyomás (takedown) lassító kockázat.",
+  "technical_blockers": [
+    "Alacsony tényleges FPS játékmenetben (jellemzően 1–17 FPS).",
+    "Hiányzó vagy fekete árnyékok, hiányzó ray tracing megvilágítás.",
+    "Grafikai eszköz elvesztése hosszabb futásnál (victory-fork, 49 perc után).",
+    "Magas RAM/VRAM-használat, összeomlások, világ-streaming miatti visszaesések.",
+    "Jogi kockázat: Take-Two eltávolítási kérelmek GitHub-tárolók ellen."
+  ],
+  "technical_analysis": {
+    "facts": [
+      "A PortWatch szerint a legjobb nyilvános build (klbf-lab, AMD) átlag 14 FPS, 37 perc futás mellett; a VIctory-7900XTX 13–17 FPS, 41 perc.",
+      "A PortWatch a Vice-Tay projektnél 14,3 FPS mediánt és nem alapértelmezett profilon 20,8 FPS-t jelez; egy 31 perces állítás visszavonásra került.",
+      "A ufdmedia tracker (2026-11-25) régebbi, alacsonyabb értékeket mutat (XCL ~5 FPS, victory-fork 2,5–4 FPS)."
+    ],
+    "own_conclusions": [
+      "A különböző trackerek eltérő adatai eltérő frissességet és értékelési módszert tükröznek; az FPS-adatok többsége önbejelentés.",
+      "A következő érdemi lépés a stabil 20 FPS feletti, 30 percnél hosszabb, független reprodukció."
+    ]
+  },
+  "project_analysis": [
+    {"projekt": "klbf-lab (VIctory-alapú, AMD)", "allapot": "PortWatch: 6/7 szakasz, játékban; átlag 14 FPS, 37 perc.", "hitelesseg": "Nem ellenőrzött közösségi állítás"},
+    {"projekt": "VIctory-7900XTX", "allapot": "13–17 FPS városban, 41 perces beszámoló.", "hitelesseg": "Nem ellenőrzött közösségi állítás"},
+    {"projekt": "AnyXboxX", "allapot": "14–17 FPS, világ-streamelésnél 1–6 FPS-re esik.", "hitelesseg": "Nem ellenőrzött közösségi állítás"},
+    {"projekt": "victory-fork", "allapot": "8–9,5 FPS, 49 perc után grafikai eszköz elvesztése, fekete árnyékok.", "hitelesseg": "Nem ellenőrzött közösségi állítás"},
+    {"projekt": "Project Leonida", "allapot": "Eredeti tároló letiltva 2026-11-24-én; GPL-forkok működnek tovább.", "hitelesseg": "Ellentmondásos"},
+    {"projekt": "CGBJ", "allapot": "A 25 FPS állítás ellentmond a napló szerinti ~17–18 FPS-nek; tároló elérhetetlen.", "hitelesseg": "Ellentmondásos"}
+  ],
+  "performance_records": [
+    {"rekord": "Legmagasabb jelzett játékbeli FPS (nem alapértelmezett profil)", "ertek": "20,8 FPS (Vice-Tay)", "tipus": "Tényleges játékmenet, önbejelentett", "hitelesseg": "Nem ellenőrzött közösségi állítás"},
+    {"rekord": "Jelzett beltéri FPS kisebb profillal", "ertek": "20–22 FPS (VIctory-NVIDIA)", "tipus": "Önbejelentett, munkamenet-hossz nélkül", "hitelesseg": "Nem ellenőrzött közösségi állítás"}
+  ],
+  "stability_records": [
+    {"rekord": "Leghosszabb jelzett munkamenet", "ertek": "49 perc (victory-fork, utána eszközvesztés)", "hitelesseg": "Nem ellenőrzött közösségi állítás"},
+    {"rekord": "Leghosszabb munkamenet 10+ FPS mellett", "ertek": "41 perc (VIctory-7900XTX)", "hitelesseg": "Nem ellenőrzött közösségi állítás"}
+  ],
+  "next_expected_milestone": "Első, 20 FPS feletti és 30 percnél hosszabb, megismételhetően jelentett munkamenet (minimális játszhatóság). Időpont nem adható meg megbízhatóan.",
+  "external_forecasts": [
+    {"forras": "PortWatch (MI-becslés, saját bevallása szerint tévedhet)", "jelzes": "Játszható 2026-11-26-ig kb. 5/10, 11-30-ig kb. 8/10 esély; becsült időpont 2026-11-27 éjfél körül.", "megjegyzes": "Külső előrejelzés, nem a saját következtetésünk.", "url": "https://vuyp.github.io/gta6-pc-race/"},
+    {"forras": "Hírek: Rockstar PC-kiadás 2027 Q1 (GamesBeat névtelen források, megerősítetlen)", "jelzes": "Hivatalos PC-verzió 2027 első negyedévében.", "megjegyzes": "Nem hivatalos, nem megerősített.", "url": "https://www.gosugamers.net/entertainment/news/79347-gta-vi-reportedly-set-for-pc-release-in-q1-2027"}
+  ],
+  "forecasts": {
+    "reliable_forecast_possible": false,
+    "indoklas": "Az FPS-adatok önbejelentettek, független reprodukció nincs, a jogi kockázat bizonytalan; pontos határidő nem adható.",
+    "A_minimalis_jatszhatosag": {"optimista": "Napokon belül, ha független 20+ FPS / 30+ perces beszámoló jelenik meg.", "legvaloszinubb": "Következő hetek; a jelenlegi 14–17 FPS-ről lépés kell.", "pesszimista": "Hónapok, ha a jogi lépések a vezető projekteket érintik.", "bizonytalansag": "magas"},
+    "B_elvezheto_30_fps": {"megbizhato_elorejelzes": false, "indoklas": "Nincs elég adat."},
+    "C_60_fps": {"megbizhato_elorejelzes": false, "indoklas": "Nincs elég adat."},
+    "D_nyilvanos_jogszeru_megoldas": {"megbizhato_elorejelzes": false, "indoklas": "A jogi helyzet a takedown miatt kérdéses."},
+    "E_hivatalos_rockstar_pc": {"megbizhato_elorejelzes": false, "indoklas": "Hivatalos bejelentés nincs; csak megerősítetlen hírek."}
+  },
+  "forecast_changes": "Nincs korábbi előrejelzés az összehasonlításhoz (első futtatás).",
+  "breakthrough_events": [
+    {
+      "id": "evt-2026-11-24-leonida-takedown",
+      "idopont": "2026-11-24T00:00:00Z",
+      "tipus": "Fontos projekt megszűnése",
+      "cim": "Leonida tároló letiltva Take-Two kérelemre",
+      "leiras": "A Project Leonida eredeti tárolóját letiltották; GPL-forkok léteznek. Több tracker jelzi.",
+      "projekt": "Project Leonida",
+      "jelentoseg": "közepes",
+      "hitelesseg": "Ellentmondásos",
+      "eredeti_forras": "https://doesleonidaboot.com/ és trackerek; közvetlen ellenőrzés nem történt",
+      "teljes_kepernyo_javaslat": false
+    }
+  ],
+  "official_pc_status": "Nincs hivatalos Rockstar vagy Take-Two PC-bejelentés. A 2027 Q1-es állítások névtelen forrásokra épülnek és nem megerősítettek.",
+  "cloud_gaming_status": "Nincs ellenőrzött információ hivatalos felhőalapú PC-s játszhatóságról.",
+  "source_health": {
+    "https://vuyp.github.io/gta6-pc-race/": "elérhető",
+    "https://portwatch-vi.xyz/": "elérhető, de a ranglista nem töltődött be",
+    "https://doesleonidaboot.com/": "elérhető",
+    "https://gta6recomp.com/": "elérhető, érdemi adat nélkül",
+    "https://sixonpc.com/": "elérhető, érdemi adat nélkül",
+    "https://gta6index.wiki/pc/port-race/": "elérhető",
+    "https://tech.ufdmedia.com/trackers/gta-vi-pc-port/": "elérhető, 2026-11-25-i adat",
+    "GitHub, Reddit, YouTube, Rockstar Newswire, Take-Two": "nem ellenőrzött közvetlenül"
+  },
+  "sources": [
+    "https://vuyp.github.io/gta6-pc-race/",
+    "https://portwatch-vi.xyz/",
+    "https://doesleonidaboot.com/",
+    "https://gta6recomp.com/",
+    "https://sixonpc.com/",
+    "https://gta6index.wiki/pc/port-race/",
+    "https://tech.ufdmedia.com/trackers/gta-vi-pc-port/",
+    "https://www.gosugamers.net/entertainment/news/79347-gta-vi-reportedly-set-for-pc-release-in-q1-2027"
+  ],
+  "confidence": "alacsony–közepes",
+  "analysis_limitations": [
+    "A nyilvános trackerek többsége közös, önbejelentett forrásokra épül; ez nem jelent független bizonyítékot.",
+    "Az elsődleges GitHub-tárolókat, Reddit/YouTube-tartalmakat és hivatalos közleményeket nem ellenőriztem közvetlenül.",
+    "Első futtatás, korábbi elemzés nélkül; a PortWatch oldalából csak részlet került feldolgozásra."
+  ]
+}
