@@ -1,15 +1,15 @@
 {
   "schema_version": "1.1",
-  "checked_at": "2026-11-26T21:54:11Z",
-  "analyzed_at": "2026-11-26T21:54:11Z",
+  "checked_at": "2026-11-26T22:54:16Z",
+  "analyzed_at": "2026-11-26T22:54:16Z",
   "data_changed": false,
   "model": "claude-sonnet-5-5",
   "overall_status": "Nem játszható; vezető projektek kb. 5-25 FPS, önbejelentett adatokkal",
-  "executive_summary": "Egyetlen nem hivatalos GTA VI PC-port sem igazoltan játszható. A doesleonidaboot (20:51 UTC) új, 30 perces, kézzel játszott Vice-Tay Series S munkamenetet közöl 21,1 FPS mediánnal – ez a minimális cél (20 FPS, 30 perc) nyers értékét elérné, de önbejelentett és független reprodukció nélküli, így nem minősítjük játszhatónak. Hivatalos PC-bejelentés nincs; a Newswire nem olvasható, a státusz közvetlenül nem ellenőrzött.",
+  "executive_summary": "Egyetlen nem hivatalos GTA VI PC-port sem igazoltan játszható. A doesleonidaboot (22:51 UTC-s állapot) új, 30 perces, kézzel játszott Vice-Tay Series S munkamenetet közöl 21,1 FPS mediánnal – ez a minimális cél (20 FPS, 30 perc) nyers értékét elérné, de önbejelentett és független reprodukció nélküli, így nem minősítjük játszhatónak. Hivatalos PC-bejelentés nincs; a Newswire nem olvasható, a státusz közvetlenül nem ellenőrzött.",
   "changes_since_last_run": [
-    "Nincs új érdemi fejlemény az előző elemzés óta (a doesleonidaboot 21:51 UTC-s állapota megegyezik a már jelentett Vice-Tay 21,1 FPS-es, 30 perces önbejelentett adattal).",
-    "doesleonidaboot: új sorok a ranglistában (Belobug AMD 5-8 FPS, AMD; ScarlettPort 3-8 FPS) és egy Leonida Vulkan nyomvonal (6/8 készültségi lépés, világkép még nincs) – önbejelentett, a Leonida eredeti tárolója letiltva, ezért a nyomvonal állapota ellentmondásos.",
-    "UFD Media (2026-11-26 16:40 EST) és gta6index (2026-11-26 11:30 UTC): változatlan; előrejelzés továbbra sincs. Rockstar Newswire továbbra sem olvasható tartalom, a hivatalos státusz közvetlenül nem ellenőrzött."
+    "Nincs új érdemi fejlemény az előző elemzés óta: egyetlen projekt sem igazoltan játszható, hivatalos PC-bejelentés nincs.",
+    "doesleonidaboot (22:51 UTC): a Vice-Tay 30 perces, 21,1 FPS mediánú Series S munkamenete változatlan (önbejelentett); apró számfrissítések: VIctory 7900XTX 6-25 FPS, KLBF Lab 14-16,3 FPS, AnyXboxX 16-17 FPS (mind önbejelentett).",
+    "gta6index (11:30 UTC) és UFD Media (16:40 EST): változatlan; előrejelzést egyik sem közöl. A Rockstar Newswire továbbra sem olvasható, a hivatalos státusz közvetlenül nem ellenőrzött."
   ],
   "development_trend": "Gyorsuló: a konzolos megjelenés (nov. 19) óta napok alatt a menüktől az irányítható, több tíz perces játékmenetig jutottak; a közölt FPS-értékek 20 körülire emelkedtek, de önbejelentettek. Jogi visszaesés (Leonida) is látszik.",
   "technical_blockers": [
@@ -500,9 +500,9 @@
       {
         "url": "https://doesleonidaboot.com/",
         "status": "ok",
-        "checked_at": "2026-11-26T21:54:11Z",
+        "checked_at": "2026-11-26T22:54:16Z",
         "source_date": "2026-11-26",
-        "detail": "Oldal szerint 2026-11-26 20:51 UTC: nem játszható; Vice-Tay 30 perces munkamenet 21,1 FPS medián (önbejelentett)."
+        "detail": "Oldal szerint 2026-11-26 22:51 UTC: nem játszható; Vice-Tay 30 perces munkamenet 21,1 FPS medián (önbejelentett)."
       },
       {
         "url": "https://gta6recomp.com/",
@@ -521,21 +521,21 @@
       {
         "url": "https://gta6index.wiki/pc/port-race/",
         "status": "ok",
-        "checked_at": "2026-11-26T21:54:11Z",
+        "checked_at": "2026-11-26T22:54:16Z",
         "source_date": "2026-11-26",
         "detail": "Oldal szerint 2026-11-26 11:30 UTC: nem játszható; Vice-Tay 70 perces futás."
       },
       {
         "url": "https://tech.ufdmedia.com/trackers/gta-vi-pc-port/",
         "status": "ok",
-        "checked_at": "2026-11-26T21:54:11Z",
+        "checked_at": "2026-11-26T22:54:16Z",
         "source_date": "2026-11-26",
         "detail": "Oldal szerint 2026-11-26 13:35 EST: négy projekt 'részben játszható'; előrejelzés nincs; új nem megerősített pletykák."
       },
       {
         "url": "https://www.rockstargames.com/newswire",
         "status": "no_data",
-        "checked_at": "2026-11-26T21:54:11Z",
+        "checked_at": "2026-11-26T22:54:16Z",
         "source_date": null,
         "detail": "A Newswire oldalon nem volt olvasható tartalom; a hivatalos státuszt nem sikerült közvetlenül ellenőrizni."
       }
