@@ -100,14 +100,19 @@ async function refreshAI(){
   const previous=ai;
   const errors=[];
   let best=null;
-  for(const url of urls){
-    try{
-      const data=await getJSON(url);
-      const checked=Date.parse(data.checked_at);
-      if(previous&&checked<Date.parse(previous.checked_at))throw Error('Régebbi AI-adat');
-      if(!best||checked>best.checked)best={data,checked,url};
-      if(Date.now()-checked<=STALE_AI)break;
-    }catch(e){errors.push(e.message)}
+  const results=await Promise.allSettled(urls.map(url=>getJSON(url)));
+  for(const [index,result] of results.entries()){
+    if(result.status==='rejected'){
+      errors.push(result.reason.message);
+      continue;
+    }
+    const data=result.value;
+    const checked=Date.parse(data.checked_at);
+    if(previous&&checked<Date.parse(previous.checked_at)){
+      errors.push('Régebbi AI-adat');
+      continue;
+    }
+    if(!best||checked>best.checked)best={data,checked,url:urls[index]};
   }
   if(best){
     ai=best.data;
