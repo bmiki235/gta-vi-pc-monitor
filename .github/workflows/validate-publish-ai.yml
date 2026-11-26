@@ -1,11 +1,15 @@
 name: AI-elemzés ellenőrzése és publikálása
 
 on:
+  # Az automatikus futtatás csak a kézi tesztek után engedélyezhető.
+  # schedule:
+  #   - cron: '*/5 * * * *'
   workflow_dispatch:
     inputs:
       candidate_branch:
-        description: 'Claude branch teljes neve (claude/...)'
-        required: true
+        description: 'Claude branch (üresen: legfrissebb új elemzés automatikus keresése)'
+        required: false
+        default: ''
         type: string
       publish:
         description: 'Érvényes fájl publikálása a main branchre'
@@ -27,7 +31,6 @@ jobs:
     timeout-minutes: 10
     env:
       CANDIDATE_BRANCH: ${{ inputs.candidate_branch }}
-      PUBLISH: ${{ inputs.publish }}
     steps:
       - name: Megbízható main branch betöltése
         uses: actions/checkout@v4
@@ -40,99 +43,54 @@ jobs:
           python-version: '3.12'
       - name: Validátor telepítése
         run: python -m pip install 'jsonschema[format]==4.23.0'
-      - name: Kizárólag az elemzési adatfájl lekérése
+      - name: Új elemzés keresése és kizárólag az adatfájl lekérése
+        id: candidate
         shell: bash
         run: |
           set -euo pipefail
-          case "$CANDIDATE_BRANCH" in
-            claude/*) ;;
-            *) echo 'Csak claude/ kezdetű branch engedélyezett.'; exit 1 ;;
-          esac
-          git check-ref-format "refs/heads/$CANDIDATE_BRANCH"
-          git fetch --no-tags origin "refs/heads/$CANDIDATE_BRANCH"
-          git show FETCH_HEAD:ai_analysis.json > "$RUNNER_TEMP/ai_candidate.json"
-      - name: Sémavalidálás és alapvető tartalmi ellenőrzések
-        shell: bash
-        run: |
-          python - <<'PY'
-          import json, os
-          from pathlib import Path
-          from datetime import datetime, timezone, timedelta
-          from jsonschema import Draft202012Validator, FormatChecker
-
-          def read(path):
-              def unique(pairs):
-                  obj = {}
-                  for key, value in pairs:
-                      if key in obj:
-                          raise ValueError(f'Ismétlődő JSON-kulcs: {key}')
-                      obj[key] = value
-                  return obj
-              def invalid_constant(value):
-                  raise ValueError(f'Érvénytelen JSON-szám: {value}')
-              return json.loads(Path(path).read_text(encoding='utf-8'), object_pairs_hook=unique, parse_constant=invalid_constant)
-
-          def timestamp(value):
-              return datetime.fromisoformat(value.replace('Z', '+00:00'))
-
-          path = Path(os.environ['RUNNER_TEMP']) / 'ai_candidate.json'
-          if path.stat().st_size > 2_000_000:
-              raise SystemExit('Túl nagy elemzési fájl.')
-          schema = read('ai_analysis.schema.json')
-          data = read(path)
-          Draft202012Validator.check_schema(schema)
-          Draft202012Validator(schema, format_checker=FormatChecker()).validate(data)
-          errors = []
-          if data['schema_version'] != '1.1':
-              errors.append('Nem támogatott sémaverzió.')
-          now = datetime.now(timezone.utc)
-          for field in ('checked_at', 'analyzed_at'):
-              if timestamp(data[field]) > now + timedelta(minutes=2):
-                  errors.append(f'Jövőbeli időbélyeg: {field}')
-          dash = data['dashboard_data']
-          if dash['analysis_status'] == 'failed':
-              errors.append('Sikertelen elemzés nem publikálható.')
-          if not any(x['status'] in ('ok', 'partial') for x in dash['source_checks']):
-              errors.append('Nincs elérhető vagy részben elérhető forrás.')
-          if not dash['project_metrics'] and not dash['external_estimates'] and dash['official_verification'] != 'confirmed':
-              errors.append('Nincs érdemi strukturált adat.')
-          for m in dash['project_metrics']:
-              lo, hi, avg = m['fps_min'], m['fps_max'], m['fps_average']
-              if lo is not None and hi is not None and lo > hi:
-                  errors.append(f"Fordított FPS-tartomány: {m['project']}")
-              if avg is not None and ((lo is not None and avg < lo) or (hi is not None and avg > hi)):
-                  errors.append(f"Az átlag kívül esik az FPS-tartományon: {m['project']}")
-          ids = [event['id'] for event in data['breakthrough_events']]
-          if len(ids) != len(set(ids)):
-              errors.append('Ismétlődő eseményazonosító.')
-          previous = Path('ai_analysis.json')
-          if previous.exists():
-              old = read(previous)
-              if timestamp(data['checked_at']) <= timestamp(old['checked_at']):
-                  errors.append('Az elemzés nem frissebb a publikált változatnál.')
-          elif any(event['teljes_kepernyo_javaslat'] for event in data['breakthrough_events']):
-              errors.append('Első publikáláskor történelmi esemény nem indíthat riasztást.')
-          if errors:
-              raise SystemExit('\n'.join(errors))
-          print('PASS: JSON-séma és alapvető tartalmi ellenőrzések.')
-          print('Elemzés állapota:', dash['analysis_status'])
-          print('Mérések:', len(dash['project_metrics']))
-          print('Forrásellenőrzések:', len(dash['source_checks']))
-          print('A forrásállítások hitelességét ez a vizsgálat nem igazolja.')
-          PY
-      - name: Publikálás kizárólag kézi jóváhagyással
-        if: inputs.publish == true
-        shell: bash
-        run: |
-          set -euo pipefail
-          cp "$RUNNER_TEMP/ai_candidate.json" ai_analysis.json
-          git add -- ai_analysis.json
-          if git diff --cached --quiet; then
-            echo 'Nincs publikálandó változás.'
+          if [[ -n "$CANDIDATE_BRANCH" ]]; then
+            case "$CANDIDATE_BRANCH" in
+              claude/*) ;;
+              *) echo 'Csak claude/ kezdetű branch engedélyezett.'; exit 1 ;;
+            esac
+            git check-ref-format "refs/heads/$CANDIDATE_BRANCH"
+            git fetch --no-tags --depth=1 origin "refs/heads/$CANDIDATE_BRANCH"
+            git show FETCH_HEAD:ai_analysis.json > "$RUNNER_TEMP/ai_candidate.json"
+            echo 'found=true' >> "$GITHUB_OUTPUT"
             exit 0
           fi
-          test "$(git diff --cached --name-only)" = 'ai_analysis.json'
-          git config user.name 'github-actions[bot]'
-          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
-          git commit -m 'Ellenőrzött AI-elemzés publikálása'
-          git push origin HEAD:refs/heads/main
+          git fetch --no-tags --depth=1 origin '+refs/heads/claude/*:refs/remotes/origin/claude/*'
+          python - <<'PYTHON'
+          import json, os, subprocess
+          from datetime import datetime, timezone, timedelta
+          from pathlib import Path
+
+          def timestamp(value):
+              result = datetime.fromisoformat(value.replace('Z', '+00:00'))
+              if result.tzinfo is None:
+                  raise ValueError('Hiányzó időzóna')
+              return result
+
+          baseline = Path('ai_analysis.json')
+          previous = timestamp(json.loads(baseline.read_text(encoding='utf-8'))['checked_at']) if baseline.exists() else datetime.min.replace(tzinfo=timezone.utc)
+          refs = subprocess.check_output(['git', 'for-each-ref', '--format=%(refname)', 'refs/remotes/origin/claude/'], text=True).splitlines()
+          candidates = []
+          for ref in refs:
+              obj = ref + ':ai_analysis.json'
+              try:
+                  size = int(subprocess.check_output(['git','cat-file','-s',obj], stderr=subprocess.DEVNULL))
+                  if size > 2_000_000:
+                      continue
+                  raw = subprocess.check_output(['git','show',obj], stderr=subprocess.DEVNULL)
+                  data = json.loads(raw)
+                  checked = timestamp(data['checked_at'])
+                  if previous < checked <= datetime.now(timezone.utc) + timedelta(minutes=2):
+                      candidates.append((checked, ref, raw))
+              except (subprocess.CalledProcessError, ValueError, TypeError, KeyError, AttributeError, OverflowError):
+                  continue
+          with open(os.environ['GITHUB_OUTPUT'], 'a', encoding='utf-8') as output:
+              if not candidates:
+                  print('Nincs újabb, feldolgozható elemzés. A publikált fájl változatlan.')
+                  output.write('found=false\n')
+              else:
+                  checked, ref, raw = max(candidates, key=lambda row: (row[0], row[1]))
