@@ -1,13 +1,13 @@
 {
   "schema_version": "1.1",
-  "checked_at": "2026-11-27T22:53:47Z",
-  "analyzed_at": "2026-11-27T22:53:47Z",
+  "checked_at": "2026-11-27T23:54:31Z",
+  "analyzed_at": "2026-11-27T23:54:31Z",
   "data_changed": false,
   "model": "claude-sonnet-5-5",
   "overall_status": "Nem játszható; vezető projektek kb. 5-30 FPS, önbejelentett adatokkal",
   "executive_summary": "Egyetlen nem hivatalos GTA VI PC-port sem igazoltan játszható. Az önbejelentett csúcsértékek 20-30 FPS körüliek (VIctory-NVIDIA DLSS-sel 26-30, AnyXboxX 20-29, Vice-Tay, ScarlettPort), de rövid vagy ismeretlen időtartamú, reprodukálatlan mérések; a hosszú futások 8-13 FPS-t és memórianövekedést mutatnak. Hivatalos PC-bejelentés nincs ismert; a Newswire nem olvasható, a hivatalos státusz közvetlenül nem ellenőrzött.",
   "changes_since_last_run": [
-    "Nincs új érdemi fejlemény: a doesleonidaboot (2026-11-27 22:51 UTC), az UFD Media (nov. 27.) és a gta6index (nov. 26. 11:30 UTC) adatai lényegében változatlanok, előrejelzést egyik sem közöl. Kisebb frissítés: a doesleonidaboot szerint a KLBF Lab stable-amd kiadása v26.11.3 (FSR-támogatással); önbejelentett, új áttörésnek nem minősül. Hivatalos PC-bejelentés nincs; a Rockstar Newswire kivonata ismét üres volt, ezért a hivatalos státusz közvetlenül nem ellenőrzött."
+    "Nincs új érdemi fejlemény: a doesleonidaboot (2026-11-27 23:51 UTC) ranglistája (VIctory-NVIDIA 26-30 FPS DLSS-sel, AnyXboxX 20-29, Vice-Tay 19-23, KLBF Lab 16-18,5, ScarlettPort 7-22) és az UFD Media (nov. 27.; 30 projekt, 5 részben játszható, előrejelzés nincs) változatlan. Új állításként csak a Leonida Vulkan-sáv (6/8 szakasz, önbejelentett) szerepel, ez nem áttörés. Hivatalos PC-bejelentés nincs; a Rockstar Newswire kivonata ismét üres volt, ezért a hivatalos státusz közvetlenül nem ellenőrzött."
   ],
   "development_trend": "Gyorsuló: a konzolos megjelenés (nov. 19) óta napok alatt a menüktől az irányítható, több tíz perces játékmenetig jutottak; a közölt FPS-értékek 20 körülire emelkedtek, de önbejelentettek. Jogi visszaesés (Leonida) is látszik.",
   "technical_blockers": [
@@ -320,7 +320,7 @@
     "https://www.eteknix.com/first-unofficial-gta-vi-port-available-for-download-on-pc/"
   ],
   "analysis_limitations": [
-    "Könnyített ismétlő futás: csak a doesleonidaboot, UFD Media, gta6index és Rockstar Newswire WebFetch-kivonatát olvastam; a Newswire kivonata üres volt, így a hivatalos státusz közvetlenül nem ellenőrzött. A többi forrás adata az előző elemzésből származik.",
+    "Könnyített ismétlő futás: csak a doesleonidaboot, UFD Media és Rockstar Newswire WebFetch-kivonatát olvastam; a Newswire kivonata üres volt, így a hivatalos státusz közvetlenül nem ellenőrzött. A gta6index és a többi forrás adata az előző elemzésből származik.",
     "GitHub, Reddit, YouTube és Take-Two források közvetlenül nem lettek ellenőrizve; a hivatalos státusz nem megerősített.",
     "Az FPS-adatok önbejelentettek, eltérő hardver és beállítások mellett készültek, nem összehasonlíthatók.",
     "A jsonschema validátor nem volt elérhető; csak a JSON-szintaxis, a kötelező mezők és a tiltott extra mezők ellenőrzése történt.",
@@ -703,9 +703,9 @@
       {
         "url": "https://doesleonidaboot.com/",
         "status": "ok",
-        "checked_at": "2026-11-27T22:53:47Z",
+        "checked_at": "2026-11-27T23:54:31Z",
         "source_date": "2026-11-27",
-        "detail": "Oldal-időbélyeg 2026-11-27 22:51 UTC; ranglista változatlan (VIctory-NVIDIA 26-30 FPS DLSS, AnyXboxX 20-29, Vice-Tay 19-23); KLBF Lab v26.11.3 stable-amd; önbejelentett adatok, nincs előrejelzés."
+        "detail": "Oldal-időbélyeg 2026-11-27 23:51 UTC; ranglista változatlan; Leonida Vulkan-sáv 6/8 szakasz (önbejelentett); nincs előrejelzés."
       },
       {
         "url": "https://gta6recomp.com/",
@@ -731,14 +731,14 @@
       {
         "url": "https://tech.ufdmedia.com/trackers/gta-vi-pc-port/",
         "status": "ok",
-        "checked_at": "2026-11-27T22:53:47Z",
+        "checked_at": "2026-11-27T23:54:31Z",
         "source_date": "2026-11-27",
         "detail": "30 követett projekt, 5 \"részben játszható\"; végig játszható és publikus kiadás: 0; önbejelentett adatok, előrejelzés nincs."
       },
       {
         "url": "https://www.rockstargames.com/newswire",
         "status": "no_data",
-        "checked_at": "2026-11-27T22:53:47Z",
+        "checked_at": "2026-11-27T23:54:31Z",
         "source_date": null,
         "detail": "A Newswire oldalon nem volt olvasható tartalom; a hivatalos státuszt nem sikerült közvetlenül ellenőrizni."
       },
