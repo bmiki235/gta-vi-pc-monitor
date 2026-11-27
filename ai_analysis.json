@@ -1,15 +1,14 @@
 {
   "schema_version": "1.1",
-  "checked_at": "2026-11-27T05:54:37Z",
-  "analyzed_at": "2026-11-27T05:54:37Z",
+  "checked_at": "2026-11-27T06:53:55Z",
+  "analyzed_at": "2026-11-27T06:53:55Z",
   "data_changed": false,
   "model": "claude-sonnet-5-5",
   "overall_status": "Nem játszható; vezető projektek kb. 5-29 FPS, önbejelentett adatokkal",
   "executive_summary": "Egyetlen nem hivatalos GTA VI PC-port sem igazoltan játszható. Az önbejelentett csúcsértékek 20-29 FPS körüliek (AnyXboxX, VIctory, Vice-Tay, ScarlettPort), de rövid vagy ismeretlen időtartamú, reprodukálatlan mérések; a hosszú futások 8-13 FPS-t és memórianövekedést mutatnak. Hivatalos PC-bejelentés nincs; a Newswire nem olvasható, a hivatalos státusz közvetlenül nem ellenőrzött.",
   "changes_since_last_run": [
-    "Nincs új, érdemi fejlemény az előző elemzés (04:54 UTC) óta.",
-    "A doesleonidaboot (nov. 27., 05:51 UTC) változatlan önbejelentett értékeket közöl: AnyXboxX 20-29 FPS, VIctory 7900XTX 6-25 FPS, Vice-Tay 21,1 FPS medián 30 percen át, KLBF Lab 14-16,3 FPS, ScarlettPort 3,4-22 FPS; játszható projektet egyik forrás sem jelez.",
-    "Az UFD Media továbbra sem közöl előrejelzést; a gta6index nov. 26. 11:30 UTC-s állapota változatlan. A Rockstar Newswire oldala továbbra sem olvasható, hivatalos PC-bejelentés nem ismert."
+    "Nincs új, érdemi fejlemény az előző elemzés (05:54 UTC) óta.",
+    "A doesleonidaboot (nov. 27., 06:51 UTC), a gta6index (nov. 26. 11:30 UTC) és az UFD Media (nov. 27.) változatlan önbejelentett adatokat közöl; előrejelzést egyik sem ad. A Rockstar Newswire oldala továbbra sem olvasható, hivatalos PC-bejelentés nem ismert."
   ],
   "development_trend": "Gyorsuló: a konzolos megjelenés (nov. 19) óta napok alatt a menüktől az irányítható, több tíz perces játékmenetig jutottak; a közölt FPS-értékek 20 körülire emelkedtek, de önbejelentettek. Jogi visszaesés (Leonida) is látszik.",
   "technical_blockers": [
