@@ -1,14 +1,14 @@
 {
   "schema_version": "1.1",
-  "checked_at": "2026-11-27T11:55:00Z",
-  "analyzed_at": "2026-11-27T11:55:00Z",
+  "checked_at": "2026-11-27T12:59:42Z",
+  "analyzed_at": "2026-11-27T12:59:42Z",
   "data_changed": false,
   "model": "claude-sonnet-5-5",
   "overall_status": "Nem játszható; vezető projektek kb. 5-29 FPS, önbejelentett adatokkal",
   "executive_summary": "Egyetlen nem hivatalos GTA VI PC-port sem igazoltan játszható. Az önbejelentett csúcsértékek 20-29 FPS körüliek (AnyXboxX, VIctory, Vice-Tay, ScarlettPort), de rövid vagy ismeretlen időtartamú, reprodukálatlan mérések; a hosszú futások 8-13 FPS-t és memórianövekedést mutatnak. Hivatalos PC-bejelentés nincs; a Newswire nem olvasható, a hivatalos státusz közvetlenül nem ellenőrzött.",
   "changes_since_last_run": [
-    "Nincs új, érdemi fejlemény az előző elemzés (10:54 UTC) óta; új esemény nem keletkezett, korábban jelentett eseményhez új riasztás nem javasolt.",
-    "A doesleonidaboot (nov. 27., 11:51 UTC), a gta6index (nov. 26., 11:30 UTC) és az UFD Media (nov. 27.) tartalma lényegében változatlan; előrejelzést egyik sem közöl. A Rockstar Newswire kivonata üres, hivatalos PC-bejelentés nem ismert."
+    "Nincs új, érdemi fejlemény az előző elemzés (11:55 UTC) óta; új esemény nem keletkezett, korábban jelentett eseményhez új riasztás nem javasolt.",
+    "A doesleonidaboot (nov. 27., 12:57 UTC) kisebb pontosítása: Vice-Tay 19-23 FPS (RTX 4090), KLBF Lab 14-18,5 FPS (FSR/AMD), Belobug AMD 5-8 FPS; az UFD Media már 30 projektet követ, mind önbejelentett, egyik sem 'végig játszható'. A Rockstar Newswire továbbra sem olvasható, hivatalos PC-bejelentés nem ismert."
   ],
   "development_trend": "Gyorsuló: a konzolos megjelenés (nov. 19) óta napok alatt a menüktől az irányítható, több tíz perces játékmenetig jutottak; a közölt FPS-értékek 20 körülire emelkedtek, de önbejelentettek. Jogi visszaesés (Leonida) is látszik.",
   "technical_blockers": [
@@ -67,7 +67,7 @@
     },
     {
       "projekt": "KLBF Lab / ScarlettPort / Flamingo",
-      "allapot": "KLBF Lab: prológus és első küldetés, szabad barangolás 77 percben, 12-17 FPS (FSR); ScarlettPort kb. 4-5 FPS; Flamingo 9-14 FPS, hiányzó geometria",
+      "allapot": "KLBF Lab: prológus és első küldetés, szabad barangolás 77 percben, 12-18,5 FPS (FSR/AMD); ScarlettPort kb. 4-5 FPS; Flamingo 9-14 FPS, hiányzó geometria",
       "hitelesseg": "Nem ellenőrzött közösségi állítás"
     },
     {
@@ -274,7 +274,7 @@
     "https://www.rockstargames.com/newswire"
   ],
   "analysis_limitations": [
-    "Könnyített futás: a doesleonidaboot, gta6index, UFD Media és Newswire WebFetch-kivonatát olvastam; a többi forrás adata az előző elemzésből származik. A Newswire kivonata üres volt.",
+    "Könnyített futás: a doesleonidaboot, gta6index, UFD Media, gta6recomp, portwatch és Newswire WebFetch-kivonatát olvastam; a vuyp és sixonpc adata az előző elemzésből származik. A Newswire kivonata üres volt.",
     "GitHub, Reddit, YouTube és Take-Two források közvetlenül nem lettek ellenőrizve; a hivatalos státusz nem megerősített.",
     "Az FPS-adatok önbejelentettek, eltérő hardver és beállítások mellett készültek, nem összehasonlíthatók.",
     "A jsonschema validátor nem volt elérhető; csak a JSON-szintaxis, a kötelező mezők és a tiltott extra mezők ellenőrzése történt.",
@@ -569,23 +569,23 @@
       {
         "url": "https://portwatch-vi.xyz/",
         "status": "partial",
-        "checked_at": "2026-11-26T12:53:08Z",
+        "checked_at": "2026-11-27T12:59:42Z",
         "source_date": null,
-        "detail": "Az oldal a lekéréskor üres/placeholder adatokat adott; az adatfájl nem volt közvetlenül ellenőrizve."
+        "detail": "Az oldal 0% előrehaladást és placeholder/betöltés alatti ranglistát mutat; nem használható adatforrásként."
       },
       {
         "url": "https://doesleonidaboot.com/",
         "status": "ok",
-        "checked_at": "2026-11-27T10:54:29Z",
+        "checked_at": "2026-11-27T12:59:42Z",
         "source_date": "2026-11-27",
-        "detail": "Oldal szerint 2026-11-27 10:51 UTC: nem játszható; AnyXboxX 20-29 FPS, VIctory 7900XTX 6-25 FPS, Vice-Tay 30 perc 21,1 FPS medián, ScarlettPort 7-22 FPS (önbejelentett)."
+        "detail": "Oldal szerint 2026-11-27 12:57 UTC: nem játszható; AnyXboxX 20-29, VIctory 7900XTX 6-25, Vice-Tay 19-23, KLBF Lab 14-18,5, ScarlettPort 7-22 FPS (önbejelentett); előrejelzés nincs."
       },
       {
         "url": "https://gta6recomp.com/",
         "status": "ok",
-        "checked_at": "2026-11-26T12:53:08Z",
+        "checked_at": "2026-11-27T12:59:42Z",
         "source_date": null,
-        "detail": "Nincs játszható build; Xbox Build 1.0.2.1 említve; nincs mérés vagy dátum."
+        "detail": "Nincs játszható build; a megjelölt 60+ FPS csak cél; nincs dátum vagy mérés."
       },
       {
         "url": "https://sixonpc.com/",
@@ -597,21 +597,21 @@
       {
         "url": "https://gta6index.wiki/pc/port-race/",
         "status": "ok",
-        "checked_at": "2026-11-27T10:54:29Z",
+        "checked_at": "2026-11-27T12:59:42Z",
         "source_date": "2026-11-26",
-        "detail": "Oldal szerint 2026-11-26 11:30 UTC: nem játszható; Vice-Tay 70 perces futás."
+        "detail": "Oldal szerint 2026-11-26 11:30 UTC: nem játszható; változatlan, előrejelzés nincs."
       },
       {
         "url": "https://tech.ufdmedia.com/trackers/gta-vi-pc-port/",
         "status": "ok",
-        "checked_at": "2026-11-27T10:54:29Z",
+        "checked_at": "2026-11-27T12:59:42Z",
         "source_date": "2026-11-27",
-        "detail": "Az oldal szerint 2026-11-26 késő esti ellenőrzések, legújabb frissítés 2026-11-27: AnyXboxX ~24 FPS medián (14 perc), előrejelzés nincs."
+        "detail": "30 követett projekt; 'végig játszható' és publikus kiadás: 0; önbejelentett adatok, előrejelzés nincs."
       },
       {
         "url": "https://www.rockstargames.com/newswire",
         "status": "no_data",
-        "checked_at": "2026-11-27T10:54:29Z",
+        "checked_at": "2026-11-27T12:59:42Z",
         "source_date": null,
         "detail": "A Newswire oldalon nem volt olvasható tartalom; a hivatalos státuszt nem sikerült közvetlenül ellenőrizni."
       }
