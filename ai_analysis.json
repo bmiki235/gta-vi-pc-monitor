@@ -1,14 +1,15 @@
 {
   "schema_version": "1.1",
-  "checked_at": "2026-11-27T12:59:42Z",
-  "analyzed_at": "2026-11-27T12:59:42Z",
-  "data_changed": false,
+  "checked_at": "2026-11-27T13:00:44Z",
+  "analyzed_at": "2026-11-27T13:00:44Z",
+  "data_changed": true,
   "model": "claude-sonnet-5-5",
   "overall_status": "Nem játszható; vezető projektek kb. 5-29 FPS, önbejelentett adatokkal",
   "executive_summary": "Egyetlen nem hivatalos GTA VI PC-port sem igazoltan játszható. Az önbejelentett csúcsértékek 20-29 FPS körüliek (AnyXboxX, VIctory, Vice-Tay, ScarlettPort), de rövid vagy ismeretlen időtartamú, reprodukálatlan mérések; a hosszú futások 8-13 FPS-t és memórianövekedést mutatnak. Hivatalos PC-bejelentés nincs; a Newswire nem olvasható, a hivatalos státusz közvetlenül nem ellenőrzött.",
   "changes_since_last_run": [
-    "Nincs új, érdemi fejlemény az előző elemzés (11:55 UTC) óta; új esemény nem keletkezett, korábban jelentett eseményhez új riasztás nem javasolt.",
-    "A doesleonidaboot (nov. 27., 12:57 UTC) kisebb pontosítása: Vice-Tay 19-23 FPS (RTX 4090), KLBF Lab 14-18,5 FPS (FSR/AMD), Belobug AMD 5-8 FPS; az UFD Media már 30 projektet követ, mind önbejelentett, egyik sem 'végig játszható'. A Rockstar Newswire továbbra sem olvasható, hivatalos PC-bejelentés nem ismert."
+    "Új: a ScarlettPort tárolója (ZigZagBoi1/ScarlettPort) nyilvánosan elérhető, a README szerint 0.5.3-as állapotig; az eteknix (nov. 27.) az első nyilvánosan letölthető, játékba induló nem hivatalos portként számol be róla (0.5.2). Önbejelentett: RTX 3060-on kb. 7-8 FPS a világban, közösségi jelentés szerint RX 9060 XT-n 22,0 FPS medián.",
+    "A projekt saját README-je szerint a cél 30 FPS, ez nem teljesült; hosszú futás nincs rögzítve, a játszhatóság 'nem igazolt'. Leállítási értesítés nem látszik. A használathoz saját játékfájl kell, a jogszerűség nem igazolt.",
+    "Egyéb források (doesleonidaboot, gta6index, UFD) az előző ellenőrzés óta nem hoztak új eseményt; hivatalos PC-bejelentés nincs."
   ],
   "development_trend": "Gyorsuló: a konzolos megjelenés (nov. 19) óta napok alatt a menüktől az irányítható, több tíz perces játékmenetig jutottak; a közölt FPS-értékek 20 körülire emelkedtek, de önbejelentettek. Jogi visszaesés (Leonida) is látszik.",
   "technical_blockers": [
@@ -72,8 +73,13 @@
     },
     {
       "projekt": "AnyXboxX / ScarlettPort",
-      "allapot": "AnyXboxX: kb. 24 FPS medián 14 percen át (UFD), 20-29 FPS (doesleonidaboot); ScarlettPort: 18,9-22 FPS (doesleonidaboot) vagy kb. 1 FPS (UFD)",
+      "allapot": "AnyXboxX: kb. 24 FPS medián 14 percen át (UFD), 20-29 FPS (doesleonidaboot); ScarlettPort: 0.5.x-ben RTX 3060-on 3,4-8 FPS (saját README), RX 9060 XT-n 22 FPS medián (közösségi jelentés)",
       "hitelesseg": "Ellentmondásos"
+    },
+    {
+      "projekt": "ScarlettPort 0.5.x",
+      "allapot": "Nyilvános GitHub-kiadás (GPL), a README szerint 90%: menü, mentés, nyitó terület irányítható; NVIDIA-n 3-9 FPS, AMD RX 9060 XT-n 22 FPS medián (közösségi); cél 30 FPS; hosszú futás nincs rögzítve; saját játékfájl szükséges",
+      "hitelesseg": "Nem ellenőrzött közösségi állítás"
     }
   ],
   "performance_records": [
@@ -111,6 +117,12 @@
       "rekord": "VIctory javított városi utcák (doesleonidaboot)",
       "ertek": "23-25 FPS, Series X profil, 1080p, RT ki",
       "tipus": "Tényleges játékmenet, önbejelentett; időtartam nem ismert",
+      "hitelesseg": "Nem ellenőrzött közösségi állítás"
+    },
+    {
+      "rekord": "ScarlettPort 0.5.2 (RX 9060 XT 16 GB, közösségi jelentés a README-ben; eteknix: kb. 20 FPS általában, kb. 7 FPS nyílt világban)",
+      "ertek": "22,0 FPS medián; RTX 3060-on 7-8 FPS a világban",
+      "tipus": "Tényleges játékmenet jelölt, időtartam nincs megadva; önbejelentett",
       "hitelesseg": "Nem ellenőrzött közösségi állítás"
     }
   ],
@@ -157,6 +169,22 @@
   },
   "forecast_changes": "Nincs változás: egyik forrás sem közöl előrejelzést; saját előrejelzés továbbra sem készíthető.",
   "breakthrough_events": [
+    {
+      "id": "evt-2026-11-27-scarlettport-public-release-0-5",
+      "idopont": "2026-11-27",
+      "tipus": "Új nyilvános kiadás",
+      "cim": "ScarlettPort: nyilvánosan letölthető, játékba induló port",
+      "leiras": "A GitHub-tároló és az eteknix szerint a ScarlettPort 0.5.x nyilvánosan elérhető, a menüig és a nyitó területig jut, de a teljesítmény alacsony (NVIDIA 3-9 FPS, AMD 22 FPS medián közösségi jelentés szerint). Saját játékfájl kell hozzá; a jogszerű tesztelhetőség nem igazolt. Nem játszható.",
+      "projekt": "ScarlettPort",
+      "jelentoseg": "Az első nyilvánosan hozzáférhető build, de a minimális játszhatósági célt (D) nem teljesíti igazoltan: nincs hosszú futás, az FPS-adat önbejelentett.",
+      "hitelesseg": "Nem ellenőrzött közösségi állítás",
+      "eredeti_forras": "ZigZagBoi1/ScarlettPort GitHub-tároló; az eteknix ezt közvetíti",
+      "teljes_kepernyo_javaslat": false,
+      "source_urls": [
+        "https://github.com/ZigZagBoi1/ScarlettPort",
+        "https://www.eteknix.com/first-unofficial-gta-vi-port-available-for-download-on-pc/"
+      ]
+    },
     {
       "id": "evt-2026-11-27-victory-city-23-25fps",
       "idopont": "2026-11-27",
@@ -261,7 +289,9 @@
     "https://sixonpc.com/": "no_data",
     "https://gta6index.wiki/pc/port-race/": "ok",
     "https://tech.ufdmedia.com/trackers/gta-vi-pc-port/": "ok",
-    "https://www.rockstargames.com/newswire": "no_data"
+    "https://www.rockstargames.com/newswire": "no_data",
+    "https://github.com/ZigZagBoi1/ScarlettPort": "ok",
+    "https://www.eteknix.com/first-unofficial-gta-vi-port-available-for-download-on-pc/": "ok"
   },
   "sources": [
     "https://portwatch-vi.xyz/",
@@ -271,14 +301,17 @@
     "https://gta6index.wiki/pc/port-race/",
     "https://tech.ufdmedia.com/trackers/gta-vi-pc-port/",
     "https://vuyp.github.io/gta6-pc-race/",
-    "https://www.rockstargames.com/newswire"
+    "https://www.rockstargames.com/newswire",
+    "https://github.com/ZigZagBoi1/ScarlettPort",
+    "https://www.eteknix.com/first-unofficial-gta-vi-port-available-for-download-on-pc/"
   ],
   "analysis_limitations": [
     "Könnyített futás: a doesleonidaboot, gta6index, UFD Media, gta6recomp, portwatch és Newswire WebFetch-kivonatát olvastam; a vuyp és sixonpc adata az előző elemzésből származik. A Newswire kivonata üres volt.",
     "GitHub, Reddit, YouTube és Take-Two források közvetlenül nem lettek ellenőrizve; a hivatalos státusz nem megerősített.",
     "Az FPS-adatok önbejelentettek, eltérő hardver és beállítások mellett készültek, nem összehasonlíthatók.",
     "A jsonschema validátor nem volt elérhető; csak a JSON-szintaxis, a kötelező mezők és a tiltott extra mezők ellenőrzése történt.",
-    "Forrásdátumok és mérések pontatlanok lehetnek; a doesleonidaboot és a trackerek eltérő számokat közölnek ugyanarra a projektre."
+    "Forrásdátumok és mérések pontatlanok lehetnek; a doesleonidaboot és a trackerek eltérő számokat közölnek ugyanarra a projektre.",
+    "A ScarlettPort tárolót és az eteknix cikket csak WebFetch-kivonatként olvastam; letöltés, futtatás és kódellenőrzés nem történt. Az eteknix a GitHub-tároló adatait közvetíti, nem független bizonyíték."
   ],
   "dashboard_data": {
     "analysis_status": "partial",
@@ -555,6 +588,70 @@
           "https://doesleonidaboot.com/"
         ],
         "observed_at": null
+      },
+      {
+        "project": "ScarlettPort",
+        "fps_min": null,
+        "fps_max": null,
+        "fps_average": 3.4,
+        "duration_minutes": null,
+        "measurement_context": "gameplay",
+        "frame_generation": null,
+        "test_conditions": "Saját README szerint: 0.5.0, RTX 3060 12 GB, Ryzen 5 5600X, világ; mediánkocka 664 ms; önbejelentett",
+        "end_reason": null,
+        "evidence_level": "önbejelentett",
+        "source_urls": [
+          "https://github.com/ZigZagBoi1/ScarlettPort"
+        ],
+        "observed_at": null
+      },
+      {
+        "project": "ScarlettPort",
+        "fps_min": 7,
+        "fps_max": 8,
+        "fps_average": null,
+        "duration_minutes": null,
+        "measurement_context": "gameplay",
+        "frame_generation": null,
+        "test_conditions": "Saját README szerint: 0.5.2, RTX 3060, meleg gyorsítótár, Series S profil, világ; önbejelentett",
+        "end_reason": null,
+        "evidence_level": "önbejelentett",
+        "source_urls": [
+          "https://github.com/ZigZagBoi1/ScarlettPort"
+        ],
+        "observed_at": null
+      },
+      {
+        "project": "ScarlettPort",
+        "fps_min": null,
+        "fps_max": null,
+        "fps_average": 22.0,
+        "duration_minutes": null,
+        "measurement_context": "gameplay",
+        "frame_generation": null,
+        "test_conditions": "README-ben közölt közösségi jelentés: 0.5.2, RX 9060 XT 16 GB, medián; felbontás, beállítás és időtartam nem ismert; nem a projekt mérése",
+        "end_reason": null,
+        "evidence_level": "önbejelentett",
+        "source_urls": [
+          "https://github.com/ZigZagBoi1/ScarlettPort"
+        ],
+        "observed_at": null
+      },
+      {
+        "project": "ScarlettPort",
+        "fps_min": null,
+        "fps_max": null,
+        "fps_average": 12.8,
+        "duration_minutes": null,
+        "measurement_context": "gameplay",
+        "frame_generation": null,
+        "test_conditions": "README-ben közölt közösségi jelentés: 0.5.3, RTX 5070 Ti, börtönjelenet átlag; időtartam nem ismert",
+        "end_reason": null,
+        "evidence_level": "önbejelentett",
+        "source_urls": [
+          "https://github.com/ZigZagBoi1/ScarlettPort"
+        ],
+        "observed_at": null
       }
     ],
     "external_estimates": [],
@@ -614,6 +711,20 @@
         "checked_at": "2026-11-27T12:59:42Z",
         "source_date": null,
         "detail": "A Newswire oldalon nem volt olvasható tartalom; a hivatalos státuszt nem sikerült közvetlenül ellenőrizni."
+      },
+      {
+        "url": "https://github.com/ZigZagBoi1/ScarlettPort",
+        "status": "ok",
+        "checked_at": "2026-11-27T13:00:44Z",
+        "source_date": null,
+        "detail": "README: 90%, 0.5.3 említve, cél 30 FPS, hosszú futás nincs rögzítve, játszhatóság 'nem igazolt'; a kivonat commitdátumot nem mutat; letiltási értesítés nem látszik."
+      },
+      {
+        "url": "https://www.eteknix.com/first-unofficial-gta-vi-port-available-for-download-on-pc/",
+        "status": "ok",
+        "checked_at": "2026-11-27T13:00:44Z",
+        "source_date": "2026-11-27",
+        "detail": "Másodlagos beszámoló a ScarlettPort 0.5.2-ről: kb. 20 FPS általában, kb. 7 FPS a nyílt világban RX 9060 XT-n; tesztelő és beállítások nem ismertek."
       }
     ],
     "official_verification": "inconclusive",
