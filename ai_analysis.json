@@ -1,14 +1,17 @@
 {
   "schema_version": "1.1",
-  "checked_at": "2026-11-27T07:53:56Z",
-  "analyzed_at": "2026-11-27T07:53:56Z",
-  "data_changed": false,
+  "checked_at": "2026-11-27T08:58:00Z",
+  "analyzed_at": "2026-11-27T08:58:00Z",
+  "data_changed": true,
   "model": "claude-sonnet-5-5",
   "overall_status": "Nem játszható; vezető projektek kb. 5-29 FPS, önbejelentett adatokkal",
-  "executive_summary": "Egyetlen nem hivatalos GTA VI PC-port sem igazoltan játszható. Az önbejelentett csúcsértékek 20-29 FPS körüliek (AnyXboxX, VIctory, Vice-Tay, ScarlettPort), de rövid vagy ismeretlen időtartamú, reprodukálatlan mérések; a hosszú futások 8-13 FPS-t és memórianövekedést mutatnak. Hivatalos PC-bejelentés nincs; a Newswire nem olvasható, a hivatalos státusz közvetlenül nem ellenőrzött.",
+  "executive_summary": "Egyetlen nem hivatalos GTA VI PC-port sem igazoltan játszható. Az önbejelentett csúcsértékek 20-29 FPS körüliek (AnyXboxX, VIctory, Vice-Tay, ScarlettPort RX 9060 XT), de reprodukálatlanok; a hosszú futások 8-13 FPS-t és memórianövekedést mutatnak, az UFD szerint a victory-fork kb. 9 FPS. Hivatalos PC-bejelentés nincs; a Newswire nem olvasható, a hivatalos státusz közvetlenül nem ellenőrzött.",
   "changes_since_last_run": [
-    "Nincs új, érdemi fejlemény az előző elemzés (06:53 UTC) óta.",
-    "A doesleonidaboot (nov. 27., 07:51 UTC) változatlan önbejelentett adatokat közöl (AnyXboxX 20-29 FPS, Vice-Tay 21,1 FPS medián 30 percen át, VIctory 23-25 FPS); előrejelzést egyik forrás sem ad. A Rockstar Newswire továbbra sem olvasható, hivatalos PC-bejelentés nem ismert."
+    "Kisebb új részletek az előző elemzés (07:53 UTC) óta; új áttörés vagy rekord nincs.",
+    "A doesleonidaboot (nov. 27., 08:51 UTC) szerint a ScarlettPort RTX 3060-on 7-8 FPS, RX 9060 XT-n 22,0 FPS medián (önbejelentett); a Belobug AMD 5-8 FPS, a KLBF Lab 14-16,3 FPS; a 24 követett projektből 21 aktív.",
+    "A doesleonidaboot Leonida Vulkan sávja szerint a 'Playable' felé 8-ból 6 szakasz kész, a D3D12-metódusok lefedettsége 185/207; világkép még nincs. Ez önbejelentett haladási jelzés, nem mért játékmenet.",
+    "Az UFD Media szerint a victory-fork kb. 9 FPS-sel fut a prológusban és az első hajós küldetésben (RTX 4070, fekete árnyékok, grafikus eszköz elvesztése 30-50 perc után); a BRVIctory-ka1qux 6,7-15 FPS (RX 7800 XT). Új listaelem: ztrx PS5 mentésimportáló.",
+    "A Rockstar Newswire továbbra sem olvasható; hivatalos PC-bejelentés nem ismert, közvetlenül nem ellenőrzött."
   ],
   "development_trend": "Gyorsuló: a konzolos megjelenés (nov. 19) óta napok alatt a menüktől az irányítható, több tíz perces játékmenetig jutottak; a közölt FPS-értékek 20 körülire emelkedtek, de önbejelentettek. Jogi visszaesés (Leonida) is látszik.",
   "technical_blockers": [
@@ -29,7 +32,9 @@
       "A doesleonidaboot szerint a Vice-Tay 30 perces Series S munkamenetben 21,1 FPS mediánt ért el (p10-p90 19,1-23,2); a gta6index 70 perces futása 12,9 FPS mediánt és memórianövekedést mutat – a két adat eltérő teszt, nem vonható össze.",
       "A doesleonidaboot szerint a VIctory javított városi utcákon 23-25 FPS-t ér el Series X profilon (RT ki); a gta6index ugyanezt a projektet 0,5-1 FPS-sel írja – eltérő build/teszt, nem vonható össze.",
       "Az UFD Media szerint az AnyXboxX kb. 24 FPS mediánt ért el 14 perces, RTX 4070 Super, 1080p, RT nélküli munkamenetben (önbejelentett).",
-      "A doesleonidaboot szerint a ScarlettPort 18,9-22,0 FPS mediánt ért el egy RX-kártyán; az UFD Media szerint a 0.4.6 renderer után kb. 1 FPS – ellentmondó, külön mérések."
+      "A doesleonidaboot szerint a ScarlettPort 18,9-22,0 FPS mediánt ért el egy RX-kártyán; az UFD Media szerint a 0.4.6 renderer után kb. 1 FPS – ellentmondó, külön mérések.",
+      "A doesleonidaboot szerint a ScarlettPort RTX 3060-on 7-8 FPS, RX 9060 XT-n 22,0 FPS medián; a hardverfüggő eltérés és az UFD 1 FPS-es adata külön mérés, nem vonható össze (önbejelentett).",
+      "Az UFD Media szerint a victory-fork kb. 9 FPS-t ér el RTX 4070-en a prológusban és az első hajós küldetésben, 30-50 perc után grafikus eszköz elvesztésével (önbejelentett)."
     ],
     "own_conclusions": [
       "A projektek közötti kód- és technikaáramlás gyorsítja a fejlődést, de az FPS-ugrások nem reprodukált adatok.",
@@ -74,6 +79,11 @@
       "projekt": "AnyXboxX / ScarlettPort",
       "allapot": "AnyXboxX: kb. 24 FPS medián 14 percen át (UFD), 20-29 FPS (doesleonidaboot); ScarlettPort: 18,9-22 FPS (doesleonidaboot) vagy kb. 1 FPS (UFD)",
       "hitelesseg": "Ellentmondásos"
+    },
+    {
+      "projekt": "Leonida Vulkan sáv (doesleonidaboot)",
+      "allapot": "8 szakaszból 6 kész; történetbetöltés a világfázisba, világkép még nincs; D3D12-lefedettség 185/207",
+      "hitelesseg": "Nem ellenőrzött közösségi állítás"
     }
   ],
   "performance_records": [
@@ -274,7 +284,7 @@
     "https://www.rockstargames.com/newswire"
   ],
   "analysis_limitations": [
-    "Könnyített futás: a doesleonidaboot, gta6index, UFD Media és Newswire WebFetch-kivonatát olvastam; a többi forrás adata az előző elemzésből származik. A Newswire kivonata üres volt.",
+    "Könnyített futás: a doesleonidaboot, gta6index, UFD Media és Newswire WebFetch-kivonatát olvastam; a többi forrás adata az előző elemzésből származik. A Newswire kivonata üres volt; a gta6index változatlan (nov. 26.).",
     "GitHub, Reddit, YouTube és Take-Two források közvetlenül nem lettek ellenőrizve; a hivatalos státusz nem megerősített.",
     "Az FPS-adatok önbejelentettek, eltérő hardver és beállítások mellett készültek, nem összehasonlíthatók.",
     "A jsonschema validátor nem volt elérhető; csak a JSON-szintaxis, a kötelező mezők és a tiltott extra mezők ellenőrzése történt.",
@@ -555,6 +565,38 @@
           "https://doesleonidaboot.com/"
         ],
         "observed_at": null
+      },
+      {
+        "project": "victory-fork",
+        "fps_min": null,
+        "fps_max": null,
+        "fps_average": 9,
+        "duration_minutes": null,
+        "measurement_context": "gameplay",
+        "frame_generation": null,
+        "test_conditions": "UFD Media szerint: kb. 9 FPS, prológus és első hajós küldetés, RTX 4070, fekete árnyékok, grafikus eszköz elvesztése 30-50 perc után; önbejelentett, külön mérés",
+        "end_reason": "grafikus eszköz elvesztése 30-50 perc után",
+        "evidence_level": "önbejelentett",
+        "source_urls": [
+          "https://tech.ufdmedia.com/trackers/gta-vi-pc-port/"
+        ],
+        "observed_at": null
+      },
+      {
+        "project": "ScarlettPort",
+        "fps_min": null,
+        "fps_max": null,
+        "fps_average": 22.0,
+        "duration_minutes": null,
+        "measurement_context": "gameplay",
+        "frame_generation": null,
+        "test_conditions": "doesleonidaboot szerint: RX 9060 XT 16 GB, medián 22,0 FPS; RTX 3060-on 7-8 FPS; önbejelentett, külön mérések",
+        "end_reason": null,
+        "evidence_level": "ellentmondásos",
+        "source_urls": [
+          "https://doesleonidaboot.com/"
+        ],
+        "observed_at": null
       }
     ],
     "external_estimates": [],
@@ -576,9 +618,9 @@
       {
         "url": "https://doesleonidaboot.com/",
         "status": "ok",
-        "checked_at": "2026-11-27T07:53:56Z",
+        "checked_at": "2026-11-27T08:58:00Z",
         "source_date": "2026-11-27",
-        "detail": "Oldal szerint 2026-11-27 07:51 UTC: nem játszható; AnyXboxX 20-29 FPS, VIctory 23-25 FPS (javított utcák), Vice-Tay 30 perc 21,1 FPS medián, ScarlettPort 3,4-22 FPS (önbejelentett)."
+        "detail": "Oldal szerint 2026-11-27 08:51 UTC: nem játszható; AnyXboxX 20-29 FPS, VIctory 23-25 FPS, Vice-Tay 30 perc 21,1 FPS medián, ScarlettPort 7-22 FPS; Leonida Vulkan sáv 6/8 szakasz (önbejelentett)."
       },
       {
         "url": "https://gta6recomp.com/",
@@ -597,21 +639,21 @@
       {
         "url": "https://gta6index.wiki/pc/port-race/",
         "status": "ok",
-        "checked_at": "2026-11-27T07:53:56Z",
+        "checked_at": "2026-11-27T08:58:00Z",
         "source_date": "2026-11-26",
         "detail": "Oldal szerint 2026-11-26 11:30 UTC: nem játszható; Vice-Tay 70 perces futás."
       },
       {
         "url": "https://tech.ufdmedia.com/trackers/gta-vi-pc-port/",
         "status": "ok",
-        "checked_at": "2026-11-27T07:53:56Z",
+        "checked_at": "2026-11-27T08:58:00Z",
         "source_date": "2026-11-27",
         "detail": "Az oldal szerint 2026-11-26 késő esti ellenőrzések, legújabb frissítés 2026-11-27: AnyXboxX ~24 FPS medián (14 perc), előrejelzés nincs."
       },
       {
         "url": "https://www.rockstargames.com/newswire",
         "status": "no_data",
-        "checked_at": "2026-11-27T07:53:56Z",
+        "checked_at": "2026-11-27T08:58:00Z",
         "source_date": null,
         "detail": "A Newswire oldalon nem volt olvasható tartalom; a hivatalos státuszt nem sikerült közvetlenül ellenőrizni."
       }
