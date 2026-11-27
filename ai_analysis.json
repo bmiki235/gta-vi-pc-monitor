@@ -1,14 +1,14 @@
 {
   "schema_version": "1.1",
-  "checked_at": "2026-11-27T11:55:00Z",
-  "analyzed_at": "2026-11-27T11:55:00Z",
+  "checked_at": "2026-11-27T12:58:00Z",
+  "analyzed_at": "2026-11-27T12:58:00Z",
   "data_changed": false,
   "model": "claude-sonnet-5-5",
   "overall_status": "Nem játszható; vezető projektek kb. 5-29 FPS, önbejelentett adatokkal",
   "executive_summary": "Egyetlen nem hivatalos GTA VI PC-port sem igazoltan játszható. Az önbejelentett csúcsértékek 20-29 FPS körüliek (AnyXboxX, VIctory, Vice-Tay, ScarlettPort), de rövid vagy ismeretlen időtartamú, reprodukálatlan mérések; a hosszú futások 8-13 FPS-t és memórianövekedést mutatnak. Hivatalos PC-bejelentés nincs; a Newswire nem olvasható, a hivatalos státusz közvetlenül nem ellenőrzött.",
   "changes_since_last_run": [
-    "Nincs új, érdemi fejlemény az előző elemzés (10:54 UTC) óta; új esemény nem keletkezett, korábban jelentett eseményhez új riasztás nem javasolt.",
-    "A doesleonidaboot (nov. 27., 11:51 UTC), a gta6index (nov. 26., 11:30 UTC) és az UFD Media (nov. 27.) tartalma lényegében változatlan; előrejelzést egyik sem közöl. A Rockstar Newswire kivonata üres, hivatalos PC-bejelentés nem ismert."
+    "Nincs új, érdemi fejlemény az előző elemzés (11:55 UTC) óta; új esemény nem keletkezett, korábban jelentett eseményhez új riasztás nem javasolt.",
+    "A doesleonidaboot (nov. 27., 12:51 UTC) szerint az AnyXboxX 20-29 FPS, a Vice-Tay 19-23 FPS, a KLBF Lab 14-18,5 FPS (FSR/AMD) – mind önbejelentett, a korábbi adatokkal egyező. Az UFD Media (nov. 27.) és a gta6index (nov. 26.) változatlan, előrejelzést egyik sem közöl. A Rockstar Newswire kivonata üres, hivatalos PC-bejelentés nem ismert."
   ],
   "development_trend": "Gyorsuló: a konzolos megjelenés (nov. 19) óta napok alatt a menüktől az irányítható, több tíz perces játékmenetig jutottak; a közölt FPS-értékek 20 körülire emelkedtek, de önbejelentettek. Jogi visszaesés (Leonida) is látszik.",
   "technical_blockers": [
@@ -576,9 +576,9 @@
       {
         "url": "https://doesleonidaboot.com/",
         "status": "ok",
-        "checked_at": "2026-11-27T10:54:29Z",
+        "checked_at": "2026-11-27T12:58:00Z",
         "source_date": "2026-11-27",
-        "detail": "Oldal szerint 2026-11-27 10:51 UTC: nem játszható; AnyXboxX 20-29 FPS, VIctory 7900XTX 6-25 FPS, Vice-Tay 30 perc 21,1 FPS medián, ScarlettPort 7-22 FPS (önbejelentett)."
+        "detail": "Oldal szerint 2026-11-27 12:51 UTC: nem játszható; AnyXboxX 20-29 FPS, VIctory 7900XTX 6-25 FPS, Vice-Tay 19-23 FPS (30 perc: 21,1 FPS medián), KLBF Lab 14-18,5 FPS, ScarlettPort 7-22 FPS (önbejelentett)."
       },
       {
         "url": "https://gta6recomp.com/",
@@ -597,21 +597,21 @@
       {
         "url": "https://gta6index.wiki/pc/port-race/",
         "status": "ok",
-        "checked_at": "2026-11-27T10:54:29Z",
+        "checked_at": "2026-11-27T12:58:00Z",
         "source_date": "2026-11-26",
         "detail": "Oldal szerint 2026-11-26 11:30 UTC: nem játszható; Vice-Tay 70 perces futás."
       },
       {
         "url": "https://tech.ufdmedia.com/trackers/gta-vi-pc-port/",
         "status": "ok",
-        "checked_at": "2026-11-27T10:54:29Z",
+        "checked_at": "2026-11-27T12:58:00Z",
         "source_date": "2026-11-27",
         "detail": "Az oldal szerint 2026-11-26 késő esti ellenőrzések, legújabb frissítés 2026-11-27: AnyXboxX ~24 FPS medián (14 perc), előrejelzés nincs."
       },
       {
         "url": "https://www.rockstargames.com/newswire",
         "status": "no_data",
-        "checked_at": "2026-11-27T10:54:29Z",
+        "checked_at": "2026-11-27T12:58:00Z",
         "source_date": null,
         "detail": "A Newswire oldalon nem volt olvasható tartalom; a hivatalos státuszt nem sikerült közvetlenül ellenőrizni."
       }
