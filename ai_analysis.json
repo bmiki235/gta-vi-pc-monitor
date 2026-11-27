@@ -1,15 +1,16 @@
 {
   "schema_version": "1.1",
-  "checked_at": "2026-11-26T23:54:22Z",
-  "analyzed_at": "2026-11-26T23:54:22Z",
+  "checked_at": "2026-11-27T00:53:59Z",
+  "analyzed_at": "2026-11-27T00:53:59Z",
   "data_changed": true,
   "model": "claude-sonnet-5-5",
-  "overall_status": "Nem játszható; vezető projektek kb. 5-25 FPS, önbejelentett adatokkal",
-  "executive_summary": "Egyetlen nem hivatalos GTA VI PC-port sem igazoltan játszható. A doesleonidaboot (23:51 UTC) szerint a vezető projektek 5-29 FPS között járnak; az AnyXboxX új önbejelentett 20-29 FPS-t közöl, a Vice-Tay 30 perces, 21,1 FPS mediánú Series S munkamenete változatlan. Mindez önbejelentett, reprodukció nélküli. Hivatalos PC-bejelentés nincs; a Newswire nem olvasható, a hivatalos státusz közvetlenül nem ellenőrzött.",
+  "overall_status": "Nem játszható; vezető projektek kb. 5-29 FPS, önbejelentett adatokkal",
+  "executive_summary": "Egyetlen nem hivatalos GTA VI PC-port sem igazoltan játszható. A doesleonidaboot (nov. 27., 00:51 UTC) szerint az AnyXboxX 20-29 FPS-t, a VIctory javított városi utcákon 23-25 FPS-t (Series X profil, RT kikapcsolva), a Vice-Tay 30 perces munkamenetben 21,1 FPS mediánt közöl. Mindez önbejelentett, reprodukció nélkül; a gta6index és az UFD Media jóval alacsonyabb számokat ad. Hivatalos PC-bejelentés nincs; a Newswire nem olvasható, a hivatalos státusz közvetlenül nem ellenőrzött.",
   "changes_since_last_run": [
-    "doesleonidaboot (23:51 UTC): AnyXboxX új önbejelentett 20-29 FPS (korábban 15-28), Vice-Tay 19-23 FPS, ScarlettPort 3-19 FPS (RTX 3060: 3,4 FPS; RTX 5070: 7-8 FPS), Belobug AMD 5-8 FPS; mind önbejelentett.",
-    "UFD Media (16:40 EST) frissült: VItoriaBr, ScarlettPort, AnyXboxX és KLBF Lab 'részben játszható'; előrejelzés továbbra sincs. A gta6index (11:30 UTC) változatlan.",
-    "Új mérföldkő-esemény nem keletkezett; hivatalos PC-bejelentés nincs, a Rockstar Newswire továbbra sem olvasható."
+    "doesleonidaboot (nov. 27., 00:51 UTC): új VIctory-adat: javított városi utcákon 23-25 FPS (Series X, 1080p, RT ki), 16-23 FPS Series S profilon; önbejelentett.",
+    "doesleonidaboot: KLBF Lab 14-16,3 FPS (FSR), Belobug AMD 5-8 FPS, ScarlettPort 3-19 FPS; az AnyXboxX 20-29 FPS változatlan; a Leonida Vulkan-sáv még nem renderelt világképkockát.",
+    "UFD Media (nov. 26., 19:45 EST) és gta6index (nov. 26., 11:30 UTC): érdemi új mérés nincs; előrejelzés továbbra sincs.",
+    "Hivatalos PC-bejelentés nincs; a Rockstar Newswire továbbra sem olvasható."
   ],
   "development_trend": "Gyorsuló: a konzolos megjelenés (nov. 19) óta napok alatt a menüktől az irányítható, több tíz perces játékmenetig jutottak; a közölt FPS-értékek 20 körülire emelkedtek, de önbejelentettek. Jogi visszaesés (Leonida) is látszik.",
   "technical_blockers": [
@@ -27,7 +28,8 @@
       "A trackerek adatai szinte kizárólag a projektek saját állításai.",
       "A gta6index szerint a Vice-Tay 70 perces futása 12,9 FPS mediánt ért el, de a memóriahasználat 52,3 GB-ig nőtt és az FPS kb. 8-ra esett (önbejelentett).",
       "A doesleonidaboot szerint a Vice-Tay 8 perces Series S benchmarkja 21,5 FPS mediánt ért el (önbejelentett, rövid futás); a 70 perces futásban a medián 12,9 FPS volt (gta6index).",
-      "A doesleonidaboot szerint a Vice-Tay 30 perces Series S munkamenetben 21,1 FPS mediánt ért el (p10-p90 19,1-23,2); a gta6index 70 perces futása 12,9 FPS mediánt és memórianövekedést mutat – a két adat eltérő teszt, nem vonható össze."
+      "A doesleonidaboot szerint a Vice-Tay 30 perces Series S munkamenetben 21,1 FPS mediánt ért el (p10-p90 19,1-23,2); a gta6index 70 perces futása 12,9 FPS mediánt és memórianövekedést mutat – a két adat eltérő teszt, nem vonható össze.",
+      "A doesleonidaboot szerint a VIctory javított városi utcákon 23-25 FPS-t ér el Series X profilon (RT ki); a gta6index ugyanezt a projektet 0,5-1 FPS-sel írja – eltérő build/teszt, nem vonható össze."
     ],
     "own_conclusions": [
       "A projektek közötti kód- és technikaáramlás gyorsítja a fejlődést, de az FPS-ugrások nem reprodukált adatok.",
@@ -99,6 +101,12 @@
       "ertek": "21,5 FPS medián, 8 perc",
       "tipus": "Rövid benchmark, önbejelentett; nem hosszú stabil futás",
       "hitelesseg": "Nem ellenőrzött közösségi állítás"
+    },
+    {
+      "rekord": "VIctory javított városi utcák (doesleonidaboot)",
+      "ertek": "23-25 FPS, Series X profil, 1080p, RT ki",
+      "tipus": "Tényleges játékmenet, önbejelentett; időtartam nem ismert",
+      "hitelesseg": "Nem ellenőrzött közösségi állítás"
     }
   ],
   "stability_records": [
@@ -144,6 +152,21 @@
   },
   "forecast_changes": "Nincs változás: sem az UFD Media, sem a gta6index, sem a doesleonidaboot nem közöl előrejelzést. Saját előrejelzés továbbra sem készíthető.",
   "breakthrough_events": [
+    {
+      "id": "evt-2026-11-27-victory-city-23-25fps",
+      "idopont": "2026-11-27",
+      "tipus": "Új FPS-rekord",
+      "cim": "VIctory: 23-25 FPS javított városi utcákon",
+      "leiras": "A doesleonidaboot szerint a patchelt VIctory városi utcákon 23-25 FPS-t ér el Series X profilon, RT nélkül. Önbejelentett, időtartam és reprodukció nélkül.",
+      "projekt": "VIctory",
+      "jelentoseg": "A minimális játszhatósági FPS-küszöb felett, de stabilitás és független ellenőrzés nélkül.",
+      "hitelesseg": "Nem ellenőrzött közösségi állítás",
+      "eredeti_forras": "VIctory projekt saját közlése, doesleonidaboot közvetítésével",
+      "teljes_kepernyo_javaslat": false,
+      "source_urls": [
+        "https://doesleonidaboot.com/"
+      ]
+    },
     {
       "id": "evt-2026-11-26-vicetay-30min-21fps",
       "idopont": "2026-11-26",
@@ -479,6 +502,22 @@
           "https://doesleonidaboot.com/"
         ],
         "observed_at": null
+      },
+      {
+        "project": "VIctory-7900XTX",
+        "fps_min": 23,
+        "fps_max": 25,
+        "fps_average": null,
+        "duration_minutes": null,
+        "measurement_context": "gameplay",
+        "frame_generation": null,
+        "test_conditions": "doesleonidaboot szerint: javított városi utcák, Series X profil, 1080p, RT ki; önbejelentett, időtartam nem ismert",
+        "end_reason": null,
+        "evidence_level": "önbejelentett",
+        "source_urls": [
+          "https://doesleonidaboot.com/"
+        ],
+        "observed_at": null
       }
     ],
     "external_estimates": [],
@@ -500,9 +539,9 @@
       {
         "url": "https://doesleonidaboot.com/",
         "status": "ok",
-        "checked_at": "2026-11-26T23:54:22Z",
-        "source_date": "2026-11-26",
-        "detail": "Oldal szerint 2026-11-26 23:51 UTC: nem játszható; Vice-Tay 30 perces munkamenet 21,1 FPS medián, AnyXboxX 20-29 FPS (önbejelentett)."
+        "checked_at": "2026-11-27T00:53:59Z",
+        "source_date": "2026-11-27",
+        "detail": "Oldal szerint 2026-11-27 00:51 UTC: nem játszható; AnyXboxX 20-29 FPS, VIctory javított utcákon 23-25 FPS, Vice-Tay 30 perc 21,1 FPS medián (önbejelentett)."
       },
       {
         "url": "https://gta6recomp.com/",
@@ -521,21 +560,21 @@
       {
         "url": "https://gta6index.wiki/pc/port-race/",
         "status": "ok",
-        "checked_at": "2026-11-26T23:54:22Z",
+        "checked_at": "2026-11-27T00:53:59Z",
         "source_date": "2026-11-26",
         "detail": "Oldal szerint 2026-11-26 11:30 UTC: nem játszható; Vice-Tay 70 perces futás."
       },
       {
         "url": "https://tech.ufdmedia.com/trackers/gta-vi-pc-port/",
         "status": "ok",
-        "checked_at": "2026-11-26T23:54:22Z",
+        "checked_at": "2026-11-27T00:53:59Z",
         "source_date": "2026-11-26",
-        "detail": "Oldal szerint 2026-11-26 16:40 EST: négy projekt 'részben játszható'; előrejelzés nincs; nem megerősített pletykák."
+        "detail": "Oldal szerint utolsó ellenőrzés 2026-11-26 19:45 EST: VItoriaBr, ScarlettPort, AnyXboxX, KLBF Lab 'részben játszható'; előrejelzés nincs."
       },
       {
         "url": "https://www.rockstargames.com/newswire",
         "status": "no_data",
-        "checked_at": "2026-11-26T23:54:22Z",
+        "checked_at": "2026-11-27T00:53:59Z",
         "source_date": null,
         "detail": "A Newswire oldalon nem volt olvasható tartalom; a hivatalos státuszt nem sikerült közvetlenül ellenőrizni."
       }
