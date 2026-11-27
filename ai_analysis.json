@@ -1,13 +1,13 @@
 {
   "schema_version": "1.1",
-  "checked_at": "2026-11-27T15:54:14Z",
-  "analyzed_at": "2026-11-27T15:54:14Z",
-  "data_changed": false,
+  "checked_at": "2026-11-27T16:54:38Z",
+  "analyzed_at": "2026-11-27T16:54:38Z",
+  "data_changed": true,
   "model": "claude-sonnet-5-5",
-  "overall_status": "Nem játszható; vezető projektek kb. 5-29 FPS, önbejelentett adatokkal",
-  "executive_summary": "Egyetlen nem hivatalos GTA VI PC-port sem igazoltan játszható. Az önbejelentett csúcsértékek 20-29 FPS körüliek (AnyXboxX, VIctory, Vice-Tay, ScarlettPort), de rövid vagy ismeretlen időtartamú, reprodukálatlan mérések; a hosszú futások 8-13 FPS-t és memórianövekedést mutatnak. Hivatalos PC-bejelentés nincs; a Newswire nem olvasható, a hivatalos státusz közvetlenül nem ellenőrzött.",
+  "overall_status": "Nem játszható; vezető projektek kb. 5-30 FPS, önbejelentett adatokkal",
+  "executive_summary": "Egyetlen nem hivatalos GTA VI PC-port sem igazoltan játszható. Az önbejelentett csúcsértékek 20-30 FPS körüliek (VIctory-NVIDIA DLSS-sel 26-30, AnyXboxX 20-29, Vice-Tay, ScarlettPort), de rövid vagy ismeretlen időtartamú, reprodukálatlan mérések; a hosszú futások 8-13 FPS-t és memórianövekedést mutatnak. Hivatalos PC-bejelentés nincs ismert; a Newswire nem olvasható, a hivatalos státusz közvetlenül nem ellenőrzött.",
   "changes_since_last_run": [
-    "Nincs érdemi új fejlemény az előző elemzés (14:56 UTC) óta: a doesleonidaboot (15:51 UTC) és az UFD Media (nov. 27.) változatlan önbejelentett adatokat közöl. Új esemény vagy előrejelzés-változás nincs; hivatalos PC-bejelentés nincs. A victory-fork a VIctory-NVIDIA-ra rebase-elt (959dcaf), ez nem áttörés."
+    "A doesleonidaboot (2026-11-27 16:51 UTC) új ranglistát közöl: a VIctory-NVIDIA 26-30 FPS-t jelent DLSS-sel (2560x1440, RTX 5070) a nyitójelenetben és a hajós résznél, ez korábban 20-22 FPS volt. Önbejelentett, időtartam nélküli, DLSS-upscalinges mérés; nem áttörés. Az UFD Media változatlan, előrejelzés továbbra sincs; hivatalos PC-bejelentés nincs."
   ],
   "development_trend": "Gyorsuló: a konzolos megjelenés (nov. 19) óta napok alatt a menüktől az irányítható, több tíz perces játékmenetig jutottak; a közölt FPS-értékek 20 körülire emelkedtek, de önbejelentettek. Jogi visszaesés (Leonida) is látszik.",
   "technical_blockers": [
@@ -28,7 +28,8 @@
       "A doesleonidaboot szerint a Vice-Tay 30 perces Series S munkamenetben 21,1 FPS mediánt ért el (p10-p90 19,1-23,2); a gta6index 70 perces futása 12,9 FPS mediánt és memórianövekedést mutat – a két adat eltérő teszt, nem vonható össze.",
       "A doesleonidaboot szerint a VIctory javított városi utcákon 23-25 FPS-t ér el Series X profilon (RT ki); a gta6index ugyanezt a projektet 0,5-1 FPS-sel írja – eltérő build/teszt, nem vonható össze.",
       "Az UFD Media szerint az AnyXboxX kb. 24 FPS mediánt ért el 14 perces, RTX 4070 Super, 1080p, RT nélküli munkamenetben (önbejelentett).",
-      "A doesleonidaboot szerint a ScarlettPort 18,9-22,0 FPS mediánt ért el egy RX-kártyán; az UFD Media szerint a 0.4.6 renderer után kb. 1 FPS – ellentmondó, külön mérések."
+      "A doesleonidaboot szerint a ScarlettPort 18,9-22,0 FPS mediánt ért el egy RX-kártyán; az UFD Media szerint a 0.4.6 renderer után kb. 1 FPS – ellentmondó, külön mérések.",
+      "A doesleonidaboot szerint a VIctory-NVIDIA a nyitójelenetben és a hajós résznél 26-30 FPS-t ér el DLSS-sel, 2560x1440-en, RTX 5070-en (önbejelentett, időtartam nélkül; az UFD Media ugyanezt a projektet 20-22 FPS-sel írja félméretű renderrel)."
     ],
     "own_conclusions": [
       "A projektek közötti kód- és technikaáramlás gyorsítja a fejlődést, de az FPS-ugrások nem reprodukált adatok.",
@@ -274,6 +275,21 @@
       "source_urls": [
         "https://gta6index.wiki/pc/port-race/"
       ]
+    },
+    {
+      "id": "evt-2026-11-27-victory-nvidia-26-30fps-dlss",
+      "idopont": "2026-11-27T16:51:00Z",
+      "tipus": "Új FPS-rekord",
+      "cim": "VIctory-NVIDIA: 26-30 FPS DLSS-sel (önbejelentett)",
+      "leiras": "A doesleonidaboot szerint a nyitójelenetben és a hajós résznél 26-30 FPS, 1440p, RTX 5070, DLSS. Időtartam és reprodukció nélkül; nem stabil játékmenet-bizonyíték.",
+      "projekt": "VIctory-NVIDIA",
+      "jelentoseg": "Elvi FPS-csúcs a trackeren, de upscalinggel, rövid jelenetekben, ellenőrzés nélkül.",
+      "hitelesseg": "Nem ellenőrzött közösségi állítás",
+      "eredeti_forras": "doesleonidaboot.com ranglista (a projekt saját állítása)",
+      "teljes_kepernyo_javaslat": false,
+      "source_urls": [
+        "https://doesleonidaboot.com/"
+      ]
     }
   ],
   "official_pc_status": "Hivatalos Rockstar vagy Take-Two PC-bejelentést a trackerek nem említenek. A Rockstar Newswire oldalt közvetlenül nem sikerült ellenőrizni, a Take-Two közleményeit nem néztem, ezért a hivatalos státusz nem megerősített.",
@@ -304,7 +320,7 @@
     "https://www.eteknix.com/first-unofficial-gta-vi-port-available-for-download-on-pc/"
   ],
   "analysis_limitations": [
-    "Könnyített ismétlő futás: csak a doesleonidaboot, UFD Media, gta6index és Rockstar Newswire WebFetch-kivonatát olvastam; a Newswire kivonata ismét üres volt, így a hivatalos státusz közvetlenül nem ellenőrzött. A többi forrás adata az előző elemzésből származik.",
+    "Könnyített ismétlő futás: csak a doesleonidaboot, UFD Media és Rockstar Newswire WebFetch-kivonatát olvastam; a Newswire kivonata ismét üres volt, így a hivatalos státusz közvetlenül nem ellenőrzött. A többi forrás adata az előző elemzésből származik.",
     "GitHub, Reddit, YouTube és Take-Two források közvetlenül nem lettek ellenőrizve; a hivatalos státusz nem megerősített.",
     "Az FPS-adatok önbejelentettek, eltérő hardver és beállítások mellett készültek, nem összehasonlíthatók.",
     "A jsonschema validátor nem volt elérhető; csak a JSON-szintaxis, a kötelező mezők és a tiltott extra mezők ellenőrzése történt.",
@@ -650,6 +666,22 @@
           "https://github.com/ZigZagBoi1/ScarlettPort"
         ],
         "observed_at": null
+      },
+      {
+        "project": "VIctory-NVIDIA",
+        "fps_min": 26,
+        "fps_max": 30,
+        "fps_average": null,
+        "duration_minutes": null,
+        "measurement_context": "gameplay",
+        "frame_generation": null,
+        "test_conditions": "doesleonidaboot szerint: nyitójelenet és hajós rész, 2560x1440, RTX 5070, DLSS (upscaling; képkockagenerálás nem ismert); önbejelentett, időtartam nem ismert, külön mérés az UFD-féle 20-22 FPS-től",
+        "end_reason": null,
+        "evidence_level": "önbejelentett",
+        "source_urls": [
+          "https://doesleonidaboot.com/"
+        ],
+        "observed_at": "2026-11-27T16:51:00Z"
       }
     ],
     "external_estimates": [],
@@ -671,9 +703,9 @@
       {
         "url": "https://doesleonidaboot.com/",
         "status": "ok",
-        "checked_at": "2026-11-27T15:54:14Z",
+        "checked_at": "2026-11-27T16:54:38Z",
         "source_date": "2026-11-27",
-        "detail": "Oldal szerint 2026-11-27 14:51 UTC: nem játszható; AnyXboxX 20-29, VIctory 7900XTX 6-25, Vice-Tay 19-23, KLBF Lab 14-18,5, ScarlettPort 7-22 FPS (önbejelentett); előrejelzés nincs."
+        "detail": "Oldal szerint 2026-11-27 16:51 UTC: nem játszható; VIctory-NVIDIA 84% (26-30 FPS DLSS-sel), AnyXboxX 20-29, VIctory 7900XTX 6-25 FPS (önbejelentett); Leonida Vulkan 'Stop 32'; előrejelzés nincs."
       },
       {
         "url": "https://gta6recomp.com/",
@@ -699,14 +731,14 @@
       {
         "url": "https://tech.ufdmedia.com/trackers/gta-vi-pc-port/",
         "status": "ok",
-        "checked_at": "2026-11-27T15:54:14Z",
+        "checked_at": "2026-11-27T16:54:38Z",
         "source_date": "2026-11-27",
         "detail": "30 követett projekt, 5 'részben játszható'; végig játszható és publikus kiadás: 0; önbejelentett adatok, előrejelzés nincs."
       },
       {
         "url": "https://www.rockstargames.com/newswire",
         "status": "no_data",
-        "checked_at": "2026-11-27T15:54:14Z",
+        "checked_at": "2026-11-27T16:54:38Z",
         "source_date": null,
         "detail": "A Newswire oldalon nem volt olvasható tartalom; a hivatalos státuszt nem sikerült közvetlenül ellenőrizni."
       },
