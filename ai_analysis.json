@@ -1,15 +1,15 @@
 {
   "schema_version": "1.1",
-  "checked_at": "2026-11-28T13:53:55Z",
-  "analyzed_at": "2026-11-28T13:53:55Z",
+  "checked_at": "2026-11-28T14:54:17Z",
+  "analyzed_at": "2026-11-28T14:54:17Z",
   "data_changed": false,
   "model": "claude-sonnet-5-5",
   "overall_status": "Nem játszható; vezető projektek kb. 10-30 FPS, önbejelentett adatokkal",
   "executive_summary": "Nincs igazoltan játszható GTA VI PC-port. A vezető projektek önbejelentett értékei kb. 10-30 FPS (részben DLSS-sel/képkockagenerálással). Az előző elemzés óta nem történt érdemi új fejlemény, csak kisebb ranglista-pontosítások. Hivatalos PC-bejelentés nincs ismert; a Rockstar Newswire nem olvasható, a státusz közvetlenül nem ellenőrzött.",
   "changes_since_last_run": [
     "Nincs új érdemi fejlemény; az előző következtetések érvényesek.",
-    "Kisebb ranglista-pontosítás (doesleonidaboot, 2026-11-28 13:51 UTC): victory-fork 8-17 FPS (RT alapból be), Vice-Tay 19-23 FPS, KLBF Lab 16-18,5 FPS (FSR, AMD); VIctory-NVIDIA 26-30 FPS (DLSS) és AnyXboxX 20-29 FPS változatlan.",
-    "A gta6index (2026-11-28 00:45 UTC) és az UFD Media (nov. 27-28.) oldala változatlan; egyik sem közöl előrejelzést, egyik projekt sem játszható.",
+    "doesleonidaboot (2026-11-28 14:51 UTC): a ranglista számai változatlanok (VIctory-NVIDIA 26-30 FPS DLSS-sel, AnyXboxX 20-29, Vice-Tay 19-23, victory-fork 8-17, KLBF Lab 16-18,5, ScarlettPort 12-22 FPS); a KLBF Lab stabil v26.11.5 kiadása (nov. 28.) csak önbejelentett, nem ellenőrzött.",
+    "A gta6index (2026-11-28 00:45 UTC) és az UFD Media (utolsó módosítás nov. 27.) oldala változatlan; előrejelzést egyik sem közöl, egyik projekt sem játszható.",
     "Hivatalos PC-bejelentés nincs ismert; a Rockstar Newswire kivonata ismét üres volt, ezért a hivatalos státusz közvetlenül nem ellenőrzött."
   ],
   "development_trend": "Gyorsuló: a konzolos megjelenés (nov. 19) óta napok alatt a menüktől az irányítható, több tíz perces játékmenetig jutottak; a közölt FPS-értékek 20 körülire emelkedtek, de önbejelentettek. Jogi visszaesés (Leonida) is látszik.",
@@ -879,9 +879,9 @@
       {
         "url": "https://doesleonidaboot.com/",
         "status": "ok",
-        "checked_at": "2026-11-28T13:53:55Z",
+        "checked_at": "2026-11-28T14:54:17Z",
         "source_date": "2026-11-28",
-        "detail": "Oldal-időbélyeg 2026-11-28 13:51 UTC; nincs játszható projekt; ranglista lényegében változatlan (victory-fork 8-17, Vice-Tay 19-23, KLBF Lab 16-18,5 FPS); időtartamot az oldal nem közöl."
+        "detail": "Oldal-időbélyeg 2026-11-28 14:51 UTC; nincs játszható projekt; ranglista számai változatlanok; időtartamot az oldal nem közöl."
       },
       {
         "url": "https://gta6recomp.com/",
@@ -900,21 +900,21 @@
       {
         "url": "https://gta6index.wiki/pc/port-race/",
         "status": "ok",
-        "checked_at": "2026-11-28T13:53:55Z",
+        "checked_at": "2026-11-28T14:54:17Z",
         "source_date": "2026-11-28",
         "detail": "Oldal-időbélyeg 2026-11-28 00:45 UTC; egyik projekt sem játszható, tartós 30 FPS nincs; előrejelzés nincs; Vice-Tay szünet nov. 30-ig."
       },
       {
         "url": "https://tech.ufdmedia.com/trackers/gta-vi-pc-port/",
         "status": "ok",
-        "checked_at": "2026-11-28T13:53:55Z",
+        "checked_at": "2026-11-28T14:54:17Z",
         "source_date": "2026-11-27",
         "detail": "30 követett projekt, 5 részben játszható, 0 végig játszható; előrejelzést nem közöl; nov. 27-én 3 projekt megszűnt nyilvános lenni. Újraellenőrizve: változatlan; ScarlettPort 0.4.6 kb. 1 FPS (nov. 26)."
       },
       {
         "url": "https://www.rockstargames.com/newswire",
         "status": "no_data",
-        "checked_at": "2026-11-28T13:53:55Z",
+        "checked_at": "2026-11-28T14:54:17Z",
         "source_date": null,
         "detail": "A Newswire oldalon nem volt olvasható tartalom; a hivatalos státuszt nem sikerült közvetlenül ellenőrizni."
       },
