@@ -1,13 +1,15 @@
 {
   "schema_version": "1.1",
-  "checked_at": "2026-11-28T00:54:40Z",
-  "analyzed_at": "2026-11-28T00:54:40Z",
-  "data_changed": false,
+  "checked_at": "2026-11-28T01:54:19Z",
+  "analyzed_at": "2026-11-28T01:54:19Z",
+  "data_changed": true,
   "model": "claude-sonnet-5-5",
-  "overall_status": "Nem játszható; vezető projektek kb. 5-30 FPS, önbejelentett adatokkal",
-  "executive_summary": "Egyetlen nem hivatalos GTA VI PC-port sem igazoltan játszható. Az önbejelentett csúcsértékek 20-30 FPS körüliek (VIctory-NVIDIA DLSS-sel 26-30, AnyXboxX 20-29, Vice-Tay, ScarlettPort), de rövid vagy ismeretlen időtartamú, reprodukálatlan mérések; a hosszú futások 8-13 FPS-t és memórianövekedést mutatnak. Hivatalos PC-bejelentés nincs ismert; a Newswire nem olvasható, a hivatalos státusz közvetlenül nem ellenőrzött.",
+  "overall_status": "Nem játszható; vezető projektek kb. 10-30 FPS, önbejelentett adatokkal",
+  "executive_summary": "Egyetlen nem hivatalos GTA VI PC-port sem igazoltan játszható. Új önbejelentett adatok: Vice-Tay 26,7 FPS (4K, DLSS Quality, RTX 4090; 2× képkockagenerálással 53,4), Belobug kb. 22 FPS (RX 7900 XTX, 1080p), victory-fork 10-12,6 FPS RT-vel. A hosszú futások továbbra is 8-13 FPS-t és memórianövekedést mutatnak. Hivatalos PC-bejelentés nincs ismert; a Newswire nem olvasható, ezért a hivatalos státusz közvetlenül nem ellenőrzött.",
   "changes_since_last_run": [
-    "Nincs új érdemi fejlemény: a doesleonidaboot (2026-11-28 00:51 UTC) ranglistája változatlan (VIctory-NVIDIA 26-30 FPS DLSS-sel, AnyXboxX 20-29, Vice-Tay 19-23, KLBF Lab 16-18,5, ScarlettPort 12-22), az UFD Media (nov. 27.) 30 projektet és 5 részben játszható projektet mutat, előrejelzés nélkül. A gta6index (2026-11-28 00:45 UTC) szerint egyik projekt sem játszható; a Vice-Tay fejlesztése nov. 30-ig szünetel. Hivatalos PC-bejelentés nincs; a Rockstar Newswire kivonata ismét üres volt, ezért a hivatalos státusz közvetlenül nem ellenőrzött."
+    "A gta6index (2026-11-28 00:45 UTC) új adatai: Vice-Tay 26,72 renderelt FPS 4K DLSS Quality mellett RTX 4090-en (53,44 FPS 2× képkockagenerálással, nov. 27., egyforrású, reprodukálatlan); Belobug (AMD) kb. 22 FPS RX 7900 XTX-en 1080p-n (nov. 26.); victory-fork 10-12,6 FPS RT-vel RTX 4070-en. A Vice-Tay fejlesztése nov. 30-ig szünetel.",
+    "A doesleonidaboot (2026-11-28 01:51 UTC) szerint a ScarlettPort RTX 3060-on a fel nem használt RT BVH-hívások kihagyásával 7,4-8,1 FPS-ről 12,2-13,6 FPS-re gyorsult (önbejelentett); a victory-fork a VIctory-NVIDIA-ra lett rebase-elve; a Leonida Vulkan-sáv a 32. lépésnél tart (6/8 szakasz, önbejelentett).",
+    "Hivatalos PC-bejelentés nincs; a Rockstar Newswire kivonata ismét üres volt, így a hivatalos státusz közvetlenül nem ellenőrzött."
   ],
   "development_trend": "Gyorsuló: a konzolos megjelenés (nov. 19) óta napok alatt a menüktől az irányítható, több tíz perces játékmenetig jutottak; a közölt FPS-értékek 20 körülire emelkedtek, de önbejelentettek. Jogi visszaesés (Leonida) is látszik.",
   "technical_blockers": [
@@ -29,14 +31,18 @@
       "A doesleonidaboot szerint a VIctory javított városi utcákon 23-25 FPS-t ér el Series X profilon (RT ki); a gta6index ugyanezt a projektet 0,5-1 FPS-sel írja – eltérő build/teszt, nem vonható össze.",
       "Az UFD Media szerint az AnyXboxX kb. 24 FPS mediánt ért el 14 perces, RTX 4070 Super, 1080p, RT nélküli munkamenetben (önbejelentett).",
       "A doesleonidaboot szerint a ScarlettPort 18,9-22,0 FPS mediánt ért el egy RX-kártyán; az UFD Media szerint a 0.4.6 renderer után kb. 1 FPS – ellentmondó, külön mérések.",
-      "A doesleonidaboot szerint a VIctory-NVIDIA a nyitójelenetben és a hajós résznél 26-30 FPS-t ér el DLSS-sel, 2560x1440-en, RTX 5070-en (önbejelentett, időtartam nélkül; az UFD Media ugyanezt a projektet 20-22 FPS-sel írja félméretű renderrel)."
+      "A doesleonidaboot szerint a VIctory-NVIDIA a nyitójelenetben és a hajós résznél 26-30 FPS-t ér el DLSS-sel, 2560x1440-en, RTX 5070-en (önbejelentett, időtartam nélkül; az UFD Media ugyanezt a projektet 20-22 FPS-sel írja félméretű renderrel).",
+      "A gta6index szerint a Vice-Tay 4K DLSS Quality mellett 26,72 renderelt FPS-t ért el RTX 4090-en (53,44 FPS 2× képkockagenerálással); egyforrású, reprodukcióra váró, önbejelentett adat; a 30 perces 1080p-s medián 21,1 FPS.",
+      "A gta6index szerint a Belobug (AMD) kb. 22 FPS-t ér el RX 7900 XTX-en, 1080p, RT ki; textúra-pop-in és kb. 30 GB RAM-használat jelentett.",
+      "A doesleonidaboot szerint a ScarlettPort RTX 3060-on a nem használt RT BVH-hívások kihagyásával 7,4-8,1-ről 12,2-13,6 FPS-re gyorsult (önbejelentett)."
     ],
     "own_conclusions": [
       "A projektek közötti kód- és technikaáramlás gyorsítja a fejlődést, de az FPS-ugrások nem reprodukált adatok.",
       "A történetmód-működés (küldetések) nincs igazolva, ezért a teljes port még távoli.",
       "A jogi lépések lassíthatják a nyílt fejlesztést.",
       "A memórianövekedés (memóriaszivárgás-gyanú) továbbra is a hosszú, stabil futás fő akadálya; a 20 FPS küszöböt egyik hosszú futás sem érte el.",
-      "Ha a 30 perces, 21 FPS-es Vice-Tay futás reprodukálódik, az az első minimális játszhatósági küszöb körüli eredmény lenne; addig ez csak jelölt, nem igazolt mérföldkő."
+      "Ha a 30 perces, 21 FPS-es Vice-Tay futás reprodukálódik, az az első minimális játszhatósági küszöb körüli eredmény lenne; addig ez csak jelölt, nem igazolt mérföldkő.",
+      "A renderelési optimalizációk (pl. BVH-hívások kihagyása) és a forkok közötti rebase gyors, de egyelőre nem reprodukált FPS-javulást hoznak; a stabil, hosszú futás igazolása továbbra is hiányzik."
     ]
   },
   "project_analysis": [
@@ -78,6 +84,11 @@
     {
       "projekt": "ScarlettPort 0.5.x",
       "allapot": "Nyilvános GitHub-kiadás (GPL), a README szerint 90%: menü, mentés, nyitó terület irányítható; NVIDIA-n 3-9 FPS, AMD RX 9060 XT-n 22 FPS medián (közösségi); cél 30 FPS; hosszú futás nincs rögzítve; saját játékfájl szükséges",
+      "hitelesseg": "Nem ellenőrzött közösségi állítás"
+    },
+    {
+      "projekt": "Belobug (VIctory-AMD)",
+      "allapot": "Kb. 22 FPS RX 7900 XTX-en, 1080p, RT ki; pop-in, kb. 30 GB RAM; az eredeti tároló offline, GPL-3.0 tükör él",
       "hitelesseg": "Nem ellenőrzött közösségi állítás"
     }
   ],
@@ -122,6 +133,12 @@
       "rekord": "ScarlettPort 0.5.2 (RX 9060 XT 16 GB, közösségi jelentés a README-ben; eteknix: kb. 20 FPS általában, kb. 7 FPS nyílt világban)",
       "ertek": "22,0 FPS medián; RTX 3060-on 7-8 FPS a világban",
       "tipus": "Tényleges játékmenet jelölt, időtartam nincs megadva; önbejelentett",
+      "hitelesseg": "Nem ellenőrzött közösségi állítás"
+    },
+    {
+      "rekord": "Vice-Tay 4K DLSS Quality (gta6index)",
+      "ertek": "26,72 renderelt FPS; 53,44 FPS 2× képkockagenerálással; RTX 4090, nov. 27.",
+      "tipus": "Tényleges játékmenet jelölt, upscaling és képkockagenerálás; időtartam nem ismert; önbejelentett, egyforrású",
       "hitelesseg": "Nem ellenőrzött közösségi állítás"
     }
   ],
@@ -168,6 +185,21 @@
   },
   "forecast_changes": "Nincs változás: egyik forrás sem közöl előrejelzést; saját előrejelzés továbbra sem készíthető.",
   "breakthrough_events": [
+    {
+      "id": "evt-2026-11-27-vicetay-4k-dlss-26fps",
+      "idopont": "2026-11-27",
+      "tipus": "Új FPS-rekord",
+      "cim": "Vice-Tay: 26,7 FPS 4K DLSS mellett (önbejelentett)",
+      "leiras": "A gta6index szerint 26,72 renderelt FPS RTX 4090-en, 4K DLSS Quality; 2× képkockagenerálással 53,44 FPS. Egyforrású, reprodukálatlan, időtartam nélkül.",
+      "projekt": "Vice-Tay",
+      "jelentoseg": "Upscalinggel elért, a 20 FPS küszöböt meghaladó érték, de stabilitási és reprodukciós bizonyíték nélkül.",
+      "hitelesseg": "Nem ellenőrzött közösségi állítás",
+      "eredeti_forras": "Vice-Tay karbantartó saját közlése, a gta6index közvetítésével",
+      "teljes_kepernyo_javaslat": false,
+      "source_urls": [
+        "https://gta6index.wiki/pc/port-race/"
+      ]
+    },
     {
       "id": "evt-2026-11-27-scarlettport-public-release-0-5",
       "idopont": "2026-11-27",
@@ -320,12 +352,12 @@
     "https://www.eteknix.com/first-unofficial-gta-vi-port-available-for-download-on-pc/"
   ],
   "analysis_limitations": [
-    "Könnyített ismétlő futás: a doesleonidaboot, UFD Media, gta6index, portwatch és Rockstar Newswire WebFetch-kivonatát olvastam; a Newswire kivonata üres volt, így a hivatalos státusz közvetlenül nem ellenőrzött. A többi forrás adata az előző elemzésből származik.",
+    "Könnyített ismétlő futás: a doesleonidaboot, UFD Media, gta6index és Rockstar Newswire WebFetch-kivonatát olvastam; a Newswire kivonata üres volt, így a hivatalos státusz közvetlenül nem ellenőrzött. A többi forrás adata az előző elemzésből származik.",
     "GitHub, Reddit, YouTube és Take-Two források közvetlenül nem lettek ellenőrizve; a hivatalos státusz nem megerősített.",
-    "Az FPS-adatok önbejelentettek, eltérő hardver és beállítások mellett készültek, nem összehasonlíthatók.",
+    "Az FPS-adatok önbejelentettek, eltérő hardver, felbontás, upscaling és képkockagenerálás mellett készültek, nem összehasonlíthatók.",
     "A jsonschema validátor nem volt elérhető; csak a JSON-szintaxis, a kötelező mezők és a tiltott extra mezők ellenőrzése történt.",
-    "Forrásdátumok és mérések pontatlanok lehetnek; a doesleonidaboot és a trackerek eltérő számokat közölnek ugyanarra a projektre.",
-    "A ScarlettPort tárolót és az eteknix cikket csak WebFetch-kivonatként olvastam; letöltés, futtatás és kódellenőrzés nem történt. Az eteknix a GitHub-tároló adatait közvetíti, nem független bizonyíték."
+    "Forrásdátumok és mérések pontatlanok lehetnek; a trackerek eltérő számokat közölnek ugyanarra a projektre.",
+    "A ScarlettPort tárolót és az eteknix cikket csak az előző futás WebFetch-kivonataként ismerem; letöltés, futtatás és kódellenőrzés nem történt."
   ],
   "dashboard_data": {
     "analysis_status": "partial",
@@ -682,6 +714,86 @@
           "https://doesleonidaboot.com/"
         ],
         "observed_at": "2026-11-27T16:51:00Z"
+      },
+      {
+        "project": "Vice-Tay",
+        "fps_min": null,
+        "fps_max": null,
+        "fps_average": 26.72,
+        "duration_minutes": null,
+        "measurement_context": "gameplay",
+        "frame_generation": false,
+        "test_conditions": "gta6index szerint: RTX 4090, 4K DLSS Quality, renderelt FPS (képkockagenerálás nélkül); egyforrású, reprodukcióra vár",
+        "end_reason": null,
+        "evidence_level": "önbejelentett",
+        "source_urls": [
+          "https://gta6index.wiki/pc/port-race/"
+        ],
+        "observed_at": "2026-11-27T00:00:00Z"
+      },
+      {
+        "project": "Vice-Tay",
+        "fps_min": null,
+        "fps_max": null,
+        "fps_average": 53.44,
+        "duration_minutes": null,
+        "measurement_context": "gameplay",
+        "frame_generation": true,
+        "test_conditions": "gta6index szerint: ugyanaz a 4K DLSS Quality mérés 2× képkockagenerálással; nem valódi renderelt FPS",
+        "end_reason": null,
+        "evidence_level": "önbejelentett",
+        "source_urls": [
+          "https://gta6index.wiki/pc/port-race/"
+        ],
+        "observed_at": "2026-11-27T00:00:00Z"
+      },
+      {
+        "project": "Belobug",
+        "fps_min": null,
+        "fps_max": null,
+        "fps_average": 22,
+        "duration_minutes": null,
+        "measurement_context": "gameplay",
+        "frame_generation": null,
+        "test_conditions": "gta6index szerint: RX 7900 XTX, 1080p, Series S profil, RT ki; Series X profilon kb. 19 FPS; időtartam nem ismert",
+        "end_reason": null,
+        "evidence_level": "önbejelentett",
+        "source_urls": [
+          "https://gta6index.wiki/pc/port-race/"
+        ],
+        "observed_at": "2026-11-26T00:00:00Z"
+      },
+      {
+        "project": "victory-fork",
+        "fps_min": 10,
+        "fps_max": 12.6,
+        "fps_average": null,
+        "duration_minutes": null,
+        "measurement_context": "gameplay",
+        "frame_generation": null,
+        "test_conditions": "gta6index szerint: RTX 4070 12 GB, 1080p, RT be (nov. 27.); külön mérés a korábbi adatoktól",
+        "end_reason": null,
+        "evidence_level": "önbejelentett",
+        "source_urls": [
+          "https://gta6index.wiki/pc/port-race/"
+        ],
+        "observed_at": "2026-11-27T00:00:00Z"
+      },
+      {
+        "project": "ScarlettPort",
+        "fps_min": 12.2,
+        "fps_max": 13.6,
+        "fps_average": null,
+        "duration_minutes": null,
+        "measurement_context": "gameplay",
+        "frame_generation": null,
+        "test_conditions": "doesleonidaboot szerint: RTX 3060 12 GB, RT BVH-hívások kihagyása után (előtte 7,4-8,1 FPS); önbejelentett",
+        "end_reason": null,
+        "evidence_level": "önbejelentett",
+        "source_urls": [
+          "https://doesleonidaboot.com/"
+        ],
+        "observed_at": null
       }
     ],
     "external_estimates": [],
@@ -703,9 +815,9 @@
       {
         "url": "https://doesleonidaboot.com/",
         "status": "ok",
-        "checked_at": "2026-11-28T00:54:40Z",
+        "checked_at": "2026-11-28T01:54:19Z",
         "source_date": "2026-11-28",
-        "detail": "Oldal-időbélyeg 2026-11-28 00:51 UTC; ranglista változatlan; Leonida Vulkan-sáv 6/8 szakasz (önbejelentett); nincs előrejelzés."
+        "detail": "Oldal-időbélyeg 2026-11-28 01:51 UTC; 26 követett tároló, nincs játszható; ranglista: VIctory-NVIDIA 26-30, AnyXboxX 20-29, Vice-Tay 19-23 FPS; nincs előrejelzés."
       },
       {
         "url": "https://gta6recomp.com/",
@@ -724,21 +836,21 @@
       {
         "url": "https://gta6index.wiki/pc/port-race/",
         "status": "ok",
-        "checked_at": "2026-11-28T00:54:40Z",
+        "checked_at": "2026-11-28T01:54:19Z",
         "source_date": "2026-11-28",
         "detail": "Oldal-időbélyeg 2026-11-28 00:45 UTC; egyik projekt sem játszható, tartós 30 FPS nincs; előrejelzés nincs; Vice-Tay szünet nov. 30-ig."
       },
       {
         "url": "https://tech.ufdmedia.com/trackers/gta-vi-pc-port/",
         "status": "ok",
-        "checked_at": "2026-11-28T00:54:40Z",
+        "checked_at": "2026-11-28T01:54:19Z",
         "source_date": "2026-11-27",
-        "detail": "30 követett projekt, 5 \"részben játszható\"; végig játszható és publikus kiadás: 0; önbejelentett adatok, előrejelzés nincs."
+        "detail": "30 követett projekt, 5 részben játszható; végig játszható és publikus kiadás: 0; önbejelentett adatok, előrejelzés nincs."
       },
       {
         "url": "https://www.rockstargames.com/newswire",
         "status": "no_data",
-        "checked_at": "2026-11-28T00:54:40Z",
+        "checked_at": "2026-11-28T01:54:19Z",
         "source_date": null,
         "detail": "A Newswire oldalon nem volt olvasható tartalom; a hivatalos státuszt nem sikerült közvetlenül ellenőrizni."
       },
