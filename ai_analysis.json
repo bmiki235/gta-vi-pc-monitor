@@ -1,14 +1,15 @@
 {
   "schema_version": "1.1",
-  "checked_at": "2026-11-28T10:53:56Z",
-  "analyzed_at": "2026-11-28T10:53:56Z",
-  "data_changed": false,
+  "checked_at": "2026-11-28T11:54:26Z",
+  "analyzed_at": "2026-11-28T11:54:26Z",
+  "data_changed": true,
   "model": "claude-sonnet-5-5",
   "overall_status": "Nem játszható; vezető projektek kb. 10-30 FPS, önbejelentett adatokkal",
-  "executive_summary": "Nincs új fejlemény: egyetlen nem hivatalos GTA VI PC-port sem igazoltan játszható. A vezető projektek önbejelentett értékei kb. 10-30 FPS (részben DLSS-sel vagy képkockagenerálással), a hosszú futások továbbra is 8-13 FPS-t és memórianövekedést mutatnak. Hivatalos PC-bejelentés nincs ismert; a Newswire nem olvasható, ezért a hivatalos státusz közvetlenül nem ellenőrzött.",
+  "executive_summary": "Nincs igazoltan játszható GTA VI PC-port. A vezető projektek önbejelentett értékei kb. 10-30 FPS (részben DLSS-sel/képkockagenerálással); új: ScarlettPort 12-14 FPS RTX 3060-on, KLBF Lab FSR-kiadás, három projekt nem nyilvános. Egy tracker a Vice-Tayt 'játszhatónak' jelöli, de ezt senki sem reprodukálta. Hivatalos PC-bejelentés nincs ismert; a Newswire nem olvasható, a státusz közvetlenül nem ellenőrzött.",
   "changes_since_last_run": [
-    "Nincs érdemi új fejlemény az előző elemzés óta. A doesleonidaboot (2026-11-28 10:51 UTC) ranglistája változatlan: VIctory-NVIDIA 26-30 FPS (DLSS), AnyXboxX 20-29 FPS, victory-fork 8-17 FPS, Vice-Tay 19-23 FPS, KLBF Lab 16-18,5 FPS; mind önbejelentett, nem reprodukált. A Leonida Vulkan-sáv továbbra is a 32. állomásnál tart (6/8 szakasz).",
-    "Az UFD Media (30 követett projekt, 5 részben játszható, 0 végig játszható) változatlan; előrejelzést nem közöl.",
+    "Kisebb fejlemények, játszhatóság nincs: a doesleonidaboot (2026-11-28 11:51 UTC) szerint a ScarlettPort RTX 3060-on a ray tracing BVH-hívások kihagyásával 7,4-8,1 FPS-ről 12,2-13,6 FPS-re gyorsult (önbejelentett); a KLBF Lab stabil v26.11.3 kiadása (nov. 27) AMD FSR-támogatást hozott.",
+    "Az UFD Media szerint nov. 27-én három projekt (MACCA CL, VIctory 7900XTX, VIctory Radeon rendering fork) már nem nyilvános; a Project Leonida továbbra is leállt (DMCA, nov. 24). A doesleonidaboot ranglistája egyébként változatlan: VIctory-NVIDIA 26-30 FPS (DLSS), AnyXboxX 20-29 FPS.",
+    "Az egyik nem hivatalos tracker (vuyp.github.io, 2026-11-28 00:17 UTC-s állapot) a Vice-Tayt 'játszható' (7. szint) kategóriába sorolja a saját 30 perces, 21,1 FPS-es közlése alapján; ezt senki nem reprodukálta, így nem tekintem igazolt játszhatóságnak.",
     "Hivatalos PC-bejelentés nincs ismert; a Rockstar Newswire kivonata ismét üres volt, ezért a hivatalos státusz közvetlenül nem ellenőrzött."
   ],
   "development_trend": "Gyorsuló: a konzolos megjelenés (nov. 19) óta napok alatt a menüktől az irányítható, több tíz perces játékmenetig jutottak; a közölt FPS-értékek 20 körülire emelkedtek, de önbejelentettek. Jogi visszaesés (Leonida) is látszik.",
@@ -322,13 +323,28 @@
       "source_urls": [
         "https://doesleonidaboot.com/"
       ]
+    },
+    {
+      "id": "evt-2026-11-27-scarlettport-bvh-12fps",
+      "idopont": "2026-11-27",
+      "tipus": "Új FPS-rekord",
+      "cim": "ScarlettPort: 12-14 FPS RTX 3060-on a BVH-optimalizálás után",
+      "leiras": "A doesleonidaboot szerint a felesleges ray tracing BVH-hívások kihagyása 7,4-8,1 FPS-ről 12,2-13,6 FPS-re emelte a teljesítményt RTX 3060 12 GB-on, megvilágított prológusban. Önbejelentett, időtartam nélkül.",
+      "projekt": "ScarlettPort",
+      "jelentoseg": "Mérsékelt, de a legolcsóbb hardveren látványos gyorsulás; a 20 FPS küszöbtől még távol van, stabilitási adat nincs.",
+      "hitelesseg": "Nem ellenőrzött közösségi állítás",
+      "eredeti_forras": "ScarlettPort fejlesztői közlés, doesleonidaboot közvetítésével",
+      "teljes_kepernyo_javaslat": false,
+      "source_urls": [
+        "https://doesleonidaboot.com/"
+      ]
     }
   ],
   "official_pc_status": "Hivatalos Rockstar vagy Take-Two PC-bejelentést a trackerek nem említenek. A Rockstar Newswire oldalt közvetlenül nem sikerült ellenőrizni, a Take-Two közleményeit nem néztem, ezért a hivatalos státusz nem megerősített.",
   "cloud_gaming_status": "Hivatalos felhőalapú vagy konzol nélküli PC-s lehetőségről nincs ellenőrzött információ.",
   "confidence": "Alacsony-közepes: az adatok többsége önbejelentett és egymásnak részben ellentmond.",
   "source_health": {
-    "https://vuyp.github.io/gta6-pc-race/": "partial",
+    "https://vuyp.github.io/gta6-pc-race/": "ok",
     "https://portwatch-vi.xyz/": "partial",
     "https://doesleonidaboot.com/": "ok",
     "https://gta6recomp.com/": "ok",
@@ -352,6 +368,7 @@
     "https://www.eteknix.com/first-unofficial-gta-vi-port-available-for-download-on-pc/"
   ],
   "analysis_limitations": [
+    "Könnyített futás: a doesleonidaboot, a gta6index, az UFD Media, a vuyp, a portwatch és a Rockstar Newswire WebFetch-kivonatát olvastam; a Newswire kivonata üres volt, így a hivatalos státusz közvetlenül nem ellenőrzött. A gta6recomp, sixonpc, GitHub, Reddit, YouTube és Take-Two források most nem lettek ellenőrizve.",
     "Könnyített futás: a doesleonidaboot, a gta6index, az UFD Media és a Rockstar Newswire WebFetch-kivonatát olvastam; a Newswire kivonata üres volt, így a hivatalos státusz közvetlenül nem ellenőrzött. A többi forrás adata az előző elemzésből származik.",
     "GitHub, Reddit, YouTube és Take-Two források közvetlenül nem lettek ellenőrizve; a hivatalos státusz nem megerősített.",
     "Az FPS-adatok önbejelentettek, eltérő hardver, felbontás, upscaling és képkockagenerálás mellett készültek, nem összehasonlíthatók.",
@@ -794,30 +811,46 @@
           "https://doesleonidaboot.com/"
         ],
         "observed_at": null
+      },
+      {
+        "project": "ScarlettPort",
+        "fps_min": 12.2,
+        "fps_max": 13.6,
+        "fps_average": null,
+        "duration_minutes": null,
+        "measurement_context": "gameplay",
+        "frame_generation": null,
+        "test_conditions": "doesleonidaboot szerint: RTX 3060 12 GB, megvilágított prológus, BVH-hívások kihagyása után; a korábbi érték 7,4-8,1 FPS. Egyetlen forrás, nem reprodukált.",
+        "end_reason": null,
+        "evidence_level": "önbejelentett",
+        "source_urls": [
+          "https://doesleonidaboot.com/"
+        ],
+        "observed_at": null
       }
     ],
     "external_estimates": [],
     "source_checks": [
       {
         "url": "https://vuyp.github.io/gta6-pc-race/",
-        "status": "partial",
-        "checked_at": null,
-        "source_date": null,
-        "detail": "Az oldal 'Not yet' állapotot mutat, a ranglista nem töltődött be."
+        "status": "ok",
+        "checked_at": "2026-11-28T11:54:26Z",
+        "source_date": "2026-11-28",
+        "detail": "A ranglista olvasható (állapot: 2026-11-28 00:17 UTC); a Vice-Tayt 7. szinten (játszható) jelöli saját közlés alapján, független ellenőrzés nélkül; előrejelzést nem közöl. A fetch-kivonat 100 000 karakterig terjedt, az oldal többi része nem lett olvasva."
       },
       {
         "url": "https://portwatch-vi.xyz/",
         "status": "partial",
-        "checked_at": "2026-11-28T00:54:40Z",
+        "checked_at": "2026-11-28T11:54:26Z",
         "source_date": null,
-        "detail": "Az oldal 0% előrehaladást és betöltés alatti ranglistát mutat; nem használható adatforrásként."
+        "detail": "Az oldal 0% előrehaladást és betöltés alatti ranglistát mutat; nem használható adatforrásként. Megjegyzés: a két kivonat hozzárendelése a vuyp/portwatch oldalakhoz bizonytalan lehet."
       },
       {
         "url": "https://doesleonidaboot.com/",
         "status": "ok",
-        "checked_at": "2026-11-28T10:53:56Z",
+        "checked_at": "2026-11-28T11:54:26Z",
         "source_date": "2026-11-28",
-        "detail": "Oldal-időbélyeg 2026-11-28 10:51 UTC; 21 aktív projekt, nincs játszható; ranglista változatlan; Leonida Vulkan-sáv: 32. állomás, 6/8 szakasz; nincs előrejelzés."
+        "detail": "Oldal-időbélyeg 2026-11-28 11:51 UTC; nincs játszható projekt; ranglista változatlan; ScarlettPort 79% (12-22 FPS), BVH-gyorsítás; KLBF Lab v26.11.3; Leonida Vulkan-sáv 32. állomás, 6/8 szakasz."
       },
       {
         "url": "https://gta6recomp.com/",
@@ -836,16 +869,16 @@
       {
         "url": "https://gta6index.wiki/pc/port-race/",
         "status": "ok",
-        "checked_at": "2026-11-28T09:54:27Z",
+        "checked_at": "2026-11-28T11:54:26Z",
         "source_date": "2026-11-28",
         "detail": "Oldal-időbélyeg 2026-11-28 00:45 UTC; egyik projekt sem játszható, tartós 30 FPS nincs; előrejelzés nincs; Vice-Tay szünet nov. 30-ig."
       },
       {
         "url": "https://tech.ufdmedia.com/trackers/gta-vi-pc-port/",
         "status": "ok",
-        "checked_at": "2026-11-28T10:53:56Z",
+        "checked_at": "2026-11-28T11:54:26Z",
         "source_date": "2026-11-27",
-        "detail": "30 követett projekt, 5 részben játszható; végig játszható és publikus kiadás: 0; önbejelentett adatok, előrejelzés nincs."
+        "detail": "30 követett projekt, 5 részben játszható, 0 végig játszható; előrejelzést nem közöl; nov. 27-én 3 projekt megszűnt nyilvános lenni."
       },
       {
         "url": "https://www.rockstargames.com/newswire",
