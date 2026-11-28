@@ -1,15 +1,15 @@
 {
   "schema_version": "1.1",
-  "checked_at": "2026-11-28T01:54:19Z",
-  "analyzed_at": "2026-11-28T01:54:19Z",
-  "data_changed": true,
+  "checked_at": "2026-11-28T02:53:58Z",
+  "analyzed_at": "2026-11-28T02:53:58Z",
+  "data_changed": false,
   "model": "claude-sonnet-5-5",
   "overall_status": "Nem játszható; vezető projektek kb. 10-30 FPS, önbejelentett adatokkal",
-  "executive_summary": "Egyetlen nem hivatalos GTA VI PC-port sem igazoltan játszható. Új önbejelentett adatok: Vice-Tay 26,7 FPS (4K, DLSS Quality, RTX 4090; 2× képkockagenerálással 53,4), Belobug kb. 22 FPS (RX 7900 XTX, 1080p), victory-fork 10-12,6 FPS RT-vel. A hosszú futások továbbra is 8-13 FPS-t és memórianövekedést mutatnak. Hivatalos PC-bejelentés nincs ismert; a Newswire nem olvasható, ezért a hivatalos státusz közvetlenül nem ellenőrzött.",
+  "executive_summary": "Nincs új fejlemény: egyetlen nem hivatalos GTA VI PC-port sem igazoltan játszható. A vezető projektek önbejelentett értékei kb. 10-30 FPS (részben DLSS-sel vagy képkockagenerálással), a hosszú futások továbbra is 8-13 FPS-t és memórianövekedést mutatnak. Hivatalos PC-bejelentés nincs ismert; a Newswire nem olvasható, ezért a hivatalos státusz közvetlenül nem ellenőrzött.",
   "changes_since_last_run": [
-    "A gta6index (2026-11-28 00:45 UTC) új adatai: Vice-Tay 26,72 renderelt FPS 4K DLSS Quality mellett RTX 4090-en (53,44 FPS 2× képkockagenerálással, nov. 27., egyforrású, reprodukálatlan); Belobug (AMD) kb. 22 FPS RX 7900 XTX-en 1080p-n (nov. 26.); victory-fork 10-12,6 FPS RT-vel RTX 4070-en. A Vice-Tay fejlesztése nov. 30-ig szünetel.",
-    "A doesleonidaboot (2026-11-28 01:51 UTC) szerint a ScarlettPort RTX 3060-on a fel nem használt RT BVH-hívások kihagyásával 7,4-8,1 FPS-ről 12,2-13,6 FPS-re gyorsult (önbejelentett); a victory-fork a VIctory-NVIDIA-ra lett rebase-elve; a Leonida Vulkan-sáv a 32. lépésnél tart (6/8 szakasz, önbejelentett).",
-    "Hivatalos PC-bejelentés nincs; a Rockstar Newswire kivonata ismét üres volt, így a hivatalos státusz közvetlenül nem ellenőrzött."
+    "Nincs érdemi új fejlemény az előző elemzés óta. A doesleonidaboot (2026-11-28 02:51 UTC) ranglistája változatlan: VIctory-NVIDIA 26-30 FPS (DLSS), AnyXboxX 20-29 FPS (a 58 FPS képkockagenerálással), victory-fork 8-17 FPS, Vice-Tay 19-23 FPS, KLBF Lab 16-18,5 FPS (FSR/képkockagenerálással 30); egyik érték sem reprodukált, időtartam nélkül.",
+    "A gta6index (2026-11-28 00:45 UTC) és az UFD Media (2026-11-27) oldala változatlan: nincs játszható projekt, nincs előrejelzés, a Vice-Tay fejlesztése nov. 30-ig szünetel.",
+    "Hivatalos PC-bejelentés nincs ismert; a Rockstar Newswire kivonata ismét üres volt, ezért a hivatalos státusz közvetlenül nem ellenőrzött."
   ],
   "development_trend": "Gyorsuló: a konzolos megjelenés (nov. 19) óta napok alatt a menüktől az irányítható, több tíz perces játékmenetig jutottak; a közölt FPS-értékek 20 körülire emelkedtek, de önbejelentettek. Jogi visszaesés (Leonida) is látszik.",
   "technical_blockers": [
@@ -815,9 +815,9 @@
       {
         "url": "https://doesleonidaboot.com/",
         "status": "ok",
-        "checked_at": "2026-11-28T01:54:19Z",
+        "checked_at": "2026-11-28T02:53:58Z",
         "source_date": "2026-11-28",
-        "detail": "Oldal-időbélyeg 2026-11-28 01:51 UTC; 26 követett tároló, nincs játszható; ranglista: VIctory-NVIDIA 26-30, AnyXboxX 20-29, Vice-Tay 19-23 FPS; nincs előrejelzés."
+        "detail": "Oldal-időbélyeg 2026-11-28 02:51 UTC; 21 aktív projekt, nincs játszható; ranglista: VIctory-NVIDIA 26-30, AnyXboxX 20-29, victory-fork 8-17, Vice-Tay 19-23 FPS; nincs előrejelzés."
       },
       {
         "url": "https://gta6recomp.com/",
@@ -836,21 +836,21 @@
       {
         "url": "https://gta6index.wiki/pc/port-race/",
         "status": "ok",
-        "checked_at": "2026-11-28T01:54:19Z",
+        "checked_at": "2026-11-28T02:53:58Z",
         "source_date": "2026-11-28",
         "detail": "Oldal-időbélyeg 2026-11-28 00:45 UTC; egyik projekt sem játszható, tartós 30 FPS nincs; előrejelzés nincs; Vice-Tay szünet nov. 30-ig."
       },
       {
         "url": "https://tech.ufdmedia.com/trackers/gta-vi-pc-port/",
         "status": "ok",
-        "checked_at": "2026-11-28T01:54:19Z",
+        "checked_at": "2026-11-28T02:53:58Z",
         "source_date": "2026-11-27",
         "detail": "30 követett projekt, 5 részben játszható; végig játszható és publikus kiadás: 0; önbejelentett adatok, előrejelzés nincs."
       },
       {
         "url": "https://www.rockstargames.com/newswire",
         "status": "no_data",
-        "checked_at": "2026-11-28T01:54:19Z",
+        "checked_at": "2026-11-28T02:53:58Z",
         "source_date": null,
         "detail": "A Newswire oldalon nem volt olvasható tartalom; a hivatalos státuszt nem sikerült közvetlenül ellenőrizni."
       },
