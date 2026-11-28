@@ -1,15 +1,15 @@
 {
   "schema_version": "1.1",
-  "checked_at": "2026-11-28T14:54:17Z",
-  "analyzed_at": "2026-11-28T14:54:17Z",
+  "checked_at": "2026-11-28T15:54:25Z",
+  "analyzed_at": "2026-11-28T15:54:25Z",
   "data_changed": false,
   "model": "claude-sonnet-5-5",
   "overall_status": "Nem játszható; vezető projektek kb. 10-30 FPS, önbejelentett adatokkal",
   "executive_summary": "Nincs igazoltan játszható GTA VI PC-port. A vezető projektek önbejelentett értékei kb. 10-30 FPS (részben DLSS-sel/képkockagenerálással). Az előző elemzés óta nem történt érdemi új fejlemény, csak kisebb ranglista-pontosítások. Hivatalos PC-bejelentés nincs ismert; a Rockstar Newswire nem olvasható, a státusz közvetlenül nem ellenőrzött.",
   "changes_since_last_run": [
     "Nincs új érdemi fejlemény; az előző következtetések érvényesek.",
-    "doesleonidaboot (2026-11-28 14:51 UTC): a ranglista számai változatlanok (VIctory-NVIDIA 26-30 FPS DLSS-sel, AnyXboxX 20-29, Vice-Tay 19-23, victory-fork 8-17, KLBF Lab 16-18,5, ScarlettPort 12-22 FPS); a KLBF Lab stabil v26.11.5 kiadása (nov. 28.) csak önbejelentett, nem ellenőrzött.",
-    "A gta6index (2026-11-28 00:45 UTC) és az UFD Media (utolsó módosítás nov. 27.) oldala változatlan; előrejelzést egyik sem közöl, egyik projekt sem játszható.",
+    "doesleonidaboot (2026-11-28 15:51 UTC): a ranglista számai változatlanok (VIctory-NVIDIA 26-30 FPS DLSS-sel, AnyXboxX 20-29, Vice-Tay 19-23, victory-fork 8-17, KLBF Lab 16-18,5, ScarlettPort 12-22 FPS); Leonida letiltva.",
+    "A gta6index (utolsó frissítés 2026-11-28 00:45 UTC) és az UFD Media (utolsó naplózott változás nov. 27.) oldala változatlan; előrejelzést egyik sem közöl, egyik projekt sem játszható.",
     "Hivatalos PC-bejelentés nincs ismert; a Rockstar Newswire kivonata ismét üres volt, ezért a hivatalos státusz közvetlenül nem ellenőrzött."
   ],
   "development_trend": "Gyorsuló: a konzolos megjelenés (nov. 19) óta napok alatt a menüktől az irányítható, több tíz perces játékmenetig jutottak; a közölt FPS-értékek 20 körülire emelkedtek, de önbejelentettek. Jogi visszaesés (Leonida) is látszik.",
