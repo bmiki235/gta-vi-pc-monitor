@@ -1,13 +1,13 @@
 {
   "schema_version": "1.1",
-  "checked_at": "2026-11-28T04:54:29Z",
-  "analyzed_at": "2026-11-28T04:54:29Z",
+  "checked_at": "2026-11-28T05:54:25Z",
+  "analyzed_at": "2026-11-28T05:54:25Z",
   "data_changed": false,
   "model": "claude-sonnet-5-5",
   "overall_status": "Nem játszható; vezető projektek kb. 10-30 FPS, önbejelentett adatokkal",
   "executive_summary": "Nincs új fejlemény: egyetlen nem hivatalos GTA VI PC-port sem igazoltan játszható. A vezető projektek önbejelentett értékei kb. 10-30 FPS (részben DLSS-sel vagy képkockagenerálással), a hosszú futások továbbra is 8-13 FPS-t és memórianövekedést mutatnak. Hivatalos PC-bejelentés nincs ismert; a Newswire nem olvasható, ezért a hivatalos státusz közvetlenül nem ellenőrzött.",
   "changes_since_last_run": [
-    "Nincs érdemi új fejlemény az előző elemzés óta. A doesleonidaboot (2026-11-28 04:51 UTC) ranglistája változatlan: VIctory-NVIDIA 26-30 FPS (DLSS), AnyXboxX 20-29 FPS (58 FPS képkockagenerálással), victory-fork 8-17 FPS, Vice-Tay 19-23 FPS, KLBF Lab 16-18,5 FPS, ScarlettPort 12-22 FPS; egyik érték sem reprodukált.",
+    "Nincs érdemi új fejlemény az előző elemzés óta. A doesleonidaboot (2026-11-28 05:51 UTC) ranglistája változatlan: VIctory-NVIDIA 26-30 FPS (DLSS), AnyXboxX 20-29 FPS (58 FPS képkockagenerálással), victory-fork 8-17 FPS, Vice-Tay 19-23 FPS, KLBF Lab 16-18,5 FPS; egyik érték sem reprodukált.",
     "A gta6index (2026-11-28 00:45 UTC) változatlan: nincs játszható projekt, nincs előrejelzés; a Vice-Tay fejlesztése nov. 30-ig szünetel.",
     "Hivatalos PC-bejelentés nincs ismert; a Rockstar Newswire kivonata ismét üres volt, ezért a hivatalos státusz közvetlenül nem ellenőrzött."
   ],
@@ -352,7 +352,7 @@
     "https://www.eteknix.com/first-unofficial-gta-vi-port-available-for-download-on-pc/"
   ],
   "analysis_limitations": [
-    "Könnyített ismétlő futás: a doesleonidaboot, gta6index és Rockstar Newswire WebFetch-kivonatát olvastam; a Newswire kivonata üres volt, így a hivatalos státusz közvetlenül nem ellenőrzött. A többi forrás (köztük az UFD Media) adata az előző elemzésből származik.",
+    "Könnyített futás: a doesleonidaboot, a gta6index és a Rockstar Newswire WebFetch-kivonatát olvastam; a Newswire kivonata üres volt, így a hivatalos státusz közvetlenül nem ellenőrzött. A többi forrás adata az előző elemzésből származik.",
     "GitHub, Reddit, YouTube és Take-Two források közvetlenül nem lettek ellenőrizve; a hivatalos státusz nem megerősített.",
     "Az FPS-adatok önbejelentettek, eltérő hardver, felbontás, upscaling és képkockagenerálás mellett készültek, nem összehasonlíthatók.",
     "A jsonschema validátor nem volt elérhető; csak a JSON-szintaxis, a kötelező mezők és a tiltott extra mezők ellenőrzése történt.",
